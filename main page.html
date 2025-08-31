@@ -68,7 +68,177 @@
             /* Original: max-w-7xl (80rem) -> 20% narrower */
         }
 
-        /* --- Header & Hero Styles --- */
+        /* --- START: Mega Menu & Mobile Accordion Styles --- */
+        .mega-menu {
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding-bottom: 3rem;
+        }
+
+        .mega-menu::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .mega-menu::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+
+        .mega-menu::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 10px;
+            border: 2px solid #f8fafc;
+        }
+
+        .mega-menu::-webkit-scrollbar-thumb:hover {
+            background-color: #94a3b8;
+        }
+
+        .nav-link {
+            z-index: 21;
+        }
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100vw;
+            max-width: 1100px;
+            padding: 2rem 2.5rem;
+            background-color: #ffffff;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid #f3f4f6;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(50%) translateY(20px);
+            transition: opacity 0.35s ease-out, transform 0.35s ease-out, visibility 0.35s;
+            z-index: 20;
+        }
+
+        .dropdown-container:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(50%) translateY(0);
+        }
+
+        .mega-menu-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .mega-menu-column .column-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mega-menu-column .column-title iconify-icon {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+        }
+
+        .mega-menu-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-menu-column ul li a {
+            color: #374151;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: block;
+            padding: 0.5rem 0;
+            border-radius: 0.375rem;
+            font-size: 0.95rem;
+        }
+
+        .mega-menu-column ul li a:hover {
+            color: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        .mega-menu-column .city-link {
+            color: #6b7280;
+            padding-right: 1.25rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .mega-menu-column .city-link::before {
+            content: '';
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: #d1d5db;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .mega-menu-column .city-link:hover::before {
+            background-color: var(--color-accent);
+        }
+
+        .mobile-menu-accordion summary {
+            list-style: none;
+        }
+
+        .mobile-menu-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .mobile-menu-accordion[open]>summary .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* --- END: New Styles --- */
+
+        /* --- START: Search Overlay Styles --- */
+        .search-suggestion-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            color: #374151;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            width: 100%;
+            text-align: right;
+        }
+
+        .search-suggestion-link:hover {
+            background-color: #e0f2f1;
+            color: var(--color-primary);
+            transform: translateX(-5px);
+        }
+
+        .search-suggestion-link iconify-icon {
+            font-size: 1.25rem;
+            color: var(--color-accent);
+        }
+
+        #search-modal {
+            cursor: default;
+        }
+
+        #close-search-button {
+            cursor: pointer !important;
+        }
+
+        /* --- END: Search Overlay Styles --- */
+
+        /* --- Header Styles --- */
         .header-container {
             position: sticky;
             top: 0;
@@ -426,89 +596,98 @@
         /* --- END: Centralized Search Field Styles --- */
 
 
-/* --- START: CSS for Unified Desktop Search Panel (Final Version) --- */
-@media (min-width: 640px) { /* اعمال استایل فقط در دسکتاپ */
+        /* --- START: CSS for Unified Desktop Search Panel (Final Version) --- */
+        @media (min-width: 640px) {
+            /* اعمال استایل فقط در دسکتاپ */
 
-    /* 1. استایل پنل اصلی و یکپارچه */
-    .unified-search-panel {
-        background-color: #ffffff;
-        border-radius: 1.5rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        padding: 0.5rem 0.75rem;
-        /* display: inline-block; <-- حذف شد */
-        /* width: auto; <-- حذف شد */
-        min-width: 56rem; /* <<< جدید: حداقل عرض برای ثابت ماندن اندازه */
-        box-sizing: border-box; /* برای محاسبه صحیح اندازه */
-    }
+            /* 1. استایل پنل اصلی و یکپارچه */
+            .unified-search-panel {
+                background-color: #ffffff;
+                border-radius: 1.5rem;
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+                padding: 0.5rem 0.75rem;
+                /* display: inline-block; <-- حذف شد */
+                /* width: auto; <-- حذف شد */
+                min-width: 56rem;
+                /* <<< جدید: حداقل عرض برای ثابت ماندن اندازه */
+                box-sizing: border-box;
+                /* برای محاسبه صحیح اندازه */
+            }
 
-    /* 2. ریست کردن استایل پنل‌های داخلی */
-    .unified-search-panel .glass-panel,
-    .unified-search-panel .solid-white-panel {
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-    }
+            /* 2. ریست کردن استایل پنل‌های داخلی */
+            .unified-search-panel .glass-panel,
+            .unified-search-panel .solid-white-panel {
+                background-color: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
 
-    /* 3. استایل خط جداکننده */
-    .panel-divider {
-        height: 1px;
-        background-color: #e5e7eb;
-        margin: 0.75rem 0;
-    }
-    
-    /* 4. گرد کردن گوشه‌های دکمه‌های سرویس */
-    .unified-search-panel .service-type-btn {
-        border-radius: 0.75rem;
-    }
-    
-    /* 5. گرد کردن گوشه‌های فیلدهای ورودی و کانتینر مبدا/مقصد */
-    .unified-search-panel .merged-input-container,
-    .unified-search-panel .input-field {
-        border-radius: 0.75rem !important;
-    }
-    
-    /* 6. گرد کردن گوشه دکمه جستجو و نمایش متن آن */
-    .unified-search-panel .search-button {
-        border-radius: 0.75rem;
-        width: auto;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-    .unified-search-panel .search-button .lg\\:hidden{
-        display: inline !important;
-    }
-    
-    /* 7. کاهش ارتفاع فیلدها و دکمه جستجو */
-    .unified-search-panel .merged-input-container,
-    .unified-search-panel .input-field,
-    .unified-search-panel .search-button {
-        height: 3rem; /* 48px */
-    }
-    /* 8. چیدمان فیلدهای ورودی (تغییر یافته) */
-.unified-search-panel #search-form-fields {
-    width: 100%;
-    /* justify-content: center;  حذف شد تا فیلدها بتوانند کش بیایند */
-}
+            /* 3. استایل خط جداکننده */
+            .panel-divider {
+                height: 1px;
+                background-color: #e5e7eb;
+                margin: 0.75rem 0;
+            }
 
-/* 9. فعال کردن قابلیت رشد برای فیلدهای ورودی (قانون جدید) */
-.unified-search-panel #search-form-fields > div:not(:has(.search-button)) {
-    flex-grow: 1;
-}
-/* 10. تضمین کش آمدن کامل خود فیلدهای ورودی (قانون جدید) */
-.unified-search-panel .input-field {
-    width: 100%;
-}
-}
-/* --- END: CSS for Unified Desktop Search Panel (Final Version) --- */
+            /* 4. گرد کردن گوشه‌های دکمه‌های سرویس */
+            .unified-search-panel .service-type-btn {
+                border-radius: 0.75rem;
+            }
+
+            /* 5. گرد کردن گوشه‌های فیلدهای ورودی و کانتینر مبدا/مقصد */
+            .unified-search-panel .merged-input-container,
+            .unified-search-panel .input-field {
+                border-radius: 0.75rem !important;
+            }
+
+            /* 6. گرد کردن گوشه دکمه جستجو و نمایش متن آن */
+            .unified-search-panel .search-button {
+                border-radius: 0.75rem;
+                width: auto;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .unified-search-panel .search-button .lg\\:hidden {
+                display: inline !important;
+            }
+
+            /* 7. کاهش ارتفاع فیلدها و دکمه جستجو */
+            .unified-search-panel .merged-input-container,
+            .unified-search-panel .input-field,
+            .unified-search-panel .search-button {
+                height: 3rem;
+                /* 48px */
+            }
+
+            /* 8. چیدمان فیلدهای ورودی (تغییر یافته) */
+            .unified-search-panel #search-form-fields {
+                width: 100%;
+                /* justify-content: center;  حذف شد تا فیلدها بتوانند کش بیایند */
+            }
+
+            /* 9. فعال کردن قابلیت رشد برای فیلدهای ورودی (قانون جدید) */
+            .unified-search-panel #search-form-fields>div:not(:has(.search-button)) {
+                flex-grow: 1;
+            }
+
+            /* 10. تضمین کش آمدن کامل خود فیلدهای ورودی (قانون جدید) */
+            .unified-search-panel .input-field {
+                width: 100%;
+            }
+        }
+
+        /* --- END: CSS for Unified Desktop Search Panel (Final Version) --- */
 
 
         /* --- Trust Navar Styles --- */
         .feature-icon svg {
-    color: var(--color-top-bar); /* رنگ سرمه‌ای */
-    stroke-width: 1.5;
-    transition: color 0.3s ease-in-out;
-}
+            color: var(--color-top-bar);
+            /* رنگ سرمه‌ای */
+            stroke-width: 1.5;
+            transition: color 0.3s ease-in-out;
+        }
 
         .feature-item:hover .feature-icon svg {
             color: var(--color-primary);
@@ -1374,16 +1553,15 @@
 
     <!-- Header Section -->
     <div class="header-container">
-        <!-- Top Bar -->
         <div class="top-bar text-white text-xs">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-10">
+            <div class="w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center h-10">
                 <div class="flex items-center gap-x-4">
                     <a href="tel:03136166" class="top-bar-link flex items-center gap-1">
                         <iconify-icon class="text-base" icon="solar:phone-calling-broken"></iconify-icon>
                         <span>031-36166</span>
                     </a>
                     <a href="mailto:info@gato.ir" class="top-bar-link hidden sm:flex items-center gap-1">
-                        <span class="iconify text-base" data-icon="solar:letter-linear"></span>
+                        <iconify-icon class="text-base" icon="solar:letter-linear"></iconify-icon>
                         <span>info@gato.ir</span>
                     </a>
                     <div class="h-4 w-px bg-white/20 hidden sm:block"></div>
@@ -1410,58 +1588,195 @@
                 </div>
             </div>
         </div>
-        <!-- Main Header -->
+
         <header class="main-header">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
                     <a href="#"><img src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو گردشگران"
                             class="h-10 sm:h-12"></a>
                 </div>
-                <nav class="hidden lg:flex items-center gap-x-6">
-                    <a href="/" class="nav-link text-gray-700 font-medium">صفحه اصلی</a>
-                    <div class="h-6 w-px bg-gray-200"></div>
+
+                <nav class="hidden lg:flex items-center gap-x-6 text-gray-800 font-medium">
                     <div class="dropdown-container py-7 -my-7">
-                        <a href="/tours" class="nav-link text-gray-700 font-medium flex items-center gap-1">
+                        <a href="/tours" class="nav-link flex items-center gap-1">
                             تورها <iconify-icon icon="solar:alt-arrow-down-linear"
                                 class="text-sm caret-icon"></iconify-icon>
                         </a>
-                        <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای داخلی</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای خارجی</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای نوروز
-                                ۱۴۰۴</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای
-                                نمایشگاهی</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-grid" style="grid-template-columns: repeat(5, 1fr);">
+                                <div class="mega-menu-column">
+                                    <h3 class="column-title">
+                                        <iconify-icon icon="solar:sale-broken"></iconify-icon>
+                                        <span>تورهای ویژه</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">آفری و لحظه‌آخری</a></li>
+                                        <li><a href="#" class="city-link">تورهای لوکس</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="bx:party"></iconify-icon>
+                                        <span>تورهای مناسبتی</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">نوروزی</a></li>
+                                        <li><a href="#" class="city-link">ولادت مولانا</a></li>
+                                        <li><a href="#" class="city-link">تابستانی</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="tabler:currency-iranian-rial"></iconify-icon>
+                                        <span>تورهای داخلی</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور کیش</a></li>
+                                        <li><a href="#" class="city-link">تور قشم</a></li>
+                                        <li><a href="#" class="city-link">تور مشهد</a></li>
+                                    </ul>
+
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3 class="column-title">
+                                        <iconify-icon icon="emojione-monotone:flag-for-turkey"></iconify-icon>
+                                        <span>تور ترکیه</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور آنتالیا</a></li>
+                                        <li><a href="#" class="city-link">تور استانبول</a></li>
+                                        <li><a href="#" class="city-link">تور آلانیا</a></li>
+                                        <li><a href="#" class="city-link">تور مارماریس</a></li>
+                                        <li><a href="#" class="city-link">تور فتحیه</a></li>
+                                        <li><a href="#" class="city-link">تور بدروم</a></li>
+                                        <li><a href="#" class="city-link">تور کوش آداسی</a></li>
+                                        <li><a href="#" class="city-link">تور ازمیر</a></li>
+                                        <li><a href="#" class="city-link">تورهای ترکیبی ترکیه</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3 class="column-title">
+                                        <iconify-icon icon="mingcute:burj-al-arab-line"></iconify-icon>
+                                        <span>تور امارات</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور دبی</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="emojione-monotone:flag-for-russia"></iconify-icon>
+                                        <span>تور روسیه</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور ترکیبی روسیه</a></li>
+                                        <li><a href="#" class="city-link">تور مسکو</a></li>
+                                        <li><a href="#" class="city-link">تور سنت پترزبورگ</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="emojione-monotone:flag-for-armenia"></iconify-icon>
+                                        <span>تور ارمنستان</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور ایروان</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="solar:atom-broken"></iconify-icon>
+                                        <span>تور قزاقستان</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور آکتائو</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3 class="column-title">
+                                        <iconify-icon icon="game-icons:earth-africa-europe"></iconify-icon>
+                                        <span>تور اروپایی</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور فرانسه</a></li>
+                                        <li><a href="#" class="city-link">تور ایتالیا</a></li>
+                                        <li><a href="#" class="city-link">تور اسپانیا</a></li>
+                                        <li><a href="#" class="city-link">تور سوئیس</a></li>
+                                        <li><a href="#" class="city-link">تور پرتغال</a></li>
+                                        <li><a href="#" class="city-link">تورهای ترکیبی اروپا</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="emojione-monotone:flag-for-tunisia"></iconify-icon>
+                                        <span>تور تونس</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور ترکیبی تونس</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3 class="column-title">
+                                        <iconify-icon icon="emojione-monotone:flag-for-thailand"></iconify-icon>
+                                        <span>تور تایلند</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور بانکوک</a></li>
+                                        <li><a href="#" class="city-link">تور پاتایا</a></li>
+                                        <li><a href="#" class="city-link">تور پوکت</a></li>
+                                        <li><a href="#" class="city-link">تور ترکیبی تایلند</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="ph:tree-palm-duotone"></iconify-icon>
+                                        <span>تور سریلانکا</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور ترکیبی سریلانکا</a></li>
+                                    </ul>
+                                    <h3 class="column-title mt-6">
+                                        <iconify-icon icon="emojione-monotone:flag-for-vietnam"></iconify-icon>
+                                        <span>تور ویتنام</span>
+                                    </h3>
+                                    <ul>
+                                        <li><a href="#" class="city-link">تور ترکیبی ویتنام</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="h-6 w-px bg-gray-200"></div>
+
+
                     <div class="dropdown-container py-7 -my-7">
-                        <a href="/visa-services" class="nav-link text-gray-700 font-medium flex items-center gap-1">
-                            خدمات ویزا <iconify-icon icon="solar:alt-arrow-down-linear"
+                        <a href="/magazine" class="nav-link flex items-center gap-1">
+                            مجله گردشگری <iconify-icon icon="solar:alt-arrow-down-linear"
                                 class="text-sm caret-icon"></iconify-icon>
                         </a>
                         <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">فرم ویزا</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">لیست ویزاها</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">راهنماهای سفر</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">جاذبه‌ها</a>
                         </div>
                     </div>
-                    <div class="h-6 w-px bg-gray-200"></div>
                     <div class="dropdown-container py-7 -my-7">
-                        <a href="/tourism-magazine" class="nav-link text-gray-700 font-medium flex items-center gap-1">
-                            مجله گردشگری <iconify-icon icon="solar:alt-arrow-down-linear"
+                        <a href="/magazine" class="nav-link flex items-center gap-1">
+                            تورهای نمایشگاهی<iconify-icon icon="solar:alt-arrow-down-linear"
                                 class="text-sm caret-icon"></iconify-icon>
-                            <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">سبک سفر</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">جاذبه‌ها</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">اخبار
-                                    گردشگری</a>
-                            </div>
+                        </a>
+                        <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">نمایشگاه جیتکس</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">نمایشگاه ...</a>
+                        </div>
                     </div>
+
+                    <div class="dropdown-container py-7 -my-7">
+                        <a href="/magazine" class="nav-link flex items-center gap-1">
+                            خدمات ویزا<iconify-icon icon="solar:alt-arrow-down-linear"
+                                class="text-sm caret-icon"></iconify-icon>
+                        </a>
+                        <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">آمریکا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">انگلستان</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">شنگن(اروپا)</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">استرالیا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">کانادا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ویزای سایر کشورها</a>
+                        </div>
+                    </div>
+                    <a href="/contact" class="nav-link">تماس با ما</a>
+                    <a href="/about" class="nav-link">درباره ما</a>
                 </nav>
+
                 <div class="hidden lg:flex items-center gap-x-3">
-                    <button aria-label="جستجو"
+                    <button onclick="openSearch()" aria-label="جستجو"
                         class="text-gray-600 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-100">
-                        <span class="iconify text-xl" data-icon="oui:search"></span>
+                        <iconify-icon icon="solar:magnifer-broken" class="text-xl"></iconify-icon>
                     </button>
                     <a href="#" class="btn-secondary border px-5 py-2.5 text-sm font-medium rounded-lg">
                         ورود / ثبت‌نام
@@ -1470,13 +1785,172 @@
                         تماس با کارشناسان
                     </a>
                 </div>
-                <div class="lg:hidden">
+
+                <div class="lg:hidden flex items-center gap-x-1">
+                    <button onclick="openSearch()" aria-label="جستجو" class="text-gray-700 p-2">
+                        <iconify-icon icon="solar:magnifer-broken" class="text-3xl"></iconify-icon>
+                    </button>
                     <button id="hamburger-button" aria-label="باز کردن منو" class="text-gray-700 p-2">
-                        <iconify-icon icon="ri:menu-2-fill" class="text-3xl"></iconify-icon>
+                        <iconify-icon icon="solar:hugeicons:menu-02" class="text-3xl"></iconify-icon>
                     </button>
                 </div>
             </div>
         </header>
+    </div>
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-[99] hidden"></div>
+    <div id="mobile-menu"
+        class="mobile-menu hidden-menu fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-xl z-[100] p-6 flex flex-col">
+        <div class="flex justify-between items-center mb-8">
+            <img src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو" class="h-10">
+            <button id="close-menu-button" aria-label="بستن منو" class="text-gray-600 p-2">
+                <iconify-icon icon="solar:adhesive-plaster-broken" class="text-2xl"></iconify-icon>
+            </button>
+        </div>
+
+        <nav class="flex flex-col gap-y-1 text-lg text-gray-800">
+            <details class="mobile-menu-accordion">
+                <summary
+                    class="flex justify-between items-center py-2 cursor-pointer hover:text-primary transition-colors">
+                    <span>تورها</span>
+                    <iconify-icon icon="solar:alt-arrow-down-linear"
+                        class="accordion-icon transition-transform duration-300"></iconify-icon>
+                </summary>
+                <div class="pl-4 pt-2 pb-2 border-r-2 border-gray-200 space-y-3">
+                    <details class="mobile-menu-accordion">
+                        <summary
+                            class="flex justify-between items-center py-2 cursor-pointer hover:text-primary transition-colors text-base">
+                            <span>تورهای داخلی</span>
+                            <iconify-icon icon="solar:alt-arrow-down-linear"
+                                class="accordion-icon transition-transform duration-300"></iconify-icon>
+                        </summary>
+                        <div class="pl-4 pt-2 pb-2 border-r-2 border-gray-200 space-y-3">
+                            <a href="#" class="block hover:text-primary transition-colors text-base">کیش</a>
+                            <a href="#" class="block hover:text-primary transition-colors text-base">قشم</a>
+                            <a href="#" class="block hover:text-primary transition-colors text-base">مشهد</a>
+                        </div>
+                    </details>
+                    <details class="mobile-menu-accordion">
+                        <summary
+                            class="flex justify-between items-center py-2 cursor-pointer hover:text-primary transition-colors text-base">
+                            <span>تور ترکیه</span>
+                            <iconify-icon icon="solar:alt-arrow-down-linear"
+                                class="accordion-icon transition-transform duration-300"></iconify-icon>
+                        </summary>
+                        <div class="pl-4 pt-2 pb-2 border-r-2 border-gray-200 space-y-3">
+                            <a href="#" class="block hover:text-primary transition-colors text-base">تور آنتالیا</a>
+                            <a href="#" class="block hover:text-primary transition-colors text-base">تور استانبول</a>
+                        </div>
+                    </details>
+                    <details class="mobile-menu-accordion">
+                        <summary
+                            class="flex justify-between items-center py-2 cursor-pointer hover:text-primary transition-colors text-base">
+                            <span>تور امارات</span>
+                            <iconify-icon icon="solar:alt-arrow-down-linear"
+                                class="accordion-icon transition-transform duration-300"></iconify-icon>
+                        </summary>
+                        <div class="pl-4 pt-2 pb-2 border-r-2 border-gray-200 space-y-3">
+                            <a href="#" class="block hover:text-primary transition-colors text-base">تور دبی</a>
+                        </div>
+                    </details>
+                    <a href="#" class="block hover:text-primary transition-colors text-base pt-2 font-bold">و مقاصد
+                        دیگر...</a>
+                </div>
+            </details>
+
+            <details class="mobile-menu-accordion">
+                <summary
+                    class="flex justify-between items-center py-2 cursor-pointer hover:text-primary transition-colors">
+                    <span>راهنمای سفر</span>
+                    <iconify-icon icon="solar:alt-arrow-down-linear"
+                        class="accordion-icon transition-transform duration-300"></iconify-icon>
+                </summary>
+                <div class="pl-4 pt-2 pb-2 border-r-2 border-gray-200 space-y-3">
+                    <a href="#" class="block hover:text-primary transition-colors text-base">راهنمای جامع انتخاب
+                        مقصد</a>
+                    <a href="#" class="block hover:text-primary transition-colors text-base">راهنمای جامع سفر به
+                        ترکیه</a>
+                </div>
+            </details>
+
+            <details class="mobile-menu-accordion">
+                <summary
+                    class="flex justify-between items-center py-2 cursor-pointer hover:text-primary transition-colors">
+                    <span>مجله گردشگری</span>
+                    <iconify-icon icon="solar:alt-arrow-down-linear"
+                        class="accordion-icon transition-transform duration-300"></iconify-icon>
+                </summary>
+                <div class="pl-4 pt-2 pb-2 border-r-2 border-gray-200 space-y-3">
+                    <a href="#" class="block hover:text-primary transition-colors text-base">مقالات گردشگری</a>
+                    <a href="#" class="block hover:text-primary transition-colors text-base">جاذبه‌ها</a>
+                </div>
+            </details>
+
+            <a href="/visa" class="py-2 hover:text-primary transition-colors">خدمات ویزا</a>
+            <a href="/contact" class="py-2 hover:text-primary transition-colors">تماس با ما</a>
+            <a href="/about" class="py-2 hover:text-primary transition-colors">درباره ما</a>
+        </nav>
+
+        <div class="mt-auto pt-8 border-t">
+            <a href="#"
+                class="block w-full text-center mb-3 px-5 py-3 font-medium rounded-lg shadow-md transition-colors bg-[--color-primary] text-white hover:bg-[--color-primary-dark]">
+                تماس با کارشناسان
+            </a>
+            <a href="#"
+                class="block w-full text-center px-5 py-3 font-medium rounded-lg transition-all duration-300 text-[--color-primary] border border-[--color-primary] hover:bg-[--color-primary] hover:text-white">
+                ورود / ثبت‌نام
+            </a>
+        </div>
+    </div>
+
+    <div id="search-overlay"
+        class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-start justify-center p-4 pt-[15vh] hidden opacity-0 transition-opacity duration-300">
+        <div id="search-modal"
+            class="w-full max-w-2xl bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl p-6 transform scale-95 transition-all duration-300">
+
+            <div id="close-search-button" onclick="closeSearch()" role="button" tabindex="0"
+                class="absolute top-5 left-5 w-9 h-9 rounded-full flex items-center justify-center text-gray-500 hover:bg-black/10 hover:text-gray-900 transition-all">
+                <iconify-icon icon="solar:close-circle-broken" class="text-2xl pointer-events-none"></iconify-icon>
+            </div>
+
+            <div class="relative ml-12">
+                <iconify-icon icon="icon-park-twotone:search"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 text-3xl text-[--color-primary]"></iconify-icon>
+                <input type="search" id="main-search-input" placeholder="دنبال چی میگردی؟"
+                    class="w-full bg-transparent border-b-2 border-gray-300 focus:border-[--color-accent] text-2xl font-bold text-gray-800 pr-14 py-3 outline-none transition-colors">
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div>
+                    <h3 class="font-bold text-gray-700 mb-3">پیشنهادهای ما</h3>
+                    <div class="flex flex-col items-start gap-2">
+                        <a href="#" class="search-suggestion-link">
+                            <iconify-icon icon="solar:city-broken"></iconify-icon><span>تور استانبول</span>
+                        </a>
+                        <a href="#" class="search-suggestion-link">
+                            <iconify-icon icon="ph:tree-palm"></iconify-icon><span>تور آنتالیا</span>
+                        </a>
+                        <a href="#" class="search-suggestion-link">
+                            <iconify-icon icon="solar:buildings-2-broken"></iconify-icon><span>تور دبی</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700 mb-3">دسترسی سریع</h3>
+                    <div class="flex flex-col items-start gap-2">
+                        <a href="#" class="search-suggestion-link">
+                            <iconify-icon icon="solar:sale-broken"></iconify-icon><span>تورهای لحظه آخری</span>
+                        </a>
+                        <a href="#" class="search-suggestion-link">
+                            <iconify-icon icon="solar:document-add-broken"></iconify-icon><span>خدمات ویزا</span>
+                        </a>
+                        <a href="#" class="search-suggestion-link">
+                            <iconify-icon icon="solar:notebook-broken"></iconify-icon><span>مجله گردشگری</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Mobile Menu (Off-canvas) -->
@@ -1596,44 +2070,52 @@
 
         <!-- Trust Navar Section -->
         <section class="w-full bg-gray-50 pt-20 pb-4">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            
-            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                <div class="feature-icon mb-3">
-                    <span class="iconify w-10 h-10" data-icon="hugeicons:airplane-01"></span>
-                </div>
-                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">مجری مستقیم پروازها</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">بهترین نرخ‌ها با حذف واسطه‌ها در پروازهای خارجی.</p>
-            </div>
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
 
-            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                <div class="feature-icon mb-3">
-                    <span class="iconify w-10 h-10" data-icon="solar:users-group-two-rounded-broken"></span>
-                </div>
-                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">تیم ۱۰۰٪ حرفه‌ای</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">مشاوره تخصصی و پشتیبانی کامل توسط کارشناسان مجرب.</p>
-            </div>
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="hugeicons:airplane-01"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">مجری مستقیم پروازها</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">بهترین نرخ‌ها با حذف واسطه‌ها در پروازهای
+                            خارجی.</p>
+                    </div>
 
-            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                <div class="feature-icon mb-3">
-                    <span class="iconify w-10 h-10" data-icon="solar:shield-up-broken"></span>
-                </div>
-                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">تضمین آرامش سفر</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">سفری برنامه‌ریزی‌شده و بدون دغدغه از ابتدا تا انتها.</p>
-            </div>
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="solar:users-group-two-rounded-broken"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">تیم ۱۰۰٪ حرفه‌ای</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">مشاوره تخصصی و پشتیبانی کامل توسط کارشناسان
+                            مجرب.</p>
+                    </div>
 
-            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                <div class="feature-icon mb-3">
-                    <span class="iconify w-10 h-10" data-icon="solar:card-broken"></span>
-                </div>
-                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">اقساطی با کارمزد کم</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">رویای سفر را با شرایط پرداخت منعطف به واقعیت تبدیل کنید.</p>
-            </div>
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="solar:shield-up-broken"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">تضمین آرامش سفر</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">سفری برنامه‌ریزی‌شده و بدون دغدغه از ابتدا تا
+                            انتها.</p>
+                    </div>
 
-        </div>
-    </div>
-</section>
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="solar:card-broken"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">اقساطی با کارمزد کم</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">رویای سفر را با شرایط پرداخت منعطف به واقعیت
+                            تبدیل کنید.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
         <!-- Popular Tours Section -->
         <section class="py-16 sm:py-24 pt-20 bg-gray-50">
@@ -2794,6 +3276,50 @@
         hamburgerButton.addEventListener('click', openMenu);
         closeMenuButton.addEventListener('click', closeMenu);
         mobileMenuOverlay.addEventListener('click', closeMenu);
+
+
+        // --- Search Overlay Logic ---
+        const closeSearchBtn = document.getElementById('close-search-button');
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchModal = document.getElementById('search-modal');
+        const searchInput = document.getElementById('main-search-input');
+
+        function openSearch() {
+            searchOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                searchOverlay.classList.remove('opacity-0');
+                searchModal.classList.remove('scale-95');
+                searchInput.focus();
+            }, 10);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.add('opacity-0');
+            searchModal.classList.add('scale-95');
+            setTimeout(() => {
+                searchOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        if (closeSearchBtn) {
+            closeSearchBtn.addEventListener('click', closeSearch);
+        }
+
+        if (searchOverlay) {
+            searchOverlay.addEventListener('click', (e) => {
+                if (e.target === searchOverlay) {
+                    closeSearch();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !searchOverlay.classList.contains('hidden')) {
+                closeSearch();
+            }
+        });
 
         // --- UNIFIED SCRIPT LOGIC FOR SEARCH & OTHER SECTIONS ---
         document.addEventListener('DOMContentLoaded', function () {
