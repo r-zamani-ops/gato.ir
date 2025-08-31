@@ -491,10 +491,10 @@
 
         /* --- Trust Navar Styles --- */
         .feature-icon svg {
-            color: #ffffff;
-            stroke-width: 1.5;
-            transition: color 0.3s ease-in-out;
-        }
+    color: var(--color-top-bar); /* رنگ سرمه‌ای */
+    stroke-width: 1.5;
+    transition: color 0.3s ease-in-out;
+}
 
         .feature-item:hover .feature-icon svg {
             color: var(--color-accent);
@@ -1529,7 +1529,7 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <div class="hidden sm:block relative bg-gray-50 pb-[40rem] sm:pb-[21rem]">
+        <div class="hidden sm:block relative bg-gray-50 pb-[40rem] sm:pb-20">
             <div id="hero-banner"
                 class="hidden md:block h-96 w-full bg-cover bg-center transition-all duration-500 ease-in-out"></div>
             <div id="search-box-wrapper"
@@ -1581,47 +1581,45 @@
         </div>
 
         <!-- Trust Navar Section -->
-        <section class="w-full bg-[#094360] py-6">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
-                    <div
-                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                        <div class="feature-icon mb-3">
-                            <span class="iconify w-10 h-10" data-icon="hugeicons:airplane-01"></span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">مجری مستقیم پروازها</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">«۲۸ سال سابقه در اجرای مستقیم و چارتر پروازهای
-                            خارجی»</p>
-                    </div>
-                    <div
-                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                        <div class="feature-icon mb-3">
-                            <span class="iconify w-10 h-10" data-icon="solar:users-group-two-rounded-broken"></span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">تیم ۱۰۰٪ حرفه‌ای</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">«مشاوران با سابقه و تجربه بالا در حوزه سفر»</p>
-                    </div>
-                    <div
-                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                        <div class="feature-icon mb-3">
-                            <span class="iconify w-10 h-10" data-icon="solar:shield-up-broken"></span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">تضمین آرامش سفر</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">«خدمات کامل، بدون واسطه و با پشتیبانی اختصاصی»
-                        </p>
-                    </div>
-                    <div
-                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
-                        <div class="feature-icon mb-3">
-                            <span class="iconify w-10 h-10" data-icon="solar:card-broken"></span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">اقساطی با کارمزد کم</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">«سفرهای خارجی و داخلی با شرایط پرداخت آسان و
-                            مطمئن»</p>
-                    </div>
+        <section class="w-full bg-gray-50 py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            
+            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                <div class="feature-icon mb-3">
+                    <span class="iconify w-10 h-10" data-icon="hugeicons:airplane-01"></span>
                 </div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">مجری مستقیم پروازها</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">بهترین نرخ‌ها با حذف واسطه‌ها در پروازهای خارجی.</p>
             </div>
-        </section>
+
+            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                <div class="feature-icon mb-3">
+                    <span class="iconify w-10 h-10" data-icon="solar:users-group-two-rounded-broken"></span>
+                </div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">تیم ۱۰۰٪ حرفه‌ای</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">مشاوره تخصصی و پشتیبانی کامل توسط کارشناسان مجرب.</p>
+            </div>
+
+            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                <div class="feature-icon mb-3">
+                    <span class="iconify w-10 h-10" data-icon="solar:shield-up-broken"></span>
+                </div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">تضمین آرامش سفر</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">سفری برنامه‌ریزی‌شده و بدون دغدغه از ابتدا تا انتها.</p>
+            </div>
+
+            <div class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                <div class="feature-icon mb-3">
+                    <span class="iconify w-10 h-10" data-icon="solar:card-broken"></span>
+                </div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--color-top-bar);">اقساطی با کارمزد کم</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">رویای سفر را با شرایط پرداخت منعطف به واقعیت تبدیل کنید.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
 
         <!-- Popular Tours Section -->
         <section class="py-16 sm:py-24 pt-20 bg-gray-50">
