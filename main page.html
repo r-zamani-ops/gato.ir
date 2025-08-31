@@ -1,0 +1,3251 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گردشگران خورشید سپاهان</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons: Solar, Phosphor, Lucide, Iconoir, Feather (via Iconify) -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+
+    <!-- Litepicker Date Range Picker -->
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+
+    <!-- Google Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- Custom Properties (Variables) --- */
+        :root {
+            --color-primary: #00838f;
+            --color-primary-dark: #006064;
+            --color-top-bar: #094360;
+            --color-accent: #f37321;
+            --color-background: #f8fafc;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--color-background);
+        }
+
+        /* --- General Section Title Style --- */
+        .section-title {
+            font-weight: 800;
+            /* font-extrabold */
+            color: var(--color-top-bar);
+            /* رنگ سرمه‌ای */
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            /* text-lg */
+            color: #4b5563;
+            /* gray-600 */
+            max-width: 600px;
+            margin-top: 0.75rem;
+            /* mt-3 */
+        }
+
+        /* --- START: CSS Code for 20% Smaller & Repositioned Search Box --- */
+
+        /* This code reduces the size of all elements in the search box by approximately 20%, 
+   reduces its overall width, and moves it 20% higher. */
+
+        /* Main wrapper: Adjusting position and width */
+        #search-box-wrapper {
+            top: 17.6rem !important;
+            /* Original: 22rem -> 20% higher */
+            max-width: 64rem !important;
+            /* Original: max-w-7xl (80rem) -> 20% narrower */
+        }
+
+        /* --- Header & Hero Styles --- */
+        .header-container {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+
+        .top-bar {
+            background-color: var(--color-top-bar);
+        }
+
+        .top-bar-link {
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.2s ease-in-out;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+        }
+
+        .top-bar-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-container:hover .dropdown-menu {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown-container .caret-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-container:hover .caret-icon {
+            transform: rotate(180deg);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 115, 33, 0.3);
+            background-color: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+        }
+
+        .btn-secondary {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.hidden-menu {
+            transform: translateX(100%);
+        }
+
+        .mobile-menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .mobile-menu-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* برای سازگاری با سافاری */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .solid-white-panel {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+        }
+
+        .search-button {
+            background-color: var(--color-accent);
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background-color: #e65100;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -5px rgba(243, 115, 33, 0.5);
+        }
+
+        /* --- کد کامل و نهایی برای دکمه‌های جستجو --- */
+
+        /* استایل پایه دکمه با انیمیشن نرم */
+        .service-type-btn {
+            /* استایل‌های پایه برای همه اندازه‌ها */
+            display: flex;
+            align-items: center;
+            border-radius: 9999px;
+            /* معادل rounded-full */
+            font-weight: 700;
+            /* معادل font-bold */
+            font-size: 1rem;
+            gap: 0.375rem;
+            padding: 0.25rem 1rem;
+            gap: 0.5rem;
+            /* معادل gap-2 */
+            padding: 0.375rem 1rem;
+            /* معادل py-1.5 px-4 */
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* استایل‌های مخصوص نمایشگرهای بزرگتر */
+        @media (min-width: 640px) {
+            .service-type-btn {
+                font-size: 1rem gap: 0.5rem;
+                /* ✨ تغییر: فاصله آیکون و متن کمی کمتر شد (معادل sm:gap-2) */
+                padding: 0.5rem 1.5rem;
+                /* ✨ تغییر: پدینگ عمودی کمتر شد (معادل sm:py-2 sm:px-6) */
+            }
+        }
+
+        /* حالت عادی دکمه‌های غیرفعال (متن و آیکون سرمه‌ای) */
+        .service-type-btn:not(.btn-active) {
+            color: var(--color-top-bar);
+        }
+
+        /* حالت هاور دکمه‌های غیرفعال */
+        .service-type-btn:not(.btn-active):hover {
+            transform: translateY(-5px);
+            background-color: #ffffff;
+            box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.3);
+            color: var(--color-primary);
+        }
+
+        /* استایل دکمه فعال (دکمه انتخاب شده) */
+        .service-type-btn.btn-active {
+            background-color: var(--color-primary);
+            color: white !important;
+            box-shadow: 0 4px 15px -5px rgba(0, 131, 143, 0.5);
+        }
+
+        .service-type-btn.btn-active .iconify {
+            color: white !important;
+        }
+
+        /* START: Mobile Search Buttons Style */
+.mobile-service-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4b5563; /* text-gray-600 */
+    background-color: #f9fafb; /* bg-gray-50 */
+    border: 1px solid #e5e7eb; /* border-gray-200 */
+    transition: all 0.2s ease-in-out;
+}
+.mobile-service-btn iconify-icon {
+    font-size: 1.75rem;
+}
+/* Active state for the selected button */
+.mobile-service-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary); 
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 131, 143, 0.2);
+}
+/* END: Mobile Search Buttons Style */
+
+
+
+        /* --- استایل‌های جدید برای فیلد یکپارچه مبدا/مقصد --- */
+        .merged-input-container {
+            display: flex;
+            align-items: center;
+            background-color: #f9fafb;
+            /* bg-slate-50 */
+            border: 2px solid #d1d5db;
+            /* border-gray-300 */
+            border-radius: 9999px;
+            /* rounded-full */
+            transition: border-color 0.3s ease;
+            width: 100%;
+            padding: 0.375rem 0.5rem;
+            /* py-1.5 px-2 */
+            height: 3.5rem; /* 56px */
+    box-sizing: border-box;
+        }
+
+        .merged-input-container:focus-within {
+            border-color: var(--color-primary);
+            background-color: white;
+        }
+
+        .merged-input {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            /* py-2 px-3 */
+            text-align: right;
+        }
+
+        .merged-input::placeholder {
+            color: #6b7280;
+            /* gray-500 */
+        }
+
+        .input-divider {
+            width: 1px;
+            height: 1.5rem;
+            /* 24px */
+            background-color: #e5e7eb;
+            /* gray-200 */
+        }
+
+        .trip-type-btn.btn-active {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .trip-type-btn:not(.btn-active) {
+            color: #4a5568;
+        }
+
+        .trip-type-btn:not(.btn-active):hover {
+            background-color: #f9fafb;
+        }
+
+        /* --- START: Centralized Search Field Styles --- */
+        .input-field {
+            background-color: #f9fafb;
+            width: 100%; /* عرض کامل برای موبایل و حالت پیش‌فرض */
+            border-radius: 9999px;
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem;
+            padding-right: 3rem;
+            padding-left: 1rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            outline: none;
+            border: 2px solid #d1d5db;
+            height: 3.5rem; /* 56px */
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 1024px) { /* از سایز دسکتاپ به بالا (lg) */
+            .input-field {
+                width: 10rem; /* عرض ثابت فقط در دسکتاپ اعمال می‌شود */
+            }
+        }
+
+        .input-field:focus {
+            background-color: white;
+            border-color: var(--color-primary);
+        }
+
+        .input-icon {
+            /* This class now only handles color */
+            color: var(--color-primary);
+            transition: color 0.3s ease;
+        }
+
+        /* A new class for icon positioning and size */
+        .search-input-icon {
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            /* right-4 */
+            transform: translateY(-50%);
+            font-size: 1.25rem;
+            /* text-xl */
+        }
+
+        .input-group:focus-within .input-icon {
+            color: var(--color-accent);
+        }
+
+        /* --- END: Centralized Search Field Styles --- */
+
+        /* --- Trust Navar Styles --- */
+        .feature-icon svg {
+            color: #ffffff;
+            stroke-width: 1.5;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .feature-item:hover .feature-icon svg {
+            color: var(--color-accent);
+        }
+
+
+
+
+        /* --- Popular Tours Styles --- */
+        .horizontal-scroller {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f5f9;
+        }
+
+        .horizontal-scroller::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .horizontal-scroller::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .horizontal-scroller::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+            border: 2px solid #f1f5f9;
+        }
+
+        .horizontal-scroller::-webkit-scrollbar-thumb:hover {
+            background-color: #94a3b8;
+        }
+
+        .tour-card {
+            background-color: #1a202c;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            flex: 0 0 320px;
+        }
+
+        .tour-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tour-card-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            z-index: 1;
+        }
+
+        .tour-card:hover .tour-card-image {
+            transform: scale(1.15);
+            filter: brightness(0.8);
+        }
+
+        .tour-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 15, 25, 0.95) 25%, rgba(10, 15, 25, 0) 70%);
+            z-index: 2;
+        }
+
+        .tour-card-content {
+            position: relative;
+            z-index: 3;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .airline-logo {
+            width: 80px;
+            height: auto;
+            max-height: 24px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+        }
+
+        .tour-card-location h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .tour-card-location p {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .tour-card-info {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tour-card-info iconify-icon {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            transition: color 0.3s ease;
+        }
+
+        .tour-card:hover .tour-card-info iconify-icon {
+            color: var(--color-accent);
+        }
+
+        .tour-card-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .tour-card-price span {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-view-tour {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
+        }
+
+        .tour-card:hover .btn-view-tour {
+            background-color: var(--color-accent);
+            box-shadow: 0 6px 20px rgba(243, 115, 33, 0.3);
+            transform: scale(1.05);
+        }
+
+        .btn-all-tours {
+            border: 1px solid #d1d5db;
+            color: #4b5563;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-all-tours:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tag-link {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 131, 143, 0.6);
+            transition: all 0.3s ease;
+            padding-bottom: 2px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* --- استایل برای علامت # در تگ‌های تور --- */
+        .tour-card-tag .tag-hash {
+            color: var(--color-primary);
+            /* رنگ سبز-آبی */
+            font-weight: 700;
+            /* کمی برجسته‌تر */
+            transition: color 0.3s ease;
+            margin-left: 2px;
+            /* ایجاد فاصله کوچک از متن کناری */
+        }
+
+        .tour-card:hover .tour-card-tag .tag-hash {
+            color: var(--color-accent);
+            /* رنگ نارنجی در حالت هاور */
+        }
+
+        /* --- START: CREATIVE STYLES FOR SPECIAL TOUR CARDS (Final Update) --- */
+        .creative-card {
+            position: relative;
+            height: 450px;
+            flex: 0 0 340px;
+            border-radius: 1.5rem;
+            /* 24px */
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+            transition: all 0.4s ease;
+        }
+
+        .creative-card:hover {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        .creative-card .bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-out;
+        }
+
+        .creative-card:hover .bg-image {
+            transform: scale(1.1);
+        }
+
+        .creative-card .content-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+        }
+
+        .creative-card .glass-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            /* 16px */
+            padding: 1.25rem;
+            transition: all 0.4s ease;
+        }
+
+        .creative-card .card-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-top-bar);
+            text-shadow: none;
+        }
+
+        .creative-card .card-subtitle {
+            font-size: 1rem;
+            color: #334155;
+            margin-top: 0.125rem;
+            font-weight: 500;
+        }
+
+        .creative-card .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            /* فاصله بین تگ‌ها */
+            margin-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* حالت عادی تگ‌ها و قیمت (سرمه‌ای) */
+        .creative-card .glass-tag {
+            color: #334155;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding-bottom: 3px;
+            border-bottom: 2px solid var(--color-top-bar);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .creative-card .glass-tag-hash {
+            color: var(--color-top-bar);
+            font-weight: 700;
+            margin-left: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .creative-card .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-top-bar);
+            transition: color 0.3s ease;
+        }
+
+        .creative-card .price span {
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+
+        /* حالت هاور تگ‌ها و قیمت (سبز-آبی) */
+        .creative-card:hover .glass-tag {
+            border-bottom-color: var(--color-primary);
+            color: var(--color-primary);
+            /* ✨ جدید: متن تگ هم سبز-آبی می‌شود */
+        }
+
+        .creative-card:hover .glass-tag-hash {
+            color: var(--color-primary);
+        }
+
+        .creative-card:hover .price {
+            color: var(--color-primary);
+        }
+
+        /* استایل دکمه (عادی: سبز-آبی) */
+        .creative-card .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .creative-card .btn-view-creative {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
+        }
+
+        /* ✨ جدید: دکمه با هاور روی کل کارت نارنجی می‌شود */
+        .creative-card:hover .btn-view-creative {
+            background-color: var(--color-accent);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(243, 115, 33, 0.3);
+        }
+
+        /* استایل روبان (بدون تغییر) */
+        .creative-card .badge-ribbon {
+            position: absolute;
+            top: -6px;
+            left: 20px;
+            width: 50px;
+            height: 60px;
+            background: var(--color-accent);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            clip-path: polygon(100% 0, 100% 100%, 50% 85%, 0 100%, 0 0);
+        }
+
+        /* --- END: Special tours STYLES --- */
+        /* --- Travel Style Slider Styles --- */
+        .desktop-travel-style-slider .bg-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .desktop-travel-style-slider .bg-image.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .desktop-travel-style-slider .content-item {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .desktop-travel-style-slider .content-item.active {
+            opacity: 1;
+        }
+
+        .desktop-travel-style-slider .content-item h2,
+        .desktop-travel-style-slider .content-item p,
+        .desktop-travel-style-slider .content-item a {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        .desktop-travel-style-slider .content-item.active h2 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .desktop-travel-style-slider .content-item.active p {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .desktop-travel-style-slider .content-item.active a {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .desktop-travel-style-slider .cards-wrapper {
+            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+            cursor: grab;
+        }
+
+        .desktop-travel-style-slider .cards-wrapper.dragging {
+            cursor: grabbing;
+        }
+
+        .desktop-travel-style-slider .card-item {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .desktop-travel-style-slider .card-item:not(.active) {
+            transform: scale(0.85);
+            opacity: 0.7;
+        }
+
+        .desktop-travel-style-slider .card-item.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .desktop-travel-style-slider .nav-dot {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .desktop-travel-style-slider .nav-dot.active {
+            background-color: white;
+            transform: scale(1.5);
+        }
+
+        /* --- استایل جدید برای تیتر بخش سسبک سفر در دسکتاپ --- */
+        .travel-style-title-box {
+            /* موقعیت: چسبیده به بالا و با فاصله از راست */
+            position: absolute;
+            top: 0;
+            z-index: 20;
+
+            /* استایل باکس شیشه‌ای (Glassmorphism) */
+            background-color: rgba(249, 250, 251, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            /* گرد کردن فقط گوشه پایین-چپ */
+            border-radius: 0 0 0 24px;
+
+            /* استایل متن و فاصله‌گذاری داخلی */
+            color: var(--color-top-bar);
+            /* رنگ سرمه‌ای مشابه بقیه تیترها */
+            font-size: 1.75rem;
+            /* کمی بزرگتر از قبل */
+            font-weight: 800;
+            padding: 0.75rem 2rem;
+            /* فاصله داخلی برای خوانایی بهتر */
+            text-shadow: none;
+            /* اطمینان از حذف هرگونه سایه متن */
+        }
+
+        /* --- استایل اسلایدر موبایل --- */
+        #mobile-card-viewport {
+            overflow-x: auto;
+            /* فعال کردن اسکرول افقی */
+            -webkit-overflow-scrolling: touch;
+            /* اسکرول نرم در iOS */
+            scrollbar-width: none;
+            /* مخفی کردن اسکرول‌بار در فایرفاکس */
+        }
+
+        #mobile-card-viewport::-webkit-scrollbar {
+            display: none;
+            /* مخفی کردن اسکرول‌بار در کروم و سافاری */
+        }
+
+        #mobile-card-track {
+            /* فعال‌سازی قطعی اسکرول لمسی افقی */
+            touch-action: pan-x pan-y;
+        }
+
+        .mobile-carousel-container .card {
+            width: 70vw;
+            /* ۱. اندازه کارت‌ها کوچک‌تر شد */
+            flex-shrink: 0;
+            /* جلوگیری از کوچک شدن ناخواسته کارت‌ها */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* ۲. اطمینان از اینکه اطلاعات کارت‌ها همیشه دیده می‌شوند */
+        .mobile-carousel-container .card .card-content>* {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* --- Popular Destinations Styles --- */
+        .dest-grid-manual {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 1024px) {
+            .dest-grid-manual {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                height: 90vh;
+            }
+        }
+
+        .dest-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateZ(0);
+            height: 100%;
+            width: 100%;
+        }
+
+        .dest-card:hover {
+            z-index: 10;
+        }
+
+        .dest-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dest-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .dest-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(17, 24, 39, 0.7) 10%, rgba(17, 24, 39, 0) 60%);
+        }
+
+        .dest-card .card-content {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 1.5rem;
+            color: white;
+            z-index: 5;
+            width: 100%;
+        }
+
+        .dest-card .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .dest-card .card-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(229, 231, 235, 0.9);
+        }
+
+        .load-more-btn-container {
+            margin-top: -2rem;
+            margin-bottom: 4rem;
+        }
+
+        .load-more-btn {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            border: none;
+            box-shadow: 0 10px 25px -5px rgba(0, 131, 143, 0.3), 0 8px 10px -6px rgba(0, 131, 143, 0.2);
+            transform-style: preserve-3d;
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px -5px rgba(0, 131, 143, 0.4), 0 10px 15px -6px rgba(0, 131, 143, 0.3);
+        }
+
+        .load-more-btn-wrapper {
+            text-align: center;
+        }
+
+        /* --- استایل دکمه بستن همه --- */
+        .close-all-btn {
+            background-color: #ef4444;
+            /* رنگ قرمز برای بستن */
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            border: none;
+            box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.3), 0 8px 10px -6px rgba(239, 68, 68, 0.2);
+        }
+
+        .close-all-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px -5px rgba(239, 68, 68, 0.4), 0 10px 15px -6px rgba(239, 68, 68, 0.3);
+        }
+
+        /* --- Why Us Section Styles --- */
+        .title-image-clip {
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* تغییر نام کلاس از .creative-card به .why-us-card
+*/
+        .why-us-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .why-us-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- استایل نهایی و ساده برای آیکون‌ها --- */
+
+        /* استایل آیکون در حالت عادی */
+        .why-us-card .icon-wrapper iconify-icon {
+            /* با این یک خط، آیکون ظاهر پیش‌فرض سبز-آبی خود را می‌گیرد */
+            color: var(--color-primary);
+
+            /* برای کنترل بهتر اندازه */
+            font-size: 2.5rem;
+
+            /* انیمیشن نرم برای تغییر رنگ */
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* تغییر رنگ در حالت هاور */
+        .why-us-card:hover .icon-wrapper iconify-icon {
+            /* رنگ کل آیکون به سرمه‌ای تغییر می‌کند */
+            color: var(--color-top-bar);
+        }
+
+        /* --- Parallax Section --- */
+        .parallax-section {
+            min-height: 40vh;
+            /* min-height بجای height برای سازگاری بهتر */
+            background-image: url('https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?q=80&w=2070&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            /* برای اطمینان از قرارگیری صحیح در جریان صفحه */
+        }
+
+        /* --- Testimonials Section Styles (NEW) --- */
+        .gradient-background {
+            background-color: #f0f9ff;
+            /* fallback color */
+            background-image: linear-gradient(135deg, #f0f9ff 0%, #e0f2f1 100%);
+        }
+
+        /* --- Blog Slider Section --- */
+        .blog-slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-slide {
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .blog-slide.active {
+            display: grid;
+            animation: fadeIn 0.7s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .blog-nav-dots-container {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .blog-nav-dots-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: 0;
+            height: 2px;
+            background-color: #e5e7eb;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        #blog-progress-line {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .blog-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            z-index: 3;
+            background-color: transparent;
+            padding: 0 10px;
+        }
+
+        .blog-nav-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid var(--color-primary);
+            background-color: var(--color-background);
+            transition: all 0.3s ease;
+        }
+
+        .blog-nav-item.active .blog-nav-dot {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: scale(1.2);
+        }
+
+        .blog-nav-item.active .blog-nav-label {
+            color: var(--color-accent);
+        }
+
+        .blog-nav-label {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            transition: color 0.3s ease;
+        }
+
+        /* --- CTA & Footer Section Styles (NEW) --- */
+        .texture-bg {
+            background-color: #f8fafc;
+            /* bg-slate-50 */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23d1d5db' fill-opacity='0.1' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.99 7.5V30L0 22.5zM15 15l12.99 7.5V30L15 22.5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .footer-image-bg {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .footer-image-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(9, 67, 96, 0.92);
+            /* رنگ اصلی با شفافیت */
+            z-index: 1;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-primary-light {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
+        }
+
+        .btn-primary-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243, 115, 33, 0.3);
+            background-color: var(--color-accent);
+        }
+
+        .btn-secondary-light {
+            background-color: transparent;
+            color: var(--color-primary-dark);
+            border-color: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary-light:hover {
+            background-color: var(--color-primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .captcha-code {
+            background-color: #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.25rem;
+            letter-spacing: 4px;
+            text-decoration: line-through;
+            color: #4b5563;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Header Section -->
+    <div class="header-container">
+        <!-- Top Bar -->
+        <div class="top-bar text-white text-xs">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-10">
+                <div class="flex items-center gap-x-4">
+                    <a href="tel:03136166" class="top-bar-link flex items-center gap-1">
+                        <iconify-icon class="text-base" icon="solar:phone-calling-broken"></iconify-icon>
+                        <span>031-36166</span>
+                    </a>
+                    <a href="mailto:info@gato.ir" class="top-bar-link hidden sm:flex items-center gap-1">
+                        <span class="iconify text-base" data-icon="solar:letter-linear"></span>
+                        <span>info@gato.ir</span>
+                    </a>
+                    <div class="h-4 w-px bg-white/20 hidden sm:block"></div>
+                    <div class="flex items-center gap-x-1">
+                        <a href="#" aria-label="WhatsApp" class="top-bar-link">
+                            <span class="iconify text-lg" data-icon="iconoir:whatsapp"></span>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="top-bar-link">
+                            <span class="iconify text-lg" data-icon="akar-icons:instagram-fill"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative dropdown-container">
+                    <button class="flex items-center gap-1 hover:text-accent transition-colors py-2">
+                        <span>دیگر مجموعه‌های ما</span>
+                        <iconify-icon icon="solar:alt-arrow-down-bold-duotone"
+                            class="text-sm caret-icon"></iconify-icon>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 text-gray-800 z-10">
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">شعبه مرکزی</a>
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">وب‌سایت تورهای نمایشگاهی</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Header -->
+        <header class="main-header">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#"><img src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو گردشگران"
+                            class="h-10 sm:h-12"></a>
+                </div>
+                <nav class="hidden lg:flex items-center gap-x-6">
+                    <a href="/" class="nav-link text-gray-700 font-medium">صفحه اصلی</a>
+                    <div class="h-6 w-px bg-gray-200"></div>
+                    <div class="dropdown-container py-7 -my-7">
+                        <a href="/tours" class="nav-link text-gray-700 font-medium flex items-center gap-1">
+                            تورها <iconify-icon icon="solar:alt-arrow-down-linear"
+                                class="text-sm caret-icon"></iconify-icon>
+                        </a>
+                        <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای داخلی</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای خارجی</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای نوروز
+                                ۱۴۰۴</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تورهای
+                                نمایشگاهی</a>
+                        </div>
+                    </div>
+                    <div class="h-6 w-px bg-gray-200"></div>
+                    <div class="dropdown-container py-7 -my-7">
+                        <a href="/visa-services" class="nav-link text-gray-700 font-medium flex items-center gap-1">
+                            خدمات ویزا <iconify-icon icon="solar:alt-arrow-down-linear"
+                                class="text-sm caret-icon"></iconify-icon>
+                        </a>
+                        <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">فرم ویزا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">لیست ویزاها</a>
+                        </div>
+                    </div>
+                    <div class="h-6 w-px bg-gray-200"></div>
+                    <div class="dropdown-container py-7 -my-7">
+                        <a href="/tourism-magazine" class="nav-link text-gray-700 font-medium flex items-center gap-1">
+                            مجله گردشگری <iconify-icon icon="solar:alt-arrow-down-linear"
+                                class="text-sm caret-icon"></iconify-icon>
+                            <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">سبک سفر</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">جاذبه‌ها</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">اخبار
+                                    گردشگری</a>
+                            </div>
+                    </div>
+                </nav>
+                <div class="hidden lg:flex items-center gap-x-3">
+                    <button aria-label="جستجو"
+                        class="text-gray-600 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-100">
+                        <span class="iconify text-xl" data-icon="oui:search"></span>
+                    </button>
+                    <a href="#" class="btn-secondary border px-5 py-2.5 text-sm font-medium rounded-lg">
+                        ورود / ثبت‌نام
+                    </a>
+                    <a href="#" class="btn-primary px-5 py-2.5 text-sm font-medium rounded-lg">
+                        تماس با کارشناسان
+                    </a>
+                </div>
+                <div class="lg:hidden">
+                    <button id="hamburger-button" aria-label="باز کردن منو" class="text-gray-700 p-2">
+                        <iconify-icon icon="ri:menu-2-fill" class="text-3xl"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Mobile Menu (Off-canvas) -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/40 z-[99] hidden"></div>
+    <div id="mobile-menu"
+        class="mobile-menu hidden-menu fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-xl z-[100] p-6 flex flex-col">
+        <div class="flex justify-between items-center mb-8">
+            <img src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو" class="h-10">
+            <button id="close-menu-button" aria-label="بستن منو" class="text-gray-600 p-2">
+                <iconify-icon icon="ph:x-bold" class="text-2xl"></iconify-icon>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-y-6 text-lg text-gray-800">
+            <a href="/" class="hover:text-primary transition-colors">صفحه اصلی</a>
+            <a href="/tours" class="hover:text-primary transition-colors">تورها</a>
+            <a href="/visa-services" class="hover:text-primary transition-colors">خدمات ویزا</a>
+            <a href="/tourism-magazine" class="hover:text-primary transition-colors">مجله گردشگری</a>
+        </nav>
+        <div class="mt-auto pt-8 border-t">
+            <a href="#"
+                class="block w-full text-center mb-3 px-5 py-3 font-medium rounded-lg shadow-md transition-colors bg-[--color-primary] text-white hover:bg-[--color-primary-dark]">
+                تماس با کارشناسان
+            </a>
+            <a href="#"
+                class="block w-full text-center px-5 py-3 font-medium rounded-lg transition-all duration-300 text-[--color-primary] border border-[--color-primary] hover:bg-[--color-primary] hover:text-white">
+                ورود / ثبت‌نام
+            </a>
+        </div>
+    </div>
+<!--- -->
+            <div class="sm:hidden bg-gray-50 pb-8">
+    <div id="mobile-hero-banner" class="md:hidden h-56 w-full bg-cover bg-center"></div>
+
+    <div class="relative px-4">
+        <div id="mobile-service-selector" class="relative bg-white shadow-lg rounded-2xl p-3 -mt-10">
+            <div class="grid grid-cols-2 gap-2">
+                <button data-service-type="flight" class="mobile-service-btn active">
+                    <iconify-icon icon="hugeicons:airplane-02"></iconify-icon>
+                    <span>پرواز</span>
+                </button>
+                <button data-service-type="hotel" class="mobile-service-btn">
+                    <iconify-icon icon="solar:buildings-broken"></iconify-icon>
+                    <span>هتل</span>
+                </button>
+                <button data-service-type="tour" class="mobile-service-btn">
+                    <iconify-icon icon="solar:suitcase-tag-broken"></iconify-icon>
+                    <span>تور</span>
+                </button>
+                <button data-service-type="flight-hotel" class="mobile-service-btn">
+                    <iconify-icon icon="material-symbols-light:flights-and-hotels-outline"></iconify-icon>
+                    <span>پرواز + هتل</span>
+                </button>
+                <button data-service-type="insurance" class="mobile-service-btn col-span-2">
+                    <iconify-icon icon="solar:shield-check-broken"></iconify-icon>
+                    <span>بیمه مسافرتی</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-form-container" class="flex flex-col gap-4 bg-white shadow-lg rounded-2xl p-4 mt-4">
+            </div>
+    </div>
+</div>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <div class="hidden sm:block relative bg-gray-50 pb-[40rem] sm:pb-[21rem]">
+            <div id="hero-banner" class="hidden md:block h-96 w-full bg-cover bg-center transition-all duration-500 ease-in-out"></div>
+            <div id="search-box-wrapper" class="hidden sm:block absolute left-1/2 w-full max-w-7xl -translate-x-1/2 px-4 sm:px-6 lg:px-8" style="top: 22rem;">
+                <div id="search-container" class="w-full flex justify-center">
+                    <div id="expanded-state" class="text-center">
+                        <div class="flex justify-center mb-5">
+                                <div class="glass-panel rounded-full px-2 py-1.5 flex items-stretch flex-wrap justify-center gap-1 sm:gap-2 overflow-hidden">
+                               <button data-service-type="flight" class="service-type-btn btn-active">
+                                    <span class="iconify text-2xl sm:text-3xl" data-icon="hugeicons:airplane-02"></span>
+                                    <span>پرواز</span>
+                                </button>
+                                <button data-service-type="hotel" class="service-type-btn">
+                                    <span class="iconify text-2xl sm:text-3xl"
+                                        data-icon="solar:buildings-broken"></span>
+                                    <span>هتل</span>
+                                </button>
+                                <button data-service-type="flight-hotel" class="service-type-btn">
+                                    <span class="iconify text-2xl sm:text-3xl"
+                                        data-icon="material-symbols-light:flights-and-hotels-outline"></span>
+                                    <span>پرواز + هتل</span>
+                                </button>
+                                <button data-service-type="tour" class="service-type-btn">
+                                    <span class="iconify text-2xl sm:text-3xl"
+                                        data-icon="solar:suitcase-tag-broken"></span>
+                                    <span>تور</span>
+                                </button>
+                                <button data-service-type="insurance" class="service-type-btn">
+                                    <span class="iconify text-2xl sm:text-3xl"
+                                        data-icon="solar:shield-check-broken"></span>
+                                    <span>بیمه</span>
+                                </button>
+                            </div>
+                        </div>
+                    
+
+                        <div id="inputs-parent-panel"
+    class="solid-white-panel rounded-full shadow-xl pt-3 pb-10 px-4 inline-block">
+    
+    <div id="search-form-top-row" class="w-full flex justify-start px-3 mb-3"></div> 
+
+    <div id="search-form-fields" class="flex gap-3 items-center px-3">
+    </div>
+    <div id="search-form-addons" class="w-full flex justify-start mt-3 px-3"></div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <!-- Trust Navar Section -->
+        <section class="w-full bg-[#094360] py-6">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="hugeicons:airplane-01"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">مجری مستقیم پروازها</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">«۲۸ سال سابقه در اجرای مستقیم و چارتر پروازهای
+                            خارجی»</p>
+                    </div>
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="solar:users-group-two-rounded-broken"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">تیم ۱۰۰٪ حرفه‌ای</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">«مشاوران با سابقه و تجربه بالا در حوزه سفر»</p>
+                    </div>
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="solar:shield-up-broken"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">تضمین آرامش سفر</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">«خدمات کامل، بدون واسطه و با پشتیبانی اختصاصی»
+                        </p>
+                    </div>
+                    <div
+                        class="feature-item flex flex-col items-center p-2 rounded-lg transition-transform duration-300 hover:-translate-y-1">
+                        <div class="feature-icon mb-3">
+                            <span class="iconify w-10 h-10" data-icon="solar:card-broken"></span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">اقساطی با کارمزد کم</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">«سفرهای خارجی و داخلی با شرایط پرداخت آسان و
+                            مطمئن»</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Tours Section -->
+        <section class="py-16 sm:py-24 pt-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+                    <div class="mb-4 sm:mb-0">
+                        <h2 class="section-title text-3xl sm:text-4xl">تورهای پرطرفدار</h2>
+                        <p class="section-subtitle">
+                            محبوب‌ترین تورها از نگاه شما که همیشه در صدر انتخاب‌ها قرار دارند.
+                        </p>
+                    </div>
+                    <a href="#"
+                        class="btn-all-tours flex-shrink-0 items-center gap-2 px-5 py-3 rounded-xl hidden sm:flex">
+                        <span>همه تورهای محبوب</span>
+                        <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+                    </a>
+                </div>
+                <div class="horizontal-scroller flex gap-8 overflow-x-auto pb-6 -mb-6">
+                    <!-- Tour Card 1: Istanbul -->
+                    <div class="tour-card h-[450px]">
+                        <img src="https://plus.unsplash.com/premium_photo-1691338312403-e9f7f7984eeb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXN0YW5idWx8ZW58MHwxfDB8fHww"
+                            alt="استانبول" class="tour-card-image">
+                        <div class="tour-card-overlay"></div>
+                        <div class="tour-card-content">
+                            <img src="https://lachinseir.com/ref014200100001653656220001" alt="Turkish Airlines"
+                                class="airline-logo">
+                            <div class="space-y-6">
+                                <div class="tour-card-location">
+                                    <h3>استانبول</h3>
+                                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <p class="text-base" style="color: rgba(255, 255, 255, 0.8);">ترکیه</p>
+                                        <div class="h-4 w-px bg-white/20"></div>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>خرید</span>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>فرهنگی</span>
+                                    </div>
+                                </div>
+                                <div class="tour-card-details space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
+                                            <span>مرداد و شهریور ۱۴۰۴</span>
+                                        </div>
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
+                                            <span>۴ شب و ۵ روز</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                            <p class="tour-card-price">۱۵,۹۰۰,۰۰۰ <span>تومان</span></p>
+                                        </div>
+                                        <a href="#" class="btn-view-tour">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour Card 2: Dubai -->
+                    <div class="tour-card h-[450px]">
+                        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1887&auto=format&fit=crop"
+                            alt="دبی" class="tour-card-image">
+                        <div class="tour-card-overlay"></div>
+                        <div class="tour-card-content">
+                            <img src="https://lachinseir.com/ref675200100001705656220001" alt="Emirates"
+                                class="airline-logo">
+                            <div class="space-y-6">
+                                <div class="tour-card-location">
+                                    <h3>دبی</h3>
+                                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <p class="text-base" style="color: rgba(255, 255, 255, 0.8);">امارات</p>
+                                        <div class="h-4 w-px bg-white/20"></div>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>لوکس</span>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>مدرن</span>
+                                    </div>
+                                </div>
+                                <div class="tour-card-details space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
+                                            <span>ویژه پاییز ۱۴۰۴</span>
+                                        </div>
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
+                                            <span>۳ شب و ۴ روز</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                            <p class="tour-card-price">۲۱,۵۰۰,۰۰۰ <span>تومان</span></p>
+                                        </div>
+                                        <a href="#" class="btn-view-tour">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour Card 3: Antalya -->
+                    <div class="tour-card h-[450px]">
+                        <img src="https://images.unsplash.com/photo-1578852952104-54f3dac8b260?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW50YWx5YXxlbnwwfDF8MHx8fDA%3D"
+                            alt="آنتالیا" class="tour-card-image">
+                        <div class="tour-card-overlay"></div>
+                        <div class="tour-card-content">
+                            <img src="https://lachinseir.com/ref782702100001955656220001" alt="Pegasus Airlines"
+                                class="airline-logo">
+                            <div class="space-y-6">
+                                <div class="tour-card-location">
+                                    <h3>آنتالیا</h3>
+                                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <p class="text-base" style="color: rgba(255, 255, 255, 0.8);">ترکیه</p>
+                                        <div class="h-4 w-px bg-white/20"></div>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>ساحلی</span>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>خانوادگی</span>
+                                    </div>
+                                </div>
+                                <div class="tour-card-details space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
+                                            <span>ویژه تابستان ۱۴۰۴</span>
+                                        </div>
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
+                                            <span>۶ شب و ۷ روز</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                            <p class="tour-card-price">۲۸,۰۰۰,۰۰۰ <span>تومان</span></p>
+                                        </div>
+                                        <a href="#" class="btn-view-tour">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour Card 4: Paris -->
+                    <div class="tour-card h-[450px]">
+                        <img src="https://plus.unsplash.com/premium_photo-1719581957038-0121108b9455?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyaXN8ZW58MHwxfDB8fHww"
+                            alt="پاریس" class="tour-card-image">
+                        <div class="tour-card-overlay"></div>
+                        <div class="tour-card-content">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Qatar_Airways_logo.svg"
+                                class="airline-logo">
+                            <div class="space-y-6">
+                                <div class="tour-card-location">
+                                    <h3>پاریس</h3>
+                                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <p class="text-base" style="color: rgba(255, 255, 255, 0.8);">فرانسه</p>
+                                        <div class="h-4 w-px bg-white/20"></div>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>اروپا</span>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>تاریخی</span>
+                                    </div>
+                                </div>
+                                <div class="tour-card-details space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
+                                            <span>ویژه کریسمس</span>
+                                        </div>
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
+                                            <span>۷ شب و ۸ روز</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-400">تماس بگیرید</p>
+                                            <p class="tour-card-price">نرخ روز</p>
+                                        </div>
+                                        <a href="#" class="btn-view-tour">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour Card 5: Kish -->
+                    <div class="tour-card h-[450px]">
+                        <img src="https://images.unsplash.com/photo-1597910038098-a1075bf45b2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a2lzaHxlbnwwfDF8MHx8fDA%3D"
+                            alt="کیش" class="tour-card-image">
+                        <div class="tour-card-overlay"></div>
+                        <div class="tour-card-content">
+                            <img src="https://lachinseir.com/ref962702100001515317810001" alt="Mahan Air"
+                                class="airline-logo">
+                            <div class="space-y-6">
+                                <div class="tour-card-location">
+                                    <h3>کیش</h3>
+                                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <p class="text-base" style="color: rgba(255, 255, 255, 0.8);">ایران</p>
+                                        <div class="h-4 w-px bg-white/20"></div>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>داخلی</span>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>تفریحی</span>
+                                    </div>
+                                </div>
+                                <div class="tour-card-details space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
+                                            <span>تمام طول سال</span>
+                                        </div>
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
+                                            <span>۲ شب و ۳ روز</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                            <p class="tour-card-price">۶,۷۵۰,۰۰۰ <span>تومان</span></p>
+                                        </div>
+                                        <a href="#" class="btn-view-tour">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour Card 6: Thailand -->
+                    <div class="tour-card h-[450px]">
+                        <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=1770&auto=format&fit=crop"
+                            alt="تایلند" class="tour-card-image">
+                        <div class="tour-card-overlay"></div>
+                        <div class="tour-card-content">
+                            <img src="https://lachinseir.com/ref962702100001515317810001" alt="Mahan Air"
+                                class="airline-logo">
+                            <div class="space-y-6">
+                                <div class="tour-card-location">
+                                    <h3>تایلند</h3>
+                                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <p class="text-base" style="color: rgba(255, 255, 255, 0.8);">پوکت + بانکوک</p>
+                                        <div class="h-4 w-px bg-white/20"></div>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>طبیعت</span>
+                                        <span class="tour-card-tag"><span class="tag-hash">#</span>هیجان</span>
+                                    </div>
+                                </div>
+                                <div class="tour-card-details space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
+                                            <span>تمام طول سال</span>
+                                        </div>
+                                        <div class="tour-card-info">
+                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
+                                            <span>۷ شب ترکیبی</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                            <p class="tour-card-price">۴۵,۰۰۰,۰۰۰ <span>تومان</span></p>
+                                        </div>
+                                        <a href="#" class="btn-view-tour">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="btn-all-tours w-full text-center mt-8 items-center justify-center gap-2 px-5 py-3 rounded-xl flex sm:hidden">
+                    <span>همه تورهای ویژه</span>
+                    <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+                </a>
+            </div>
+        </section>
+        <!-- Special Tours Section -->
+        <section class="py-16 sm:py-24 pt-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+                    <div class="mb-4 sm:mb-0">
+                        <h2 class="section-title text-3xl sm:text-4xl">تورهای ویژه</h2>
+                        <p class="section-subtitle">
+                            فرصت‌های استثنایی سفر، از تورهای لحظه آخری تا پیشنهادهای مناسبتی.
+                        </p>
+                    </div>
+                    <a href="#"
+                        class="btn-all-tours flex-shrink-0 items-center gap-2 px-5 py-3 rounded-xl hidden sm:flex">
+                        <span>همه تورهای ویژه</span>
+                        <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+                    </a>
+                </div>
+                <div class="horizontal-scroller flex gap-8 overflow-x-auto pb-6 -mb-6">
+                    <!-- Creative Card 1: Last Minute -->
+                    <div class="creative-card">
+                        <img class="bg-image"
+                            src="https://plus.unsplash.com/premium_photo-1691338312403-e9f7f7984eeb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&id=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXN0YW5idWx8ZW58MHwxfDB8fHww"
+                            alt="استانبول">
+                        <div class="badge-ribbon">آفری</div>
+                        <div class="content-wrapper">
+                            <div class="glass-panel">
+                                <h3 class="card-title">استانبول</h3>
+                                <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+                                    <p class="card-subtitle !m-0">ترکیه</p>
+                                    <div class="flex gap-3">
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>خرید</a>
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>تفریحی</a>
+                                    </div>
+                                </div>
+                                <div class="price-section">
+                                    <p class="price">۱۲.۵ <span>میلیون</span></p>
+                                    <a href="#" class="btn-view-creative">مشاهده</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative Card 2: Exhibition -->
+                    <div class="creative-card">
+                        <img class="bg-image"
+                            src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1887&auto=format&fit=crop"
+                            alt="نمایشگاه دبی">
+                        <div class="badge-ribbon">تجاری</div>
+                        <div class="content-wrapper">
+                            <div class="glass-panel">
+                                <h3 class="card-title">نمایشگاه جیتکس</h3>
+                                <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+                                    <p class="card-subtitle !m-0">دبی، امارات</p>
+                                    <div class="flex gap-3">
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>تکنولوژی</a>
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>بیزنس</a>
+                                    </div>
+                                </div>
+                                <div class="price-section">
+                                    <p class="price">۴۵ <span>میلیون</span></p>
+                                    <a href="#" class="btn-view-creative">مشاهده</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative Card 3: Nowruz -->
+                    <div class="creative-card">
+                        <img class="bg-image"
+                            src="https://images.unsplash.com/photo-1578852952104-54f3dac8b260?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&id=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW50YWx5YXxlbnwwfDF8MHx8fDA%3D"
+                            alt="آنتالیا نوروز">
+                        <div class="badge-ribbon">نوروز</div>
+                        <div class="content-wrapper">
+                            <div class="glass-panel">
+                                <h3 class="card-title">آنتالیا</h3>
+                                <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+                                    <p class="card-subtitle !m-0">ترکیه</p>
+                                    <div class="flex gap-3">
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>خانوادگی</a>
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>ساحلی</a>
+                                    </div>
+                                </div>
+                                <div class="price-section">
+                                    <p class="price">۳۵ <span>میلیون</span></p>
+                                    <a href="#" class="btn-view-creative">مشاهده</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative Card 4: Nature -->
+                    <div class="creative-card">
+                        <img class="bg-image"
+                            src="https://images.unsplash.com/photo-1603350576276-24747f7bbf40?w=800&auto=format&fit=crop&q=60"
+                            alt="تور طبیعت گردی گرجستان">
+                        <div class="badge-ribbon">طبیعت</div>
+                        <div class="content-wrapper">
+                            <div class="glass-panel">
+                                <h3 class="card-title">ییلاقات باتومی</h3>
+                                <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+                                    <p class="card-subtitle !m-0">گرجستان</p>
+                                    <div class="flex gap-3">
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>ماجراجویی</a>
+                                        <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>بکر</a>
+                                    </div>
+                                </div>
+                                <div class="price-section">
+                                    <p class="price">۲۲ <span>میلیون</span></p>
+                                    <a href="#" class="btn-view-creative">مشاهده</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="#"
+                    class="btn-all-tours w-full text-center mt-8 items-center justify-center gap-2 px-5 py-3 rounded-xl flex sm:hidden">
+                    <span>همه تورهای ویژه</span>
+                    <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+                </a>
+            </div>
+        </section>
+        <!-- Travel Style Section -->
+        <section class="bg-white">
+            <div class="hidden md:block">
+                <div id="desktop-travel-style-slider" class="desktop-travel-style-slider relative w-full h-screen overflow-hidden bg-gray-900">
+                    <h2 class="hidden md:block travel-style-title-box">سبک سفر خودتو پیدا کن</h2>
+                    <div id="desktop-backgrounds-container" class="absolute inset-0"></div>
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <div class="absolute right-8 top-1/2 -translate-y-1/2 z-30 flex-col items-center gap-y-8 hidden md:flex">
+                        <div class="w-0.5 h-48 bg-white/20 relative">
+                            <div id="desktop-nav-dots-container" class="absolute w-full flex flex-col justify-between h-full items-center" style="top: -6px;"></div>
+                        </div>
+                    </div>
+                    <div class="w-full h-full grid grid-cols-2 items-center relative z-10">
+                        <div id="desktop-content-container" class="w-full h-full flex relative items-center justify-start text-white text-right pr-32 lg:pr-40">
+                        </div>
+                        <div id="desktop-cards-container" class="w-full h-full relative flex items-center justify-center overflow-hidden">
+                             <div id="desktop-cards-wrapper" class="absolute h-full flex items-center gap-x-8"></div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="hidden md:block w-1/2 max-w-sm mx-auto mt-[-5rem] mb-16 relative z-20">
+                    <div class="h-1.5 bg-white/20 rounded-full">
+                        <div id="desktop-slider-progress" class="h-1.5 bg-white rounded-full transition-all duration-500 ease-out"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <div class="container mx-auto px-4 sm:px-6 pt-20">
+                    <div class="mb-12">
+                        <h2 class="section-title text-3xl sm:text-4xl">سبک سفر خودتو پیدا کن</h2>
+                        <p class="section-subtitle">
+                            برای هر سلیقه‌ای، یک پیشنهاد سفر بی‌نظیر وجود دارد. ما به شما کمک می‌کنیم تا بهترین تجربه را پیدا کنید.
+                        </p>
+                    </div>
+                </div>
+                <div class="mobile-carousel-container w-full h-auto flex-col justify-center items-center overflow-hidden relative">
+                    <div id="mobile-backgrounds-container" class="absolute inset-0 z-0"></div>
+            
+                    <div id="mobile-carousel-wrapper" class="w-full flex items-center justify-center relative z-20 pb-12">
+                        <div id="mobile-card-viewport" class="w-full h-[500px] max-h-[80vh] relative">
+                            <div id="mobile-card-track" class="card-track h-full flex items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Destinations Section -->
+        <section class="pt-16 pb-0 sm:pt-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="section-title text-3xl sm:text-4xl">محبوب‌ترین مقصد‌های سفر</h2>
+                    <p class="section-subtitle mx-auto">
+                        از سواحل مدیترانه تا قلب تاریخ در آسیا، ما شما را به سفری فراتر از یک تعطیلات ساده دعوت می‌کنیم.
+                    </p>
+                </div>
+                <div id="section-0-container" class="dest-grid-manual"></div>
+                <div id="section-1-container" class="dest-grid-manual hidden"></div>
+                <div id="section-2-container" class="dest-grid-manual hidden"></div>
+                <div id="section-3-container" class="dest-grid-manual hidden"></div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section class="pt-16 sm:pt-20 pb-8 sm:pb-12 lg:pb-24 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 lg:mb-20">
+                    <h1 class="title-image-clip text-7xl sm:text-8xl lg:text-9xl font-black leading-none">
+                        <span class="block">چرا سفر با</span>
+                        <span class="block">گردشگران؟</span>
+                    </h1>
+                </div>
+                <div
+                    class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8 max-w-7xl mx-auto items-start">
+                    <div class="why-us-card p-6 text-center text-gray-800">
+                        <div class="icon-wrapper mx-auto">
+                            <iconify-icon icon="solar:medal-ribbon-star-line-duotone" class="text-4xl"></iconify-icon>
+                        </div>
+                        <h3 class="font-bold text-lg">بیش از ربع قرن تجربه</h3>
+                        <p class="text-sm mt-2">ضامن آسایش سفر شما با سالها تجربه در ارائه خدمات تور و بلیط.</p>
+                    </div>
+                    <div class="why-us-card p-6 text-center text-gray-800">
+                        <div class="icon-wrapper mx-auto">
+                            <iconify-icon icon="icon-park-outline:flight-airflow" class="text-4xl"></iconify-icon>
+                        </div>
+                        <h3 class="font-bold text-lg">مجری مستقیم تور</h3>
+                        <p class="text-sm mt-2">دست اول خرید کنید! اکثر تورها را مستقیم و بدون واسطه برگزار می‌نماییم.
+                        </p>
+                    </div>
+                    <div class="why-us-card p-6 text-center text-gray-800">
+                        <div class="icon-wrapper mx-auto">
+                            <iconify-icon icon="solar:check-read-line-duotone" class="text-4xl"></iconify-icon>
+                        </div>
+                        <h3 class="font-bold text-lg">ضمانت تطبیق قیمت</h3>
+                        <p class="text-sm mt-2">اگر قیمت پایین‌تری یافتید، ما قیمت را برای شما اصلاح می‌کنیم.</p>
+                    </div>
+                    <div class="why-us-card p-6 text-center text-gray-800">
+                        <div class="icon-wrapper mx-auto">
+                            <iconify-icon icon="solar:undo-right-round-square-line-duotone"
+                                class="text-4xl"></iconify-icon>
+                        </div>
+                        <h3 class="font-bold text-lg">ضمانت استرداد هزینه</h3>
+                        <p class="text-sm mt-2">در صورت مغایرت خدمات با قرارداد، هزینه شما مسترد می‌گردد.</p>
+                    </div>
+                    <div class="why-us-card p-6 text-center text-gray-800 col-span-2 sm:col-span-1">
+                        <div class="icon-wrapper mx-auto">
+                            <iconify-icon icon="solar:wallet-money-line-duotone" class="text-4xl"></iconify-icon>
+                        </div>
+                        <h3 class="font-bold text-lg">فروش اقساطی</h3>
+                        <p class="text-sm mt-2">امروز سفر کنید و هزینه آن را تا شش ماه دیگر پرداخت نمایید.</p>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Parallax Divider -->
+        <section class="parallax-section"></section>
+
+        <!-- Testimonials Section -->
+        <section class="py-12 sm:py-16 lg:py-20 gradient-background">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <!-- هدر بخش -->
+                <div class="mb-16 text-center">
+                    <!-- خط جداکننده تزئینی -->
+                    <div class="mb-4 flex justify-center">
+                        <div class="h-1 w-24 rounded-full" style="background-color: var(--color-primary);"></div>
+                    </div>
+                    <h2 class="text-3xl font-extrabold sm:text-4xl" style="color: #094360;">
+                        مشتریان ما چه می‌گویند؟
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-base text-gray-600">
+                        نظرات برخی از مسافران عزیزی که با ما همسفر بوده‌اند و تجربه‌ای به یادماندنی داشته‌اند.
+                    </p>
+                </div>
+
+                <!-- گرید کارت‌های نظرات -->
+                <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+
+                    <!-- کارت نظر ۱ -->
+                    <div
+                        class="relative rounded-xl bg-white p-6 pt-12 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
+                        <!-- آیکون نقل قول -->
+                        <div class="absolute -top-6 right-6 flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg"
+                            style="background-color: var(--color-primary);">
+                            <iconify-icon icon="bxs:quote-alt-left" class="text-4xl"></iconify-icon>
+                        </div>
+                        <blockquote class="flex h-full flex-col justify-between">
+                            <p class="flex-grow text-base leading-relaxed text-gray-600">
+                                "سفر به استانبول با این آژانس فوق‌العاده بود. همه چیز عالی و طبق برنامه پیش رفت. هتل
+                                بسیار خوب بود و راهنمای تور اطلاعات کاملی داشت. حتماً سفرهای بعدی رو هم با شما
+                                برنامه‌ریزی می‌کنم."
+                            </p>
+                            <footer class="mt-6 pt-6 border-t border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <img class="h-12 w-12 rounded-full object-cover"
+                                            src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&auto=format&fit=crop&q=60"
+                                            alt="عکس پروفایل آریا احمدی">
+                                        <div class="mr-4">
+                                            <p class="text-base font-bold text-gray-900">آریا احمدی</p>
+                                            <p class="text-sm text-gray-500">مسافر استانبول</p>
+                                        </div>
+                                    </div>
+                                    <!-- امتیاز ستاره‌ای -->
+                                    <div class="flex items-center text-yellow-400 space-x-1 space-x-reverse">
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                    </div>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </div>
+
+                    <!-- کارت نظر ۲ -->
+                    <div
+                        class="relative rounded-xl bg-white p-6 pt-12 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
+                        <div class="absolute -top-6 right-6 flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg"
+                            style="background-color: var(--color-primary);">
+                            <iconify-icon icon="bxs:quote-alt-left" class="text-4xl"></iconify-icon>
+                        </div>
+                        <blockquote class="flex h-full flex-col justify-between">
+                            <p class="flex-grow text-base leading-relaxed text-gray-600">
+                                "پشتیبانی تیم شما بی‌نظیر بود. قبل از سفر برای انتخاب تور خیلی خوب راهنمایی کردند و در
+                                طول سفر هم همیشه در دسترس بودند. تجربه‌ی خیلی خوبی بود و به دوستانم هم پیشنهاد کردم."
+                            </p>
+                            <footer class="mt-6 pt-6 border-t border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <img class="h-12 w-12 rounded-full object-cover"
+                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60"
+                                            alt="عکس پروفایل مریم رضایی">
+                                        <div class="mr-4">
+                                            <p class="text-base font-bold text-gray-900">مریم رضایی</p>
+                                            <p class="text-sm text-gray-500">مسافر آنتالیا</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-yellow-400 space-x-1 space-x-reverse">
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold" class="text-xl"></iconify-icon>
+                                    </div>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </div>
+
+                    <!-- کارت نظر ۳ -->
+                    <div
+                        class="relative rounded-xl bg-white p-6 pt-12 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
+                        <div class="absolute -top-6 right-6 flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg"
+                            style="background-color: var(--color-primary);">
+                            <iconify-icon icon="bxs:quote-alt-left" class="text-4xl"></iconify-icon>
+                        </div>
+                        <blockquote class="flex h-full flex-col justify-between">
+                            <p class="flex-grow text-base leading-relaxed text-gray-600">
+                                "تنوع تورها و قیمت‌های مناسب از نقاط قوت این آژانس هست. ما یک سفر اقتصادی به گرجستان
+                                داشتیم و با توجه به هزینه‌ای که کردیم، خدمات بسیار خوبی دریافت کردیم. ممنون از تیم
+                                خوبتون."
+                            </p>
+                            <footer class="mt-6 pt-6 border-t border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <img class="h-12 w-12 rounded-full object-cover"
+                                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60"
+                                            alt="عکس پروفایل علی حسینی">
+                                        <div class="mr-4">
+                                            <p class="text-base font-bold text-gray-900">علی حسینی</p>
+                                            <p class="text-sm text-gray-500">مسافر گرجستان</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-1 space-x-reverse">
+                                        <iconify-icon icon="solar:star-bold"
+                                            class="text-xl text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold"
+                                            class="text-xl text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold"
+                                            class="text-xl text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="solar:star-bold"
+                                            class="text-xl text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="solar:star-linear"
+                                            class="text-xl text-gray-300"></iconify-icon> <!-- ستاره خالی -->
+                                    </div>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="py-12 sm:py-16 lg:py-20 bg-gray-50">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mb-10 flex items-center justify-between">
+                    <div>
+                        <h2 class="section-title text-3xl sm:text-4xl">وبلاگ</h2>
+                        <p class="section-subtitle">راهنماهای سفر</p>
+                    </div>
+                </div>
+                <div id="blog-slider-nav" class="mb-12 blog-nav-dots-container">
+                    <div id="blog-progress-line"></div>
+                </div>
+                <div id="blog-slider-container" class="blog-slider-container">
+                    <div class="blog-slide" data-label="تایلند">
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-5 items-center">
+                            <div class="md:col-span-3">
+                                <img class="w-full h-full rounded-lg object-cover shadow-lg"
+                                    src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGhhaWxhbmR8ZW58MHx8MHx8fDA%3D"
+                                    alt="ساحل زیبا در تایلند">
+                            </div>
+                            <div class="md:col-span-2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">پاتایا | Pattaya</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    پاتایا نام شهری است در کشور تایلند که در ساحل شرقی خلیج تایلند قرار دارد. پاتایا در
+                                    ۱۴۰ کیلومتری بانکوک قراردارد و معروفترین مرکز تفریحی در ساحل شرقی تایلند است...
+                                    آسمان آبی و دریای زلال آن تنها بخشی از ویژگیهای خوب پاتایا هستند که باعث شده تا نظر
+                                    توریست های داخلی و خارجی را به خود جلب کند.
+                                </p>
+                                <a href="#"
+                                    class="inline-block text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300"
+                                    style="background-color: #00838f;"
+                                    onmouseover="this.style.backgroundColor='#006064'"
+                                    onmouseout="this.style.backgroundColor='#00838f'">
+                                    مشاهده مقاله
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-slide" data-label="هندوستان">
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-5 items-center">
+                            <div class="md:col-span-3">
+                                <img class="w-full h-full rounded-lg object-cover shadow-lg"
+                                    src="https://plus.unsplash.com/premium_photo-1697729415277-4e362ae9513b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWdyYSUyMGluZGlhfGVufDB8MHwwfHx8MA%3D%3D"
+                                    alt="تاج محل در آگرا، هندوستان">
+                            </div>
+                            <div class="md:col-span-2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">آگرا | Agra</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    آگرا، شهری در ایالت اوتار پرادش هند، میزبان یکی از عجایب هفتگانه جهان، تاج محل است.
+                                    این شهر تاریخی غنی از دوران امپراتوری مغول دارد و مقصدی بی‌نظیر برای علاقه‌مندان به
+                                    تاریخ و معماری است.
+                                </p>
+                                <a href="#"
+                                    class="inline-block text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300"
+                                    style="background-color: #00838f;"
+                                    onmouseover="this.style.backgroundColor='#006064'"
+                                    onmouseout="this.style.backgroundColor='#00838f'">
+                                    مشاهده مقاله
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-slide" data-label="مالزی">
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-5 items-center">
+                            <div class="md:col-span-3">
+                                <img class="w-full h-full rounded-lg object-cover shadow-lg"
+                                    src="https://images.unsplash.com/photo-1700236660891-61e9234c8ef9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGt1YWxhJTIwbGFtcHVyfGVufDB8MHwwfHx8MA%3D%3D"
+                                    alt="نمای شهری کوالالامپور، مالزی">
+                            </div>
+                            <div class="md:col-span-2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">کوالالامپور | Kuala Lumpur</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    کوالالامپور، پایتخت مالزی، با برج‌های دوقلوی پتروناس، غارهای باتو و بازارهای
+                                    پرجنب‌وجوش، شهری مدرن و در عین حال سنتی است. ترکیبی از فرهنگ‌های مختلف را در این شهر
+                                    تجربه کنید.
+                                </p>
+                                <a href="#"
+                                    class="inline-block text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300"
+                                    style="background-color: #00838f;"
+                                    onmouseover="this.style.backgroundColor='#006064'"
+                                    onmouseout="this.style.backgroundColor='#00838f'">
+                                    مشاهده مقاله
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-slide" data-label="ترکیه">
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-5 items-center">
+                            <div class="md:col-span-3">
+                                <img class="w-full h-full rounded-lg object-cover shadow-lg"
+                                    src="https://plus.unsplash.com/premium_photo-1661963652315-d5a9d26637dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dHVya2V5fGVufDB8MHwwfHx8MA%3D%3D"
+                                    alt="مسجدی در ترکیه">
+                            </div>
+                            <div class="md:col-span-2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">استانبول | Istanbul</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    استانبول، شهری که دو قاره را به هم متصل می‌کند، با مساجد باشکوه، بازارهای تاریخی و
+                                    تنگه بسفر، تجربه‌ای فراموش‌نشدنی از سفر را برای شما رقم می‌زند.
+                                </p>
+                                <a href="#"
+                                    class="inline-block text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300"
+                                    style="background-color: #00838f;"
+                                    onmouseover="this.style.backgroundColor='#006064'"
+                                    onmouseout="this.style.backgroundColor='#00838f'">
+                                    مشاهده مقاله
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA & Newsletter Section -->
+        <section class="py-16 sm:py-20 texture-bg">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-x-12 gap-y-16 items-center">
+                    <!-- Right Side: CTA -->
+                    <div class="text-center lg:text-center lg:col-span-3">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight"
+                            style="color: var(--color-top-bar);">
+                            نیاز به برنامه‌ریزی اختصاصی دارید؟
+                        </h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                            تیم کارشناسان ما آماده است تا سفری کاملاً منطبق با سلیقه و بودجه شما طراحی کند. از انتخاب
+                            مقصد تا رزرو هتل و پرواز، ما در کنار شما هستیم.
+                        </p>
+                        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-center gap-4">
+                            <a href="#"
+                                class="btn-primary-light inline-flex items-center justify-center gap-x-2 w-full sm:w-auto text-base font-bold px-8 py-4 rounded-xl">
+                                <iconify-icon icon="solar:chat-round-line-broken" class="text-2xl"></iconify-icon>
+                                <span>درخواست مشاوره رایگان</span>
+                            </a>
+                            <a href="#"
+                                class="btn-secondary-light inline-flex items-center justify-center gap-x-2 w-full sm:w-auto text-base font-bold px-8 py-4 rounded-xl border-2">
+                                <iconify-icon icon="solar:phone-calling-broken" class="text-2xl"></iconify-icon>
+                                <span>تماس با پشتیبانی</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Left Side: Newsletter with a vertical divider -->
+                    <div class="lg:pr-12 lg:border-r lg:border-gray-200 lg:col-span-2">
+                        <div class="max-w-3xl mx-auto text-center lg:text-right">
+                            <h2 class="text-3xl font-extrabold" style="color: var(--color-top-bar);">
+                                از آخرین تورها و تخفیف‌ها باخبر شوید!
+                            </h2>
+                            <p class="mt-4 text-lg text-gray-600">
+                                با عضویت در خبرنامه ما، پیشنهادهای ویژه، تورهای لحظه آخری و راهنماهای سفر جدید را مستقیم
+                                در ایمیل خود دریافت کنید.
+                            </p>
+                        </div>
+                        <form class="mt-10 max-w-2xl mx-auto">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+                                <!-- فیلد ایمیل -->
+                                <div class="sm:col-span-2">
+                                    <label for="email" class="sr-only">آدرس ایمیل</label>
+                                    <div class="relative">
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                            <iconify-icon icon="solar:letter-bold"
+                                                class="text-xl text-gray-400"></iconify-icon>
+                                        </div>
+                                        <input type="email" name="email" id="email"
+                                            class="block w-full rounded-xl border-gray-300 py-4 pr-10 pl-3 text-base shadow-sm focus:border-primary focus:ring-primary"
+                                            placeholder="آدرس ایمیل خود را وارد کنید">
+                                    </div>
+                                </div>
+                                <!-- فیلد کپچا -->
+                                <div>
+                                    <label for="captcha" class="sr-only">کد امنیتی</label>
+                                    <div class="flex items-center gap-x-3">
+                                        <div class="captcha-code">8B2K4</div>
+                                        <input type="text" name="captcha" id="captcha"
+                                            class="block w-full rounded-xl border-gray-300 py-4 px-3 text-base shadow-sm focus:border-primary focus:ring-primary"
+                                            placeholder="کد امنیتی">
+                                    </div>
+                                </div>
+                                <!-- دکمه عضویت -->
+                                <div>
+                                    <button type="submit"
+                                        class="btn-primary-light flex w-full items-center justify-center rounded-xl px-8 py-4 text-base font-bold">
+                                        عضویت در خبرنامه
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-image-bg" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" class="sr-only">فوتر</h2>
+        <div class="footer-content container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+                <!-- بخش لوگو و توضیحات -->
+                <div class="md:col-span-2 lg:col-span-1">
+                    <img class="h-12" src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو گردشگران">
+                    <p class="mt-6 text-base text-gray-300 leading-relaxed">
+                        ما با بیش از ۲۸ سال سابقه، متخصص در طراحی و اجرای تورهای داخلی و خارجی هستیم و تلاش می‌کنیم تا
+                        بهترین تجربه سفر را برای شما رقم بزنیم.
+                    </p>
+                    <div class="mt-6 flex space-x-4 space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <span class="sr-only">اینستاگرام</span>
+                            <span class="iconify w-6 h-6" data-icon="iconoir:instagram" data-inline="false"></span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <span class="sr-only">واتس‌اپ</span>
+                            <span class="iconify w-6 h-6" data-icon="iconoir:whatsapp" data-inline="false"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- لینک‌های مفید -->
+                <div>
+                    <h3 class="text-base font-semibold text-white">لینک‌های مفید</h3>
+                    <ul role="list" class="mt-6 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">درباره ما</a>
+                        </li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">تماس با
+                                ما</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">مجله
+                                گردشگری</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">سوالات
+                                متداول</a></li>
+                    </ul>
+                </div>
+
+                <!-- خدمات ما -->
+                <div>
+                    <h3 class="text-base font-semibold text-white">خدمات ما</h3>
+                    <ul role="list" class="mt-6 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">تورهای
+                                خارجی</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">تورهای
+                                داخلی</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">خدمات
+                                ویزا</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white transition-colors">رزرو هتل</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- اطلاعات تماس -->
+                <div>
+                    <h3 class="text-base font-semibold text-white">تماس با ما</h3>
+                    <div class="mt-6 space-y-4">
+                        <div class="flex items-start gap-x-3">
+                            <iconify-icon icon="solar:map-point-broken"
+                                class="flex-shrink-0 text-xl text-gray-400 mt-1"></iconify-icon>
+                            <p class="text-base text-gray-300">اصفهان، بوستان سعدی، جنب رستوران پارکلند، ساختمان
+                                گردشگران، پلاک ۱۰۰</p>
+                        </div>
+                        <div class="flex items-start gap-x-3">
+                            <iconify-icon icon="solar:phone-broken"
+                                class="flex-shrink-0 text-xl text-gray-400 mt-1"></iconify-icon>
+                            <a href="tel:03136166"
+                                class="text-base text-gray-300 hover:text-white transition-colors">031-36166</a>
+                        </div>
+                        <div class="flex items-start gap-x-3">
+                            <iconify-icon icon="solar:letter-broken"
+                                class="flex-shrink-0 text-xl text-gray-400 mt-1"></iconify-icon>
+                            <a href="mailto:info@gato.ir"
+                                class="text-base text-gray-300 hover:text-white transition-colors">info@gato.ir</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- بخش کپی رایت -->
+            <div class="mt-16 border-t border-white/10 pt-8 text-center">
+                <p class="text-base text-gray-400">&copy; ۱۴۰۴ تمام حقوق برای آژانس مسافرتی گردشگران محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Field Templates (to be cloned by JS) -->
+    <template id="origin-dest-template">
+        <div class="w-full lg:w-auto lg:col-span-4">
+            <div class="merged-input-container">
+                <div class="relative flex-1 flex items-center">
+                    <iconify-icon icon="ph:airplane-takeoff" class="text-xl text-gray-400 mr-3"></iconify-icon>
+                    <input type="text" id="origin" placeholder="مبدا" class="merged-input">
+                </div>
+
+                <div class="input-divider mx-2"></div>
+                <button
+                    class="swap-button flex-shrink-0 w-9 h-9 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-100 transition">
+                    <iconify-icon icon="solar:transfer-horizontal-broken" class="text-lg"></iconify-icon>
+                </button>
+                <div class="input-divider mx-2"></div>
+
+                <div class="relative flex-1 flex items-center">
+                    <iconify-icon icon="ph:airplane-landing" class="text-xl text-gray-400 mr-3"></iconify-icon>
+                    <input type="text" id="destination" placeholder="مقصد" class="merged-input">
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="destination-only-template">
+        <div class="w-full lg:w-auto lg:col-span-3">
+            <div class="relative input-group">
+                <iconify-icon icon="solar:map-point-wave-broken" class="input-icon search-input-icon"></iconify-icon>
+                <input type="text" id="destination-only" placeholder="شهر یا هتل" class="input-field">
+            </div>
+        </div>
+    </template>
+    <template id="date-template">
+        <div class="w-full lg:w-auto lg:col-span-2">
+            <div class="relative input-group">
+                <iconify-icon icon="solar:calendar-search-broken" class="input-icon search-input-icon"></iconify-icon>
+                <input type="text" id="datepicker" placeholder="تاریخ رفت و برگشت" class="input-field">  
+            </div>
+        </div>
+    </template>
+    <template id="passengers-flight-template">
+        <div class="relative w-full lg:w-auto lg:col-span-3">
+            <div class="relative input-group">
+                <iconify-icon icon="solar:users-group-rounded-broken"
+                    class="input-icon search-input-icon"></iconify-icon>
+                <input id="passenger-input" readonly value="۱ بزرگسال، اکونومی" class="input-field cursor-pointer">
+            </div>
+            <div id="passenger-popover"
+                class="popover absolute top-full right-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl p-4 z-50 hidden opacity-0 transform -translate-y-2 transition-all duration-300">
+                <div class="space-y-3 mb-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-gray-800">بزرگسال</p>
+                            <p class="text-xs text-gray-500">۱۲ سال به بالا</p>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse"><button data-type="adult"
+                                data-action="decrease"
+                                class="passenger-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">-</button><span
+                                id="adult-count" class="w-8 text-center font-semibold">1</span><button data-type="adult"
+                                data-action="increase"
+                                class="passenger-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-gray-800">کودک</p>
+                            <p class="text-xs text-gray-500">۲ تا ۱۲ سال</p>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse"><button data-type="child"
+                                data-action="decrease"
+                                class="passenger-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">-</button><span
+                                id="child-count" class="w-8 text-center font-semibold">0</span><button data-type="child"
+                                data-action="increase"
+                                class="passenger-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-200 pt-4 flight-class-container">
+                    <p class="font-semibold text-gray-800 mb-2">کلاس پرواز</p>
+                    <div class="flex space-x-2 space-x-reverse"><button data-class="اکونومی"
+                            class="flight-class-btn flex-1 bg-[#f37321] text-white rounded-lg px-3 py-1.5 text-sm transition">اکونومی</button><button
+                            data-class="بیزنس"
+                            class="flight-class-btn flex-1 bg-gray-200 text-gray-700 rounded-lg px-3 py-1.5 text-sm transition hover:bg-gray-300">بیزنس</button><button
+                            data-class="فرست"
+                            class="flight-class-btn flex-1 bg-gray-200 text-gray-700 rounded-lg px-3 py-1.5 text-sm transition hover:bg-gray-300">فرست
+                            کلاس</button></div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="passengers-rooms-template">
+        <div class="relative w-full lg:w-auto lg:col-span-2">
+            <div class="relative input-group">
+                <iconify-icon icon="ph:bed" class="input-icon search-input-icon"></iconify-icon>
+                <input id="room-input" readonly value="۱ اتاق، ۱ بزرگسال" class="input-field cursor-pointer">
+            </div>
+            <div id="room-popover"
+                class="popover absolute top-full right-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl p-4 z-50 hidden opacity-0 transform -translate-y-2 transition-all duration-300">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-gray-800">اتاق</p>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse"><button data-type="room"
+                                data-action="decrease"
+                                class="room-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">-</button><span
+                                id="room-count" class="w-8 text-center font-semibold">1</span><button data-type="room"
+                                data-action="increase"
+                                class="room-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-gray-800">بزرگسال</p>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse"><button data-type="adult-room"
+                                data-action="decrease"
+                                class="room-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">-</button><span
+                                id="adult-room-count" class="w-8 text-center font-semibold">1</span><button
+                                data-type="adult-room" data-action="increase"
+                                class="room-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-gray-800">کودک</p>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse"><button data-type="child-room"
+                                data-action="decrease"
+                                class="room-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">-</button><span
+                                id="child-room-count" class="w-8 text-center font-semibold">0</span><button
+                                data-type="child-room" data-action="increase"
+                                class="room-btn w-8 h-8 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="passengers-only-template">
+        <div class="w-full lg:w-auto lg:col-span-3">
+            <div class="relative input-group">
+                <iconify-icon icon="ph:users" class="input-icon search-input-icon"></iconify-icon>
+                <input id="passenger-only-input" readonly value="۱ مسافر" class="input-field cursor-pointer">
+            </div>
+        </div>
+    </template>
+    <template id="hotel-partial-stay-template">
+    <div class="w-full px-4 mt-3">
+        <div class="flex items-center justify-start pr-6">
+            <input id="partial-stay-checkbox" type="checkbox" 
+                   class="w-4 h-4 accent-[--color-primary] cursor-pointer">
+            <label for="partial-stay-checkbox" 
+                   class="ms-2 text-sm font-medium text-gray-600 cursor-pointer">فقط برای بخشی از سفر نیاز به هتل دارم</label>
+        </div>
+        <div id="hotel-partial-date-container" class="mt-4 hidden pr-6">
+            <div class="relative input-group">
+                <iconify-icon icon="solar:calendar-search-broken" class="input-icon search-input-icon"></iconify-icon>
+                <input id="hotel-datepicker" class="input-field cursor-pointer" placeholder="انتخاب تاریخ ورود و خروج هتل">
+            </div>
+        </div>
+    </div>
+</template>
+<template id="flight-type-template">
+    <nav class="w-full px-4 pt-1 mb-3 lg:mb-3 md:mb-3 sm:mb-3">
+        <ul class="flex justify-start items-center gap-x-6 pr-6">
+            <li class="flex items-center">
+                <input id="roundtrip-radio" type="radio" value="roundtrip" name="flight-type" class="w-4 h-4 accent-[--color-primary] cursor-pointer" data-trip-type="roundtrip" checked>
+                <label for="roundtrip-radio" class="ms-2 text-sm font-medium text-gray-600 cursor-pointer">رفت و برگشت</label>
+            </li>
+            <li class="flex items-center">
+                <input id="oneway-radio" type="radio" value="oneway" name="flight-type" class="w-4 h-4 accent-[--color-primary] cursor-pointer" data-trip-type="oneway">
+                <label for="oneway-radio" class="ms-2 text-sm font-medium text-gray-600 cursor-pointer">یک‌طرفه</label>
+            </li>
+            <li class="flex items-center">
+                <input id="multicity-radio" type="radio" value="multicity" name="flight-type" class="w-4 h-4 accent-[--color-primary] cursor-pointer" data-trip-type="multicity">
+                <label for="multicity-radio" class="ms-2 text-sm font-medium text-gray-600 cursor-pointer">چند مسیره</label>
+            </li>
+        </ul>
+    </nav>
+</template>
+<template id="search-button-template">
+    <div class="w-full lg:w-auto lg:col-span-1">
+        <button class="search-button h-14 text-white font-bold rounded-full flex items-center justify-center
+                       w-full lg:w-14"> 
+            <iconify-icon icon="solar:magnifer-broken" class="text-2xl"></iconify-icon>
+            <span class="mr-2 font-bold lg:hidden">جستجو</span>
+        </button>
+    </div>
+</template>
+
+    <script>
+
+        // --- Mobile Menu Logic ---
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        function openMenu() {
+            mobileMenu.classList.remove('hidden-menu');
+            mobileMenuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            mobileMenu.classList.add('hidden-menu');
+            mobileMenuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        hamburgerButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        mobileMenuOverlay.addEventListener('click', closeMenu);
+
+        // --- UNIFIED SCRIPT LOGIC FOR SEARCH & OTHER SECTIONS ---
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- ALL VARIABLES AND FUNCTIONS ARE DEFINED HERE ---
+
+            let templates;
+            let tripType = 'roundtrip';
+            let flightClass = 'اکونومی';
+            let passengerCounts = { adult: 1, child: 0 };
+            let roomCounts = { room: 1, "adult-room": 1, "child-room": 0 };
+            let datePicker;
+            let hotelDatePicker = null;
+            
+            const backgroundImages = {
+                'flight': 'https://aryansite.ir/wp-content/uploads/2025/08/Lucid_Realism_Ultrabright_minimal_coastal_scene_retrostyle_pas_2.webp',
+                'hotel': 'https://aryansite.ir/wp-content/uploads/2025/08/Default_Ultrabright_minimal_coastal_scene_unique_modern_glass__0.webp',
+                'flight-hotel': 'https://aryansite.ir/wp-content/uploads/2025/08/Lucid_Realism_Ultrabright_minimal_coastal_scene_unique_modern__0.webp',
+                'tour': 'https://aryansite.ir/wp-content/uploads/2025/08/Lucid_Realism_Bright_lively_coastal_scene_in_pastel_tones_wide_0-1.webp',
+                'insurance': 'https://aryansite.ir/wp-content/uploads/2025/08/Lucid_Realism_Ultrabright_minimal_coastal_scene_large_pastel_m_3.webp'
+            };
+
+            const renderFields = (serviceType, container, isMobile = false) => {
+    const heroBanner = document.getElementById('hero-banner');
+    if (!isMobile && heroBanner && backgroundImages[serviceType]) {
+        heroBanner.style.backgroundImage = `url('${backgroundImages[serviceType]}')`;
+    }
+
+    if (!container) {
+        container = document.getElementById('search-form-fields');
+    }
+
+    // --- START: Changes ---
+    const searchFormAddons = !isMobile ? document.getElementById('search-form-addons') : null;
+    const searchFormTopRow = !isMobile ? document.getElementById('search-form-top-row') : null;
+    
+    container.innerHTML = '';
+    if (searchFormAddons) {
+        searchFormAddons.innerHTML = '';
+    }
+    if (searchFormTopRow) {
+        searchFormTopRow.innerHTML = '';
+    }
+    // --- END: Changes ---
+
+    const inputsParentPanel = document.getElementById('inputs-parent-panel');
+    if (inputsParentPanel && !isMobile) {
+        inputsParentPanel.classList.remove('py-8', 'pt-3', 'pb-10', 'pt-10', 'pb-3');
+        if (serviceType === 'flight') {
+            inputsParentPanel.classList.add('pt-3', 'pb-10');
+        } else if (serviceType === 'flight-hotel') {
+            inputsParentPanel.classList.add('pt-10', 'pb-3');
+        } else {
+            inputsParentPanel.classList.add('py-8');
+        }
+    }
+    
+    const fieldConfigs = {
+        flight: ['flightType', 'originDest', 'date', 'passengersFlight', 'searchButton'],
+        hotel: ['destOnly', 'date', 'passengersRooms', 'searchButton'],
+        'flight-hotel': ['originDest', 'date', 'passengersRooms', 'hotelPartialStay', 'searchButton'],
+        tour: ['destOnly', 'date', 'passengersRooms', 'searchButton'],
+        insurance: ['destOnly', 'date', 'passengersOnly', 'searchButton'],
+    };
+
+    const fieldsToRender = fieldConfigs[serviceType] || fieldConfigs.flight;
+
+    fieldsToRender.forEach(fieldName => {
+        const template = templates[fieldName];
+        if (template) {
+            const clone = template.content.cloneNode(true);
+            
+            // --- START: Changes ---
+            if (fieldName === 'flightType' && searchFormTopRow) {
+                searchFormTopRow.appendChild(clone);
+            } else if (fieldName === 'hotelPartialStay' && searchFormAddons) {
+                searchFormAddons.appendChild(clone);
+            } else {
+                container.appendChild(clone);
+            }
+            // --- END: Changes ---
+        }
+    });
+    
+    initializeDynamicEventListeners();
+    initializeDatePicker();
+};
+
+            const initializeDynamicEventListeners = () => {
+                document.querySelectorAll('input[name="flight-type"]').forEach(radio => radio.addEventListener('change', handleTripTypeChange));
+                document.querySelectorAll('.swap-button').forEach(button => button.addEventListener('click', handleSwapClick));
+                document.getElementById('passenger-input')?.addEventListener('click', (e) => togglePopover(e, 'passenger-popover'));
+                document.getElementById('room-input')?.addEventListener('click', (e) => togglePopover(e, 'room-popover'));
+                document.querySelectorAll('.passenger-btn').forEach(button => button.addEventListener('click', handlePassengerBtnClick));
+                document.querySelectorAll('.flight-class-btn').forEach(button => button.addEventListener('click', handleFlightClassClick));
+                document.querySelectorAll('.room-btn').forEach(button => button.addEventListener('click', handleRoomBtnClick));
+                document.getElementById('partial-stay-checkbox')?.addEventListener('change', handlePartialStayChange);
+            };
+            
+            const initializeDatePicker = () => {
+                if (document.getElementById('datepicker')) {
+                    datePicker = new Litepicker({
+                        element: document.getElementById('datepicker'),
+                        singleMode: tripType === 'oneway',
+                        allowRepick: true,
+                        numberOfMonths: 2,
+                        numberOfColumns: 'auto',
+                        lang: 'fa-IR',
+                        format: 'D MMMM YYYY',
+                        buttonText: {
+                            previousMonth: `<iconify-icon icon="ph:caret-right-bold"></iconify-icon>`,
+                            nextMonth: `<iconify-icon icon="ph:caret-left-bold"></iconify-icon>`,
+                            reset: 'بازنشانی',
+                            apply: 'تایید',
+                        },
+                        dropdowns: { minYear: new Date().getFullYear(), maxYear: null, months: true, years: true },
+                        setup: (picker) => { picker.on('show', () => { picker.ui.style.zIndex = '50'; }); }
+                    });
+                }
+            };
+            
+            const handleTripTypeChange = (e) => {
+                tripType = e.currentTarget.value;
+                datePicker?.setOptions({ singleMode: tripType === 'oneway' });
+            };
+            
+            const handleSwapClick = (e) => {
+                const container = e.currentTarget.closest('.lg\\:col-span-4, .merged-input-container'); // Works for both desktop and mobile
+                const originInput = container.querySelector('#origin');
+                const destinationInput = container.querySelector('#destination');
+                [originInput.value, destinationInput.value] = [destinationInput.value, originInput.value];
+            };
+            
+            const togglePopover = (e, popoverId) => {
+                e.stopPropagation();
+                const popover = document.getElementById(popoverId);
+                if (popover) {
+                    const isHidden = popover.classList.contains('hidden');
+                    document.querySelectorAll('.popover').forEach(p => p.classList.add('hidden', 'opacity-0', '-translate-y-2'));
+                    if (isHidden) {
+                        popover.classList.remove('hidden');
+                        setTimeout(() => popover.classList.remove('opacity-0', '-translate-y-2'), 10);
+                    }
+                }
+            };
+            
+            const handlePassengerBtnClick = (e) => {
+                const { type, action } = e.currentTarget.dataset;
+                if (action === 'increase') passengerCounts[type]++;
+                else if (action === 'decrease' && passengerCounts[type] > (type === 'adult' ? 1 : 0)) passengerCounts[type]--;
+                updatePassengerDisplay();
+            };
+            
+            const handleFlightClassClick = (e) => {
+                document.querySelectorAll('.flight-class-btn').forEach(btn => {
+                    btn.classList.replace('bg-[#f37321]', 'bg-gray-200');
+                    btn.classList.replace('text-white', 'text-gray-700');
+                    btn.classList.add('hover:bg-gray-300');
+                });
+                e.currentTarget.classList.replace('bg-gray-200', 'bg-[#f37321]');
+                e.currentTarget.classList.replace('text-gray-700', 'text-white');
+                e.currentTarget.classList.remove('hover:bg-gray-300');
+                flightClass = e.currentTarget.dataset.class;
+                updatePassengerDisplay();
+            };
+            
+            const handleRoomBtnClick = (e) => {
+                const { type, action } = e.currentTarget.dataset;
+                const minCount = (type === 'room' || type === 'adult-room') ? 1 : 0;
+                if (action === 'increase') roomCounts[type]++;
+                else if (action === 'decrease' && roomCounts[type] > minCount) roomCounts[type]--;
+                updateRoomDisplay();
+            };
+            
+            const handlePartialStayChange = (e) => {
+                const container = document.getElementById('hotel-partial-date-container');
+                if (e.target.checked) {
+                    container.classList.remove('hidden');
+                    if (!hotelDatePicker) {
+                        hotelDatePicker = new Litepicker({
+                            element: document.getElementById('hotel-datepicker'),
+                            singleMode: false, allowRepick: true, numberOfMonths: 2, numberOfColumns: 'auto', lang: 'fa-IR', format: 'D MMMM YYYY',
+                            buttonText: { previousMonth: `<i class="ph-bold ph-caret-right"></i>`, nextMonth: `<i class="ph-bold ph-caret-left"></i>`, reset: 'بازنشانی', apply: 'تایید', },
+                            dropdowns: { minYear: new Date().getFullYear(), maxYear: null, months: true, years: true },
+                            setup: (picker) => { picker.on('show', () => { picker.ui.style.zIndex = '50'; }); }
+                        });
+                    }
+                } else {
+                    container.classList.add('hidden');
+                }
+            };
+            
+            const updatePassengerDisplay = () => {
+                const adultCountEl = document.getElementById('adult-count');
+                const childCountEl = document.getElementById('child-count');
+                const passengerInputEl = document.getElementById('passenger-input');
+                if (adultCountEl) adultCountEl.textContent = passengerCounts.adult;
+                if (childCountEl) childCountEl.textContent = passengerCounts.child;
+                const total = passengerCounts.adult + passengerCounts.child;
+                const passengerOnlyInput = document.getElementById('passenger-only-input');
+                if (passengerInputEl) passengerInputEl.value = `${total} مسافر، ${flightClass}`;
+                if (passengerOnlyInput) passengerOnlyInput.value = `${total} مسافر`;
+            };
+            
+            const updateRoomDisplay = () => {
+                const roomCountEl = document.getElementById('room-count');
+                const adultRoomCountEl = document.getElementById('adult-room-count');
+                const childRoomCountEl = document.getElementById('child-room-count');
+                const roomInputEl = document.getElementById('room-input');
+                if (roomCountEl) roomCountEl.textContent = roomCounts.room;
+                if (adultRoomCountEl) adultRoomCountEl.textContent = roomCounts['adult-room'];
+                if (childRoomCountEl) childRoomCountEl.textContent = roomCounts['child-room'];
+                const totalPassengers = roomCounts['adult-room'] + roomCounts['child-room'];
+                if (roomInputEl) roomInputEl.value = `${roomCounts.room} اتاق، ${totalPassengers} مسافر`;
+            };
+
+            // --- INITIALIZE TEMPLATES (MUST BE INSIDE DOMCONTENTLOADED) ---
+            templates = {
+                flightType: document.getElementById('flight-type-template'),
+                originDest: document.getElementById('origin-dest-template'),
+                destOnly: document.getElementById('destination-only-template'),
+                date: document.getElementById('date-template'),
+                passengersFlight: document.getElementById('passengers-flight-template'),
+                passengersRooms: document.getElementById('passengers-rooms-template'),
+                passengersOnly: document.getElementById('passengers-only-template'),
+                hotelPartialStay: document.getElementById('hotel-partial-stay-template'),
+                searchButton: document.getElementById('search-button-template'),
+            };
+
+            // --- DESKTOP SEARCH LOGIC ---
+            const serviceTypeButtons = document.querySelectorAll('.service-type-btn');
+            if (serviceTypeButtons.length > 0) {
+                serviceTypeButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        serviceTypeButtons.forEach(btn => btn.classList.remove('btn-active'));
+                        e.currentTarget.classList.add('btn-active');
+                        renderFields(e.currentTarget.dataset.serviceType);
+                    });
+                });
+                document.querySelector('.service-type-btn[data-service-type="flight"]').click();
+            }
+
+            // --- MOBILE SEARCH LOGIC ---
+            if (document.getElementById('mobile-service-selector')) {
+                const mobileServiceButtons = document.querySelectorAll('.mobile-service-btn');
+                const mobileFormContainer = document.getElementById('mobile-form-container');
+                const mobileHeroBanner = document.getElementById('mobile-hero-banner');
+        
+                const handleMobileServiceSelection = (serviceType) => {
+                    if (mobileHeroBanner && backgroundImages[serviceType]) {
+                        mobileHeroBanner.style.backgroundImage = `url('${backgroundImages[serviceType]}')`;
+                    }
+                    renderFields(serviceType, mobileFormContainer, true);
+                };
+        
+                mobileServiceButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        mobileServiceButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        const serviceType = this.dataset.serviceType;
+                        handleMobileServiceSelection(serviceType);
+                    });
+                });
+                handleMobileServiceSelection('flight'); // Initial render for mobile
+            }
+            
+
+            // --- GLOBAL CLICK LISTENER FOR POPOVERS ---
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.popover') && !e.target.closest('.input-group')) {
+                    document.querySelectorAll('.popover').forEach(p => p.classList.add('hidden', 'opacity-0', '-translate-y-2'));
+                }
+            });
+
+            // --- Popular Destinations Logic ---
+            const sections = [
+                [
+                    { city: 'دبی', country: 'امارات', image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop', size: 'lg:col-start-1 lg:row-start-1' },
+                    { city: 'آنتالیا', country: 'ترکیه', image: 'https://images.unsplash.com/photo-1591038014425-ca3e438fda07?q=80&w=800&auto=format&fit=crop', size: 'lg:col-start-2 lg:row-start-1' },
+                    { city: 'استانبول', country: 'ترکیه', image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aXN0YW5idWx8ZW58MHx8MHx8fDA%3D', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-3' },
+                    { city: 'بانکوک', country: 'تایلند', image: 'https://images.unsplash.com/photo-1681129813299-0dce89ccc6cf?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-1 lg:col-span-2 lg:row-start-2 lg:row-span-3' },
+                    { city: 'حمامات', country: 'تونس', image: 'https://images.unsplash.com/photo-1633936478473-e75c1252cccf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGFtbWFtZXR8ZW58MHwwfDB8fHww', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-4' },
+                ],
+                [
+                    { city: 'سن پترزبورگ', country: 'روسیه', image: 'https://images.unsplash.com/photo-1554202218-20ee1af0fb17?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-1 lg:col-span-2 lg:row-start-1 lg:row-span-3' },
+                    { city: 'پوکت', country: 'تایلند', image: 'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?q=80&w=800&auto=format&fit=crop', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-3' },
+                    { city: 'تفلیس', country: 'گرجستان', image: 'https://images.unsplash.com/photo-1603350576276-24747f7bbf40?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-1 lg:row-start-4' },
+                    { city: 'ایروان', country: 'ارمنستان', image: 'https://images.unsplash.com/photo-1681533263878-a55680924fe6?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-2 lg:row-start-4' },
+                    { city: 'سوسه', country: 'تونس', image: 'https://images.unsplash.com/photo-1624921768886-5d12e2cdc584?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c291c3NlfGVufDB8MHwwfHx8MA%3D%3D', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-4' },
+                ],
+                [
+                    { city: 'مسکو', country: 'روسیه', image: 'https://images.unsplash.com/photo-1520106212299-d99c443e4568?q=80&w=800&auto=format&fit=crop', size: 'lg:col-start-1 lg:row-start-1' },
+                    { city: 'بودروم', country: 'ترکیه', image: 'https://images.unsplash.com/photo-1600500636274-2e64593efb62?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9kcnVtfGVufDB8fDB8fHww', size: 'lg:col-start-2 lg:row-start-1' },
+                    { city: 'پاتایا', country: 'تایلند', image: 'https://images.unsplash.com/photo-1674824082983-c5ba84c1a492?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-4' },
+                    { city: 'کلمبو', country: 'سریلانکا', image: 'https://plus.unsplash.com/premium_photo-1754269408038-07eba5d79d87?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y29sb21ibyUyMHNyaWxhbmthfGVufDB8MHwwfHx8MA%3D%3D', size: 'lg:col-start-1 lg:col-span-2 lg:row-start-2 lg:row-span-3' },
+                ],
+                [
+                    { city: 'باتومی', country: 'گرجستان', image: 'https://images.unsplash.com/photo-1724593888371-61ffbc6fc49e?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-1 lg:row-start-1' },
+                    { city: 'کوش آداسی', country: 'ترکیه', image: 'https://images.unsplash.com/photo-1645485858906-56fc0972f31f?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-2 lg:row-start-1' },
+                    { city: 'فتحیه', country: 'ترکیه', image: 'https://plus.unsplash.com/premium_photo-1750864962160-fcb6c6b986e8?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-3' },
+                    { city: 'شهر تونس', country: 'تونس', image: 'https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-1 lg:col-span-2 lg:row-start-2 lg:row-span-3' },
+                    { city: 'آکتائو', country: 'قزاقستان', image: 'https://images.unsplash.com/photo-1662048992353-e3fad23d8a05?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWt0YXV8ZW58MHwwfDB8fHww', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-4' },
+                ]
+            ];
+            const sectionContainers = [
+                document.getElementById('section-0-container'),
+                document.getElementById('section-1-container'),
+                document.getElementById('section-2-container'),
+                document.getElementById('section-3-container')
+            ];
+
+            const createCardElement = (item) => {
+                const card = document.createElement('a');
+                card.href = '#';
+                card.className = `dest-card ${item.size || ''}`;
+                card.innerHTML = `<img src="${item.image}" alt="نمایی از شهر ${item.city}" loading="lazy"><div class="card-content"><h3 class="card-title">${item.city}</h3><p class="card-subtitle">${item.country}</p></div>`;
+                return card;
+            };
+
+            const createButtonWrapper = () => {
+                const buttonWrapper = document.createElement('div');
+                buttonWrapper.className = 'load-more-btn-wrapper';
+                const buttonContainer = document.createElement('div');
+                buttonContainer.className = 'load-more-btn-container';
+                buttonWrapper.appendChild(buttonContainer);
+                return buttonWrapper;
+            };
+
+            const createLoadMoreButton = (sectionToLoadIndex) => {
+                const button = document.createElement('button');
+                button.className = 'load-more-btn group';
+                const icon = document.createElement('iconify-icon');
+                icon.setAttribute('icon', 'line-md:sunny-filled-loop');
+                icon.className = 'text-2xl group-hover:rotate-90 transition-transform duration-300';
+                const text = document.createElement('span');
+                text.textContent = 'ماجراجویی بیشتر';
+                button.append(icon, text);
+
+                button.addEventListener('click', () => {
+                    loadSection(sectionToLoadIndex);
+                    button.closest('.load-more-btn-wrapper').remove();
+                }, { once: true });
+                return button;
+            };
+
+            const createCloseAllButton = () => {
+                const button = document.createElement('button');
+                button.className = 'close-all-btn group';
+                const icon = document.createElement('iconify-icon');
+                icon.setAttribute('icon', 'solar:adhesive-plaster-broken');
+                icon.className = 'text-2xl group-hover:rotate-180 transition-transform duration-300';
+                const text = document.createElement('span');
+                text.textContent = 'بستن همه';
+                button.append(icon, text);
+                button.addEventListener('click', closeAllSections);
+                return button;
+            };
+
+            const closeAllSections = () => {
+                sectionContainers.forEach((container, index) => {
+                    if (index > 0) container.classList.add('hidden');
+                });
+                document.querySelector('.load-more-btn-wrapper')?.remove();
+                const firstLoadMoreWrapper = createButtonWrapper();
+                firstLoadMoreWrapper.querySelector('.load-more-btn-container').appendChild(createLoadMoreButton(1));
+                sectionContainers[0].insertAdjacentElement('afterend', firstLoadMoreWrapper);
+                sectionContainers[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            };
+
+            const loadSection = (sectionIndex) => {
+                if (sectionIndex >= sections.length || !sectionContainers[sectionIndex]) return;
+                const container = sectionContainers[sectionIndex];
+                container.classList.remove('hidden');
+                if (container.children.length === 0) {
+                    sections[sectionIndex].forEach(item => container.appendChild(createCardElement(item)));
+                }
+                const nextButtonWrapper = createButtonWrapper();
+                if (sectionIndex + 1 >= sections.length) {
+                    nextButtonWrapper.querySelector('.load-more-btn-container').appendChild(createCloseAllButton());
+                } else {
+                    nextButtonWrapper.querySelector('.load-more-btn-container').appendChild(createLoadMoreButton(sectionIndex + 1));
+                }
+                container.insertAdjacentElement('afterend', nextButtonWrapper);
+            };
+
+            if(sectionContainers[0]) {
+               loadSection(0);
+            }
+
+            // --- Travel Style Slider Logic ---
+            const travelData = [
+                { id: 'family', title: 'سفرهای خانوادگی', description: 'آرامش و خاطره‌سازی برای همه اعضای خانواده در بهترین مقاصد دنیا.', bgColor: '#607D8B', bgImage: 'https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?q=80&w=1887&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1591038014425-ca3e438fda07?q=80&w=1887&auto=format&fit=crop' },
+                
+                { id: 'luxury', title: 'لوکس', description: 'تجربه‌ای بی‌نظیر از آسایش و خدمات اختصاصی در بهترین هتل‌ها و ریزورت‌های جهان.', bgColor: '#3E2723', bgImage: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1770&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1563911302283-d2bc129e7570?q=80&w=1935&auto=format&fit=crop' },
+                
+                { id: 'adventure', title: 'ماجراجویانه', description: 'کشف ناشناخته‌ها، هیجان در طبیعت بکر و تجربه‌هایی که هرگز فراموش نخواهید کرد.', bgColor: '#004D40', bgImage: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=1770&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=1773&auto=format&fit=crop' },
+                
+                { id: 'cultural', title: 'فرهنگی و تاریخی', description: 'سفری به دل تاریخ و تمدن‌های شگفت‌انگیز در موزه‌ها، بناهای باستانی و شهرهای کهن.', bgColor: '#BF360C', bgImage: 'https://images.pexels.com/photos/3629813/pexels-photo-3629813.jpeg?q=80&w=1887&auto=format&fit=crop', cardImage: 'https://images.pexels.com/photos/753339/pexels-photo-753339.jpeg?q=80&w=1770&auto=format&fit=crop' },
+                
+                { id: 'exhibition', title: 'نمایشگاهی و تجاری', description: 'سفرهای تخصصی برای شرکت در رویدادها، نمایشگاه‌ها و گسترش کسب‌وکار شما.', bgColor: '#455A64', bgImage: 'https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=1887&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1770&auto=format&fit=crop' }
+            ];
+            const initDesktopSlider = () => {
+                if (window.innerWidth <= 768) return;
+                const sliderContainer = document.getElementById('desktop-travel-style-slider');
+                const backgroundsContainer = document.getElementById('desktop-backgrounds-container');
+                const contentContainer = document.getElementById('desktop-content-container');
+                const cardsWrapper = document.getElementById('desktop-cards-wrapper');
+                const navDotsContainer = document.getElementById('desktop-nav-dots-container');
+                const cardsContainer = document.getElementById('desktop-cards-container');
+                const progressBar = document.getElementById('desktop-slider-progress');
+                let currentIndex = 0, autoPlayInterval, isMouseDown = false, isDragging = false, startPos = 0, currentTranslate = 0, prevTranslate = 0;
+                function init() {
+                    travelData.forEach((item, index) => {
+                        const bg = document.createElement('img'); bg.src = item.bgImage; bg.className = 'bg-image'; bg.dataset.id = item.id; backgroundsContainer.appendChild(bg);
+                        const content = document.createElement('div'); content.className = 'content-item w-full'; content.dataset.id = item.id; content.innerHTML = `<div class="flex flex-col items-start"><h2 class="text-5xl lg:text-7xl font-extrabold">${item.title}</h2><p class="mt-6 text-lg max-w-lg text-gray-200">${item.description}</p><a href="#" class="inline-block mt-8 bg-white/90 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-white transition-colors text-lg">مشاهده تورها</a></div>`; contentContainer.appendChild(content);
+                        const card = document.createElement('div'); card.className = 'card-item w-80 h-[480px] rounded-2xl overflow-hidden relative shadow-2xl'; card.dataset.index = index; card.innerHTML = `<img src="${item.cardImage}" class="w-full h-full object-cover" alt="${item.title}" draggable="false"><div class="absolute inset-0 bg-black/20"></div><h3 class="absolute bottom-4 right-4 text-white font-bold text-xl">${item.title}</h3>`; cardsWrapper.appendChild(card);
+                        const dot = document.createElement('div'); dot.className = 'nav-dot w-3 h-3 rounded-full bg-white/40'; dot.dataset.index = index; navDotsContainer.appendChild(dot);
+                    });
+                    addEventListeners(); setTimeout(() => updateSlider(currentIndex, false), 100);
+                    const observerOptions = {
+    root: null, // مشاهده نسبت به کل صفحه
+    threshold: 0.5 // زمانی فعال شود که ۵۰٪ اسلایدر دیده شد
+};
+
+const observerCallback = (entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // اگر اسلایدر وارد دید کاربر شد، اتوپلی را شروع کن
+            startAutoPlay();
+        } else {
+            // اگر اسلای-در از دید کاربر خارج شد، اتوپلی را متوقف کن
+            stopAutoPlay();
+        }
+    });
+};
+
+const sliderObserver = new IntersectionObserver(observerCallback, observerOptions);
+sliderObserver.observe(sliderContainer);
+                }
+                function addEventListeners() { document.querySelectorAll('.desktop-travel-style-slider .card-item').forEach(card => card.addEventListener('click', () => { if (isDragging) return; stopAutoPlay(); updateSlider(parseInt(card.dataset.index)); startAutoPlay(); })); document.querySelectorAll('.desktop-travel-style-slider .nav-dot').forEach(dot => dot.addEventListener('click', () => { stopAutoPlay(); updateSlider(parseInt(dot.dataset.index)); startAutoPlay(); })); sliderContainer.addEventListener('mouseenter', stopAutoPlay); sliderContainer.addEventListener('mouseleave', startAutoPlay); cardsWrapper.addEventListener('mousedown', dragStart); window.addEventListener('mouseup', dragEnd); window.addEventListener('mousemove', drag); }
+                function dragStart(e) { if (e.target.closest('#desktop-cards-wrapper')) { stopAutoPlay(); isMouseDown = true; startPos = e.pageX; isDragging = false; cardsWrapper.style.transition = 'none'; cardsWrapper.classList.add('dragging'); } }
+                function drag(e) { if (!isMouseDown) return; if (Math.abs(e.pageX - startPos) > 10) isDragging = true; currentTranslate = prevTranslate + e.pageX - startPos; setSliderPosition(); }
+                function dragEnd(e) { if (!isMouseDown) return; isMouseDown = false; cardsWrapper.classList.remove('dragging'); const movedBy = currentTranslate - prevTranslate; if (movedBy < -80) currentIndex = (currentIndex + 1) % travelData.length; else if (movedBy > 80) currentIndex = (currentIndex - 1 + travelData.length) % travelData.length; updateSlider(currentIndex); startAutoPlay(); }
+                function setSliderPosition() { cardsWrapper.style.transform = `translateX(${currentTranslate}px)`; }
+                function updateSlider(index, animate = true) { 
+                    currentIndex = index; 
+                    const activeItem = travelData[index]; 
+                    document.querySelectorAll('.desktop-travel-style-slider .bg-image').forEach(img => img.classList.toggle('active', img.dataset.id === activeItem.id)); 
+                    document.querySelectorAll('.desktop-travel-style-slider .content-item').forEach(content => content.classList.toggle('active', content.dataset.id === activeItem.id)); 
+                    const allCards = document.querySelectorAll('.desktop-travel-style-slider .card-item'); 
+                    const activeCard = allCards[index]; 
+                    // **** PEEK-A-BOO FIX ****
+                    const fixedLeftOffset = (cardsContainer.offsetWidth * 1); // این عدد جایگاه کارت از لبه چپ را کنترل می‌کند
+                    const finalTranslate = fixedLeftOffset - activeCard.offsetLeft; 
+                    currentTranslate = finalTranslate; 
+                    prevTranslate = currentTranslate; 
+                    cardsWrapper.style.transition = animate ? 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)' : 'none'; 
+                    setSliderPosition(); 
+                    allCards.forEach((card, i) => card.classList.toggle('active', i === index)); 
+                    document.querySelectorAll('.desktop-travel-style-slider .nav-dot').forEach((dot, i) => dot.classList.toggle('active', i === index)); 
+                    sliderContainer.style.backgroundColor = activeItem.bgColor;
+                    // **** PROGRESS BAR UPDATE ****
+                    if (progressBar) {
+                        const progressPercentage = ((index + 1) / travelData.length) * 100;
+                        progressBar.style.width = `${progressPercentage}%`;
+                    }
+                }
+                function nextSlide() { updateSlider((currentIndex + 1) % travelData.length); }
+                function startAutoPlay() { stopAutoPlay(); autoPlayInterval = setInterval(nextSlide, 5000); }
+                function stopAutoPlay() { clearInterval(autoPlayInterval); }
+                window.addEventListener('resize', () => updateSlider(currentIndex, false)); init();
+            };
+            const initMobileSlider = () => {
+    if (window.innerWidth > 768) return;
+
+    const mobileTravelData = [
+        { id: 'family', title: 'سفرهای خانوادگی', description: 'آرامش و خاطره‌سازی برای همه اعضای خانواده.', cardImage: 'https://images.pexels.com/photos/1078981/pexels-photo-1078981.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+        
+        { id: 'luxury', title: 'لوکس', description: 'تجربه‌ای بی‌نظیر از آسایش و خدمات اختصاصی.', cardImage: 'https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+        
+        { id: 'adventure', title: 'ماجراجویانه', description: 'کشف ناشناخته‌ها و هیجان در طبیعت بکر.', cardImage: 'https://images.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+        
+        { id: 'cultural', title: 'فرهنگی و تاریخی', description: 'سفری به دل تاریخ و تمدن‌های شگفت‌انگیز.', cardImage: 'https://images.pexels.com/photos/314937/pexels-photo-314937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+
+        { id: 'exhibition', title: 'نمایشگاهی و تجاری', description: 'شرکت در رویدادها و گسترش کسب‌وکار شما.', cardImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1770&auto=format&fit=crop' }
+    ];
+    const viewport = document.getElementById('mobile-card-viewport');
+    const track = document.getElementById('mobile-card-track');
+    if (!viewport || !track) return;
+
+
+    const createCard = (item) => {
+        const card = document.createElement('div');
+        // کلاس mr-4 برای ایجاد فاصله بین کارت‌ها اضافه شد
+        card.className = 'card h-full rounded-2xl relative overflow-hidden shadow-2xl p-6 flex flex-col justify-end mr-4';
+        card.style.flexShrink = '0';
+        card.style.backgroundImage = `url(${item.cardImage})`;
+        card.innerHTML = `<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div><div class="card-content relative z-10 text-white text-right"><h3 class="card-title text-3xl font-extrabold">${item.title}</h3><p class="card-description mt-3 text-base text-gray-200">${item.description}</p><a href="#" class="card-cta w-16 h-16 mt-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform -rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg></a></div>`;
+        return card;
+    };
+
+    [...mobileTravelData, ...mobileTravelData, ...mobileTravelData].forEach(item => {
+        track.appendChild(createCard(item));
+    });
+};
+            initDesktopSlider();
+            initMobileSlider();
+            
+            // --- Blog Slider Logic ---
+            const slides = document.querySelectorAll('.blog-slide');
+            const sliderNav = document.getElementById('blog-slider-nav');
+            if (slides.length && sliderNav) {
+                const progressLine = document.getElementById('blog-progress-line');
+                let currentSlide = 0;
+                let slideInterval;
+    
+                slides.forEach((slide, index) => {
+                    const label = slide.getAttribute('data-label');
+                    const navItem = document.createElement('div');
+                    navItem.className = 'blog-nav-item';
+                    navItem.innerHTML = `<div class="blog-nav-dot"></div><span class="blog-nav-label">${label}</span>`;
+                    navItem.addEventListener('click', () => { goToSlide(index); resetInterval(); });
+                    sliderNav.appendChild(navItem);
+                });
+    
+                const navItems = sliderNav.querySelectorAll('.blog-nav-item');
+    
+                function goToSlide(n) {
+                    slides[currentSlide].classList.remove('active');
+                    navItems[currentSlide].classList.remove('active');
+                    currentSlide = (n + slides.length) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                    navItems[currentSlide].classList.add('active');
+                    updateProgressLine();
+                }
+    
+                function updateProgressLine() {
+                    const activeItem = navItems[currentSlide];
+                    const navRect = sliderNav.getBoundingClientRect();
+                    const itemRect = activeItem.getBoundingClientRect();
+                    const progressWidth = (itemRect.left - navRect.left) + (itemRect.width / 2);
+                    progressLine.style.width = `${progressWidth}px`;
+                }
+    
+                function nextSlide() { goToSlide(currentSlide + 1); }
+                function startInterval() { slideInterval = setInterval(nextSlide, 5000); }
+                function resetInterval() { clearInterval(slideInterval); startInterval(); }
+    
+                goToSlide(0);
+                startInterval();
+                window.addEventListener('resize', updateProgressLine);
+            }
+        });
+// --- END: NEW MOBILE TABS LOGIC ---
+
+    </script>
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+</body>
+
+</html>
