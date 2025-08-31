@@ -62,7 +62,7 @@
 
         /* Main wrapper: Adjusting position and width */
         #search-box-wrapper {
-            top: 17.6rem !important;
+            top: 19.875rem !important;
             /* Original: 22rem -> 20% higher */
             max-width: 64rem !important;
             /* Original: max-w-7xl (80rem) -> 20% narrower */
@@ -485,12 +485,20 @@
     .unified-search-panel .search-button {
         height: 3rem; /* 48px */
     }
+    /* 8. چیدمان فیلدهای ورودی (تغییر یافته) */
+.unified-search-panel #search-form-fields {
+    width: 100%;
+    /* justify-content: center;  حذف شد تا فیلدها بتوانند کش بیایند */
+}
 
-    /* 8. وسط چین کردن فیلدهای ورودی (قانون جدید) */
-    .unified-search-panel #search-form-fields {
-        width: 100%;
-        justify-content: center;
-    }
+/* 9. فعال کردن قابلیت رشد برای فیلدهای ورودی (قانون جدید) */
+.unified-search-panel #search-form-fields > div:not(:has(.search-button)) {
+    flex-grow: 1;
+}
+/* 10. تضمین کش آمدن کامل خود فیلدهای ورودی (قانون جدید) */
+.unified-search-panel .input-field {
+    width: 100%;
+}
 }
 /* --- END: CSS for Unified Desktop Search Panel (Final Version) --- */
 
@@ -1535,7 +1543,7 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <div class="hidden sm:block relative bg-gray-50 pb-[40rem] sm:pb-20">
+        <div class="hidden sm:block relative bg-gray-50 pb-[40rem] sm:pb-28">
             <div id="hero-banner"
                 class="hidden md:block h-96 w-full bg-cover bg-center transition-all duration-500 ease-in-out"></div>
             <div id="search-box-wrapper"
