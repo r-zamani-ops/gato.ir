@@ -4069,7 +4069,7 @@
     const prevBtn = root.querySelector('.mini-slider__arrow--prev');
     const nextBtn = root.querySelector('.mini-slider__arrow--next');
     const dots    = Array.from(root.querySelectorAll('.mini-slider__dots li'));
-    const progress= root.querySelector('.mini-slider__progress');
+    //const progress= root.querySelector('.mini-slider__progress'); <--حذف شد 
 
     let index = 0;
     let timer = null;
@@ -4082,7 +4082,7 @@
       dots.forEach((d, n)=> d.setAttribute('aria-selected', n === index ? 'true' : 'false'));
       // progress width: از راست به چپ
       const step = (index) / (slides.length - 1);
-      progress.style.width = (step * 100) + '%';
+      //progress.style.width = (step * 100) + '%';<-- حذف شد
     }
 
     function next(){ setActive(index + 1); restart(); }
