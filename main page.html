@@ -434,11 +434,11 @@
         background-color: #ffffff;
         border-radius: 1.5rem;
         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        padding: 0.5rem 0.75rem; /* <<< تغییر نهایی: پدینگ عمودی کمتر شد */
-        display: inline-block;
-        width: auto;
-        max-width: 100%;
-        overflow: hidden;
+        padding: 0.5rem 0.75rem;
+        /* display: inline-block; <-- حذف شد */
+        /* width: auto; <-- حذف شد */
+        min-width: 56rem; /* <<< جدید: حداقل عرض برای ثابت ماندن اندازه */
+        box-sizing: border-box; /* برای محاسبه صحیح اندازه */
     }
 
     /* 2. ریست کردن استایل پنل‌های داخلی */
@@ -484,6 +484,12 @@
     .unified-search-panel .input-field,
     .unified-search-panel .search-button {
         height: 3rem; /* 48px */
+    }
+
+    /* 8. وسط چین کردن فیلدهای ورودی (قانون جدید) */
+    .unified-search-panel #search-form-fields {
+        width: 100%;
+        justify-content: center;
     }
 }
 /* --- END: CSS for Unified Desktop Search Panel (Final Version) --- */
