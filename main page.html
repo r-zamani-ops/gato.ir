@@ -427,6 +427,7 @@
 
 
         /* --- START: CSS for Unified Desktop Search Panel --- */
+/* --- START: CSS for Unified Desktop Search Panel --- */
 @media (min-width: 640px) { /* اعمال استایل فقط در دسکتاپ */
 
     /* 1. استایل پنل اصلی و یکپارچه */
@@ -456,6 +457,31 @@
         background-color: #e5e7eb; /* رنگ خاکستری کمرنگ */
         margin: 1rem 0; /* فاصله از بالا و پایین */
     }
+    
+    /* --- کدهای جدید اینجاست --- */
+    
+    /* 4. گرد کردن گوشه‌های دکمه‌های سرویس */
+    .unified-search-panel .service-type-btn {
+        border-radius: 0.75rem; /* 12px - تغییر از دایره کامل به گوشه گرد */
+    }
+    
+    /* 5. گرد کردن گوشه‌های فیلدهای ورودی و کانتینر مبدا/مقصد */
+    .unified-search-panel .merged-input-container,
+    .unified-search-panel .input-field {
+        border-radius: 0.75rem !important; /* 12px - استفاده از !important برای اطمینان از اعمال استایل */
+    }
+    
+    /* 6. گرد کردن گوشه دکمه جستجو و نمایش متن آن */
+    .unified-search-panel .search-button {
+        border-radius: 0.75rem; /* 12px */
+        width: auto; /* اجازه می‌دهد دکمه بزرگتر شود */
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .unified-search-panel .search-button .lg\\:hidden{
+        display: inline !important; /* نمایش متن "جستجو" در دسکتاپ */
+    }
+    
 }
 /* --- END: CSS for Unified Desktop Search Panel --- */
 
