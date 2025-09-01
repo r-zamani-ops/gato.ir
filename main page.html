@@ -697,125 +697,104 @@
 
 
         /* ===== Slider Banner (Updated Version) ===== */
-        .mini-slider {
-            --radius: 20px;
-            /* شعاع گوشه‌ها کمی بزرگتر شد */
-            position: relative;
-            /* برای موقعیت‌دهی فلش‌ها ضروری است */
-            padding: 0 4rem;
-            /* ایجاد فضا در طرفین برای فلش‌ها در دسکتاپ */
-        }
+.mini-slider {
+    --radius: 20px;
+    position: relative;
+    /* ✨ تغییر: فضای کنار اسلایدر حذف شد تا بزرگتر شود */
+    padding: 0; 
+}
 
-        .mini-slider__viewport {
-            box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.15);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
+.mini-slider__viewport {
+    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
 
-        .mini-slider__track {
-            position: relative;
-            height: 550px;
-            /* ✨ ارتفاع اسلایدر به طور قابل توجهی افزایش یافت */
-            isolation: isolate;
-        }
+.mini-slider__track {
+    position: relative;
+    /* ✨ تغییر: نسبت ابعاد به ۳ به ۱ تغییر کرد */
+    aspect-ratio: 3 / 1;
+    isolation: isolate;
+}
 
-        /* ارتفاع کمتر برای موبایل */
-        @media (max-width: 1023px) {
-            .mini-slider {
-                padding: 0;
-                /* در موبایل فضای اضافی کنار اسلایدر حذف می‌شود */
-            }
+/* ارتفاع ثابت برای موبایل حذف شد چون دیگر لازم نیست */
+@media (max-width: 1023px) {
+    .mini-slider {
+        padding: 0;
+    }
+}
 
-            .mini-slider__track {
-                height: 450px;
-            }
-        }
+.mini-slider__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(30px) scale(0.98);
+    transition: opacity .45s ease, transform .45s ease;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
 
-        .mini-slider__slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transform: translateX(30px) scale(0.98);
-            transition: opacity .45s ease, transform .45s ease;
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
+.mini-slider__slide.is-active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    z-index: 2;
+}
 
-        .mini-slider__slide.is-active {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-            z-index: 2;
-        }
+.mini-slider__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-        .mini-slider__img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+/* --- Arrows Styling (Updated) --- */
+.mini-slider__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 9999px;
+    border: none;
+    /* ✨ تغییر: پس‌زمینه کمی شفاف شد تا روی عکس بهتر دیده شود */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease;
+    z-index: 5;
+}
 
-        /* --- Arrows Styling (Updated) --- */
-        .mini-slider__arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 52px;
-            height: 52px;
-            display: grid;
-            place-items: center;
-            border-radius: 9999px;
-            border: none;
-            background: #ffffff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform .2s ease, background .2s ease;
-            z-index: 5;
-        }
+.mini-slider__arrow:hover {
+    background: var(--color-primary);
+    transform: translateY(-50%) scale(1.08);
+}
 
-        .mini-slider__arrow:hover {
-            background: var(--color-primary);
-            transform: translateY(-50%) scale(1.08);
-        }
+.mini-slider__arrow:hover iconify-icon {
+    color: #fff;
+}
 
-        .mini-slider__arrow:hover iconify-icon {
-            color: #fff;
-        }
+.mini-slider__arrow iconify-icon {
+    font-size: 24px;
+    color: var(--color-primary);
+    transition: color .2s ease;
+}
 
-        .mini-slider__arrow iconify-icon {
-            font-size: 24px;
-            color: var(--color-primary);
-            transition: color .2s ease;
-        }
+.mini-slider__arrow--prev {
+    right: 0.75rem; /* فاصله کمتر شد */
+}
+.mini-slider__arrow--next {
+    left: 0.75rem; /* فاصله کمتر شد */
+}
 
-        /* ✨ تغییر اصلی: موقعیت فلش‌ها در فضای padding والد تنظیم شد */
-        .mini-slider__arrow--prev {
-            right: 1rem;
-        }
-
-        /* فاصله ۱۶ پیکسلی از لبه راست */
-        .mini-slider__arrow--next {
-            left: 1rem;
-        }
-
-        /* فاصله ۱۶ پیکسلی از لبه چپ */
-
-        /* موقعیت فلش‌ها داخل کادر در موبایل (بدون تغییر) */
-        @media (max-width: 1023px) {
-            .mini-slider__arrow--prev {
-                right: 16px;
-            }
-
-            .mini-slider__arrow--next {
-                left: 16px;
-            }
-
-            .mini-slider__arrow {
-                width: 44px;
-                height: 44px;
-                background: rgba(255, 255, 255, 0.7);
-                backdrop-filter: blur(4px);
-            }
-        }
+@media (max-width: 1023px) {
+    .mini-slider__arrow {
+        width: 44px;
+        height: 44px;
+    }
+}
 
 
         /* --- Simple Dots Pagination (Updated) --- */
@@ -854,6 +833,9 @@
             border-radius: 9999px;
             transform: none;
         }
+        .gradient-slider-section {
+    background: linear-gradient(to bottom, #f9fafb, white, #f9fafb);
+}
 
 
 
@@ -2316,40 +2298,41 @@
         </section>
 
         <!--banner slider--->
-        <!-- === اسلایدر ساده: قبل از "تورهای پرطرفدار" بگذارید === -->
-        <section class="mini-slider container mx-auto px-4 my-10" dir="rtl">
-            <div class="mini-slider__viewport relative mx-auto max-w-5xl rounded-xl overflow-hidden bg-white/50">
-                <div class="mini-slider__track">
-                    <figure class="mini-slider__slide">
-                        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1600&auto-format&fit=crop"
-                            alt="ساحل آفتابی" class="mini-slider__img">
-                    </figure>
+        <section class="gradient-slider-section py-10">
+            <div class="mini-slider" dir="rtl">
+                <div class="mini-slider__viewport relative mx-auto max-w-7xl rounded-xl overflow-hidden bg-white/50">
+            <div class="mini-slider__track">
+                <figure class="mini-slider__slide">
+                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1600&auto-format&fit-crop"
+                        alt="ساحل آفتابی" class="mini-slider__img">
+                </figure>
 
-                    <figure class="mini-slider__slide">
-                        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1600&auto-format&fit=crop"
-                            alt="شهر تاریخی" class="mini-slider__img">
-                    </figure>
+                <figure class="mini-slider__slide">
+                    <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1600&auto-format&fit-crop"
+                        alt="شهر تاریخی" class="mini-slider__img">
+                </figure>
 
-                    <figure class="mini-slider__slide">
-                        <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1600&auto-format&fit=crop"
-                            alt="کوهستان" class="mini-slider__img">
-                    </figure>
-                </div>
-
-                <ol class="mini-slider__dots" role="tablist" aria-label="اسلایدها">
-                    <li role="tab" aria-selected="true"></li>
-                    <li role="tab" aria-selected="false"></li>
-                    <li role="tab" aria-selected="false"></li>
-                </ol>
+                <figure class="mini-slider__slide">
+                    <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1600&auto-format&fit-crop"
+                        alt="کوهستان" class="mini-slider__img">
+                </figure>
             </div>
 
-            <button class="mini-slider__arrow mini-slider__arrow--prev" aria-label="قبلی">
-                <iconify-icon icon="solar:alt-arrow-right-broken"></iconify-icon>
-            </button>
-            <button class="mini-slider__arrow mini-slider__arrow--next" aria-label="بعدی">
-                <iconify-icon icon="solar:alt-arrow-left-broken"></iconify-icon>
-            </button>
-        </section>
+            <ol class="mini-slider__dots" role="tablist" aria-label="اسلایدها">
+                <li role="tab" aria-selected="true"></li>
+                <li role="tab" aria-selected="false"></li>
+                <li role="tab" aria-selected="false"></li>
+            </ol>
+        </div>
+
+        <button class="mini-slider__arrow mini-slider__arrow--prev" aria-label="قبلی">
+            <iconify-icon icon="solar:alt-arrow-right-broken"></iconify-icon>
+        </button>
+        <button class="mini-slider__arrow mini-slider__arrow--next" aria-label="بعدی">
+            <iconify-icon icon="solar:alt-arrow-left-broken"></iconify-icon>
+        </button>
+    </div>
+</section>
 
 
 
