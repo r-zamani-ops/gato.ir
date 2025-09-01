@@ -1782,51 +1782,9 @@
             height: 48px;
             /* ارتفاع سه لوگوی اول را به ۴۸ پیکسل کاهش می‌دهد */
         }
-        /* --- START: Footer Mobile Layout Fix --- */
-@media (max-width: 639px) { /* اعمال استایل فقط برای نمایشگرهای کوچکتر از sm (640px) */
-    .footer-copyright-container {
-        display: flex;
-        flex-direction: column; /* چیدمان ستونی */
-    }
 
-    .footer-copyright-container > div:first-child {
-        order: 2; /* متن کپی‌رایت دوم نمایش داده شود */
-        margin-top: 1.5rem; /* اضافه کردن کمی فاصله از بالا */
-    }
 
-    .footer-copyright-container > div:last-child {
-        order: 1; /* لوگوها اول نمایش داده شوند */
-    }
-
-    /* --- START: Footer Mobile Layout Fix (Final Version) --- */
-@media (max-width: 639px) { /* اعمال استایل فقط برای نمایشگرهای کوچکتر از sm (640px) */
-    .footer-copyright-container {
-        display: flex;
-        flex-direction: column; /* چیدمان ستونی */
-    }
-
-    /* بخش متن کپی‌رایت */
-    .footer-copyright-container > div:first-child {
-        order: 2; /* متن کپی‌رایت دوم نمایش داده شود */
-        margin-top: 1.5rem; /* اضافه کردن کمی فاصله از بالا */
-    }
-
-    /* بخش لوگوها */
-    .footer-copyright-container > div:last-child {
-        order: 1; /* لوگوها اول نمایش داده شوند */
-        flex-wrap: nowrap; /* <<-- مهم: از رفتن به خط بعدی جلوگیری می‌کند */
-        gap: 1rem; /* <<-- مهم: فاصله بین لوگوها را از 2rem به 1rem کاهش می‌دهد */
-    }
-    
-    /* <<-- اختیاری اما پیشنهادی: برای خوانایی بهتر، می‌توانید کمی ارتفاع لوگوها را در موبایل کمتر کنید */
-    .footerLogo {
-        height: 48px;
-    }
-    .footerLogo:not(:last-child) {
-        height: 36px;
-    }
-}
-/* --- END: Footer Mobile Layout Fix --- */
+       
     </style>
 </head>
 
@@ -3515,12 +3473,14 @@
 
 
             <!-- بخش کپی رایت -->
-            <div class="footer-copyright-container mt-16 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-y-6">
+<div class="footer-copyright-container mt-16 border-t border-white/10 pt-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-y-6">
     <div>
-        <p class="text-base text-gray-400 text-center sm:text-right">&copy; ۱۴۰۴ تمام حقوق برای آژانس
-            مسافرتی گردشگران محفوظ است.</p>
+        <p class="text-base text-gray-400 text-center sm:text-right">
+            &copy; ۱۴۰۴ تمام حقوق برای آژانس مسافرتی گردشگران محفوظ است.
+        </p>
     </div>
-    <div class="flex flex-wrap items-center justify-center sm:justify-end gap-x-8 gap-y-6">
+
+    <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-8 gap-y-6">
         <div class="footerLogo">
             <a href="#" target="_blank" rel="noopener noreferrer">
                 <img src="https://aryansite.ir/wp-content/uploads/2025/09/IATAlogo.svg.png" alt="IATA Logo">
@@ -3528,23 +3488,26 @@
         </div>
         <div class="footerLogo">
             <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="https://aryansite.ir/wp-content/uploads/2025/09/logo.2c8a9a12-1.png"
-                    alt="Civil Aviation Logo">
+                <img src="https://aryansite.ir/wp-content/uploads/2025/09/logo.2c8a9a12-1.png" alt="Civil Aviation Logo">
             </a>
         </div>
         <div class="footerLogo">
             <a href="https://trustseal.enamad.ir/" target="_blank" rel="noopener noreferrer">
-                <img src="https://aryansite.ir/wp-content/uploads/2025/09/enamad_icon__text_color_blue_1024-e1756721799244.png"
-                    alt="eNAMAD Logo">
+                <img src="https://aryansite.ir/wp-content/uploads/2025/09/enamad_icon__text_color_blue_1024-e1756721799244.png" alt="eNAMAD Logo">
             </a>
         </div>
         <div class="footerLogo">
             <a href="http://www.cao.ir/paxrights" target="_blank" rel="noopener noreferrer">
-                <img src="https://aryansite.ir/wp-content/uploads/2025/09/pax.png"
-                    alt="Passenger Rights Logo">
+                <img src="https://aryansite.ir/wp-content/uploads/2025/09/pax.png" alt="Passenger Rights Logo">
+            </a>
+        </div>
+        <div class="footerLogo">
+            <a href="http://www.cao.ir/paxrights" target="_blank" rel="noopener noreferrer">
+                <img src="https://aryansite.ir/wp-content/uploads/2025/09/BackgroundEraser_20250901_201725518-scaled.webp" alt="haj & ziarat">
             </a>
         </div>
     </div>
+
 </div>
     </footer>
 
