@@ -1045,106 +1045,111 @@
         }
 
         /* --- START: NEW STYLES FOR OFFER TOURS --- */
-.offer-card {
-    flex: 0 0 340px; /* Ensures cards have a consistent width */
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border-radius: 1.5rem; /* 24px */
-    overflow: hidden;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
-    transition: all 0.4s ease;
-}
+        .offer-card {
+            flex: 0 0 340px;
+            /* Ensures cards have a consistent width */
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            /* 24px */
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+            transition: all 0.4s ease;
+        }
 
-.offer-card:hover {
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
-}
+        .offer-card:hover {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+        }
 
-.offer-card .card-image-container {
-    height: 250px; /* Fixed height for the image area */
-    overflow: hidden;
-}
+        .offer-card .card-image-container {
+            height: 250px;
+            /* Fixed height for the image area */
+            overflow: hidden;
+        }
 
-.offer-card .card-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease-out;
-}
+        .offer-card .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-out;
+        }
 
-.offer-card:hover .card-image-container img {
-    transform: scale(1.1);
-}
+        .offer-card:hover .card-image-container img {
+            transform: scale(1.1);
+        }
 
-.offer-card .card-info-panel {
-    padding: 1.25rem;
-    border-top: 1px solid #f3f4f6; /* A subtle separator */
-}
+        .offer-card .card-info-panel {
+            padding: 1.25rem;
+            border-top: 1px solid #f3f4f6;
+            /* A subtle separator */
+        }
 
-/* We can reuse many of the old styles, so we just reset what we need to */
-.offer-card .card-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--color-top-bar);
-}
+        /* We can reuse many of the old styles, so we just reset what we need to */
+        .offer-card .card-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-top-bar);
+        }
 
-.offer-card .card-subtitle {
-    font-size: 1rem;
-    color: #334155;
-    margin-top: 0.125rem;
-    font-weight: 500;
-}
+        .offer-card .card-subtitle {
+            font-size: 1rem;
+            color: #334155;
+            margin-top: 0.125rem;
+            font-weight: 500;
+        }
 
-.offer-card .glass-tag {
-    color: #334155;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding-bottom: 3px;
-    border-bottom: 2px solid var(--color-top-bar);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+        .offer-card .glass-tag {
+            color: #334155;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding-bottom: 3px;
+            border-bottom: 2px solid var(--color-top-bar);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-.offer-card .glass-tag-hash {
-    color: var(--color-top-bar);
-    font-weight: 700;
-    margin-left: 2px;
-}
+        .offer-card .glass-tag-hash {
+            color: var(--color-top-bar);
+            font-weight: 700;
+            margin-left: 2px;
+        }
 
-.offer-card .price-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-}
+        .offer-card .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
 
-.offer-card .price {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--color-top-bar);
-}
+        .offer-card .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-top-bar);
+        }
 
-.offer-card .price span {
-    font-size: 0.875rem;
-    font-weight: 400;
-}
+        .offer-card .price span {
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
 
-.offer-card .btn-view-offer {
-    background-color: var(--color-primary);
-    color: white;
-    font-weight: 700;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0.75rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
-}
+        .offer-card .btn-view-offer {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
+        }
 
-.offer-card:hover .btn-view-offer {
-    background-color: var(--color-accent);
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(243, 115, 33, 0.3);
-}
-/* --- END: NEW STYLES FOR OFFER TOURS --- */
+        .offer-card:hover .btn-view-offer {
+            background-color: var(--color-accent);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(243, 115, 33, 0.3);
+        }
+
+        /* --- END STYLES FOR OFFER TOURS --- */
 
         /* --- Travel Style Slider Styles --- */
         .desktop-travel-style-slider .bg-image {
@@ -1297,7 +1302,8 @@
             transform: none !important;
         }
 
-        /* --- Popular Destinations Styles --- */
+        /* --- Blog Section Styles (Corrected Final Version) --- */
+        /* --- Blog Section Styles (Final Corrected Version) --- */
         .dest-grid-manual {
             display: grid;
             gap: 1rem;
@@ -1326,6 +1332,7 @@
 
         .dest-card:hover {
             z-index: 10;
+            box-shadow: 0 20px 30px -5px rgb(0 0 0 / 0.15);
         }
 
         .dest-card img {
@@ -1343,30 +1350,83 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(17, 24, 39, 0.7) 10%, rgba(17, 24, 39, 0) 60%);
+            background: linear-gradient(to top, rgba(17, 24, 39, 0.85) 20%, rgba(17, 24, 39, 0) 80%);
+            transition: background 0.4s ease;
+        }
+
+        .dest-card:hover::after {
+            background: linear-gradient(to top, rgba(17, 24, 39, 0.95) 40%, rgba(17, 24, 39, 0) 90%);
         }
 
         .dest-card .card-content {
             position: absolute;
             bottom: 0;
             right: 0;
+            width: 100%;
             padding: 1.5rem;
             color: white;
             z-index: 5;
-            width: 100%;
+            /* This makes sure the content area doesn't overflow the card */
+            max-height: 100%;
+        }
+
+        .dest-card .card-text-wrapper {
+            position: absolute;
+            bottom: 1.5rem;
+            /* = padding of card-content */
+            right: 1.5rem;
+            /* = padding of card-content */
+            left: 1.5rem;
+            /* = padding of card-content */
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .dest-card .card-title {
             font-size: 1.5rem;
             font-weight: 800;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            line-height: 1.4;
+            /* Better line spacing for multi-line titles */
         }
 
         .dest-card .card-subtitle {
             font-size: 1rem;
             font-weight: 400;
-            color: rgba(229, 231, 235, 0.9);
+            color: rgba(229, 231, 235, 0.95);
+            margin-top: 0.75rem;
+
+            /* --- Hiding & Truncation Logic --- */
+            opacity: 0;
+            max-height: 0;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* Max 3 lines before ellipsis */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
+
+        .dest-card:hover .card-subtitle {
+            opacity: 1;
+            max-height: 100px;
+            /* Allow space for up to ~4 lines of text */
+            transition: all 0.6s ease-in-out;
+        }
+
+        /* --- Mobile Specific Styles --- */
+        @media (max-width: 1023px) {
+            .dest-card .card-title {
+                font-size: 1.25rem;
+                /* Smaller title on mobile */
+            }
+
+            .dest-card .card-subtitle {
+                display: none;
+                /* Completely hide subtitle on mobile */
+            }
+        }
+
 
         .load-more-btn-container {
             margin-top: -2rem;
@@ -2466,64 +2526,67 @@
                 <div class="horizontal-scroller flex gap-8 overflow-x-auto pb-6 -mb-6">
                     <!-- Creative Card 1: Last Minute -->
                     <div class="offer-card">
-    <div class="card-image-container">
-        <img src="https://plus.unsplash.com/premium_photo-1691338312403-e9f7f7984eeb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&id=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXN0YW5idWx8ZW58MHwxfDB8fHww" alt="استانبول">
-    </div>
-    <div class="card-info-panel">
-        <h3 class="card-title">استانبول</h3>
-        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
-            <p class="card-subtitle !m-0">ترکیه</p>
-            <div class="flex gap-3">
-                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>خرید</a>
-                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>تفریحی</a>
-            </div>
-        </div>
-        <div class="price-section">
-            <p class="price">۱۲.۵ <span>میلیون</span></p>
-            <a href="#" class="btn-view-offer">مشاهده</a>
-        </div>
-    </div>
-</div>
+                        <div class="card-image-container">
+                            <img src="https://plus.unsplash.com/premium_photo-1691338312403-e9f7f7984eeb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&id=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXN0YW5idWx8ZW58MHwxfDB8fHww"
+                                alt="استانبول">
+                        </div>
+                        <div class="card-info-panel">
+                            <h3 class="card-title">استانبول</h3>
+                            <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+                                <p class="card-subtitle !m-0">ترکیه</p>
+                                <div class="flex gap-3">
+                                    <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>خرید</a>
+                                    <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>تفریحی</a>
+                                </div>
+                            </div>
+                            <div class="price-section">
+                                <p class="price">۱۲.۵ <span>میلیون</span></p>
+                                <a href="#" class="btn-view-offer">مشاهده</a>
+                            </div>
+                        </div>
+                    </div>
 
-<div class="offer-card">
-    <div class="card-image-container">
-        <img src="https://images.unsplash.com/photo-1578852952104-54f3dac8b260?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&id=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW50YWx5YXxlbnwwfDF8MHx8fDA%3D" alt="آنتالیا نوروز">
-    </div>
-    <div class="card-info-panel">
-        <h3 class="card-title">آنتالیا</h3>
-        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
-            <p class="card-subtitle !m-0">ترکیه</p>
-            <div class="flex gap-3">
-                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>خانوادگی</a>
-                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>ساحلی</a>
-            </div>
-        </div>
-        <div class="price-section">
-            <p class="price">۳۵ <span>میلیون</span></p>
-            <a href="#" class="btn-view-offer">مشاهده</a>
-        </div>
-    </div>
-</div>
+                    <div class="offer-card">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1578852952104-54f3dac8b260?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&id=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW50YWx5YXxlbnwwfDF8MHx8fDA%3D"
+                                alt="آنتالیا نوروز">
+                        </div>
+                        <div class="card-info-panel">
+                            <h3 class="card-title">آنتالیا</h3>
+                            <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+                                <p class="card-subtitle !m-0">ترکیه</p>
+                                <div class="flex gap-3">
+                                    <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>خانوادگی</a>
+                                    <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>ساحلی</a>
+                                </div>
+                            </div>
+                            <div class="price-section">
+                                <p class="price">۳۵ <span>میلیون</span></p>
+                                <a href="#" class="btn-view-offer">مشاهده</a>
+                            </div>
+                        </div>
+                    </div>
 
-<div class="offer-card">
-    <div class="card-image-container">
-        <img src="https://images.unsplash.com/photo-1603350576276-24747f7bbf40?w=800&auto=format&fit=crop&q=60" alt="تور طبیعت گردی گرجستان">
-    </div>
-    <div class="card-info-panel">
-        <h3 class="card-title">ییلاقات باتومی</h3>
-        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
-            <p class="card-subtitle !m-0">گرجستان</p>
-            <div class="flex gap-3">
-                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>ماجراجویی</a>
-                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>بکر</a>
-            </div>
-        </div>
-        <div class="price-section">
-            <p class="price">۲۲ <span>میلیون</span></p>
-            <a href="#" class="btn-view-offer">مشاهده</a>
-        </div>
-    </div>
-</div>
+                    <div class="offer-card">
+                        <div class="card-image-container">
+                            <img src="https://images.unsplash.com/photo-1603350576276-24747f7bbf40?w=800&auto=format&fit=crop&q=60"
+                                alt="تور طبیعت گردی گرجستان">
+                        </div>
+                        <div class="card-info-panel">
+                            <h3 class="card-title">ییلاقات باتومی</h3>
+                            <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+                                <p class="card-subtitle !m-0">گرجستان</p>
+                                <div class="flex gap-3">
+                                    <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>ماجراجویی</a>
+                                    <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>بکر</a>
+                                </div>
+                            </div>
+                            <div class="price-section">
+                                <p class="price">۲۲ <span>میلیون</span></p>
+                                <a href="#" class="btn-view-offer">مشاهده</a>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <a href="#"
@@ -2533,6 +2596,12 @@
                 </a>
             </div>
         </section>
+        <!---end special offers section-->
+
+
+
+
+
         <!-- Travel Style Section -->
         <section class="bg-white">
             <div class="hidden md:block">
@@ -2591,13 +2660,13 @@
             </div>
         </section>
 
-        <!-- Popular Destinations Section -->
+        <!-- blog ( was Popular Destinations) Section -->
         <section class="pt-16 pb-0 sm:pt-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="section-title text-3xl sm:text-4xl">محبوب‌ترین مقصد‌های سفر</h2>
+                    <h2 class="section-title text-3xl sm:text-4xl">مجله گردشگری</h2>
                     <p class="section-subtitle mx-auto">
-                        از سواحل مدیترانه تا قلب تاریخ در آسیا، ما شما را به سفری فراتر از یک تعطیلات ساده دعوت می‌کنیم.
+                        جدیدترین مقالات، راهنماهای سفر و معرفی جاذبه‌ها از متخصصان گردشگری در گاتو(گردشگران)
                     </p>
                 </div>
                 <div id="section-0-container" class="dest-grid-manual"></div>
@@ -2606,6 +2675,135 @@
                 <div id="section-3-container" class="dest-grid-manual hidden"></div>
             </div>
         </section>
+
+
+        <!-- Exhibition Tours Section -->
+        <section class="py-16 sm:py-24 pt-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+                    <div class="mb-4 sm:mb-0">
+                        <h2 class="section-title text-3xl sm:text-4xl">تورهای نمایشگاهی</h2>
+                        <p class="section-subtitle">
+                            با شرکت در معتبرترین رویدادهای بین‌المللی، کسب و کار خود را جهانی کنید.
+                        </p>
+                    </div>
+                    <a href="#"
+                        class="btn-all-tours flex-shrink-0 items-center gap-2 px-5 py-3 rounded-xl hidden sm:flex">
+                        <span>همه تورهای ویژه</span>
+                        <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+                    </a>
+                </div>
+                <div class="horizontal-scroller flex gap-8 overflow-x-auto pb-6 -mb-6">
+                    <!-- exhibition card 1:gitex -->
+                    <div class="offer-card">
+    <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1770&auto=format&fit=crop" alt="نمایشگاه جیتکس دبی">
+    </div>
+    <div class="card-info-panel">
+        <h3 class="card-title">نمایشگاه جیتکس</h3>
+        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+            <p class="card-subtitle !m-0">دبی، امارات</p>
+            <div class="flex gap-3">
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>تکنولوژی</a>
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>تجاری</a>
+            </div>
+        </div>
+        <div class="price-section">
+            <p class="price">۴۵ <span>میلیون</span></p>
+            <a href="#" class="btn-view-offer">مشاهده</a>
+        </div>
+    </div>
+</div>
+
+                    <div class="offer-card">
+    <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1770&auto=format&fit=crop" alt="نمایشگاه عرب هلث دبی">
+    </div>
+    <div class="card-info-panel">
+        <h3 class="card-title">نمایشگاه عرب هلث</h3>
+        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+            <p class="card-subtitle !m-0">دبی، امارات</p>
+            <div class="flex gap-3">
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>پزشکی</a>
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>تجهیزات</a>
+            </div>
+        </div>
+        <div class="price-section">
+            <p class="price">۵۵ <span>میلیون</span></p>
+            <a href="#" class="btn-view-offer">مشاهده</a>
+        </div>
+    </div>
+</div>
+
+<div class="offer-card">
+    <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1770&auto=format&fit=crop" alt="نمایشگاه خودروی مونیخ">
+    </div>
+    <div class="card-info-panel">
+        <h3 class="card-title">نمایشگاه خودروی مونیخ</h3>
+        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+            <p class="card-subtitle !m-0">مونیخ، آلمان</p>
+            <div class="flex gap-3">
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>خودرو</a>
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>آلمان</a>
+            </div>
+        </div>
+        <div class="price-section">
+            <p class="price">۹۵ <span>میلیون</span></p>
+            <a href="#" class="btn-view-offer">مشاهده</a>
+        </div>
+    </div>
+</div>
+
+<div class="offer-card">
+    <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop" alt="نمایشگاه گلفود دبی">
+    </div>
+    <div class="card-info-panel">
+        <h3 class="card-title">نمایشگاه گلفود</h3>
+        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+            <p class="card-subtitle !m-0">دبی، امارات</p>
+            <div class="flex gap-3">
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>صنایع غذایی</a>
+            </div>
+        </div>
+        <div class="price-section">
+            <p class="price">۶۰ <span>میلیون</span></p>
+            <a href="#" class="btn-view-offer">مشاهده</a>
+        </div>
+    </div>
+</div>
+
+<div class="offer-card">
+    <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1770&auto=format&fit=crop" alt="نمایشگاه ساختمان دبی">
+    </div>
+    <div class="card-info-panel">
+        <h3 class="card-title">نمایشگاه ساختمان Big 5</h3>
+        <div class="flex justify-between items-center mt-2 pb-4 border-b border-black/10">
+            <p class="card-subtitle !m-0">دبی، امارات</p>
+            <div class="flex gap-3">
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>ساختمان</a>
+                <a href="#" class="glass-tag"><span class="glass-tag-hash">#</span>عمران</a>
+            </div>
+        </div>
+        <div class="price-section">
+            <p class="price">۵۸ <span>میلیون</span></p>
+            <a href="#" class="btn-view-offer">مشاهده</a>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <a href="#"
+                    class="btn-all-tours w-full text-center mt-8 items-center justify-center gap-2 px-5 py-3 rounded-xl flex sm:hidden">
+                    <span>همه تورهای ویژه</span>
+                    <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+                </a>
+            </div>
+        </section>
+        <!--end exhibition tours section-->
+
 
         <!-- Why Us Section -->
         <section class="pt-16 sm:pt-20 pb-8 sm:pb-12 lg:pb-24 bg-white">
@@ -2804,8 +3002,8 @@
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="mb-10 flex items-center justify-between">
                     <div>
-                        <h2 class="section-title text-3xl sm:text-4xl">وبلاگ</h2>
-                        <p class="section-subtitle">راهنماهای سفر</p>
+                        <h2 class="section-title text-3xl sm:text-4xl">مجله گردشگری</h2>
+                        <p class="section-subtitle">جدیدترین مقالات، راهنماهای سفر و معرفی جاذبه‌ها از متخصصان گردشگری در گاتو(گردشگران)
                     </div>
                 </div>
                 <div id="blog-slider-nav" class="mb-12 blog-nav-dots-container">
@@ -3622,11 +3820,36 @@
             // --- Popular Destinations Logic ---
             const sections = [
                 [
-                    { city: 'دبی', country: 'امارات', image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop', size: 'lg:col-start-1 lg:row-start-1' },
-                    { city: 'آنتالیا', country: 'ترکیه', image: 'https://images.unsplash.com/photo-1591038014425-ca3e438fda07?q=80&w=800&auto=format&fit=crop', size: 'lg:col-start-2 lg:row-start-1' },
-                    { city: 'استانبول', country: 'ترکیه', image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aXN0YW5idWx8ZW58MHx8MHx8fDA%3D', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-3' },
-                    { city: 'بانکوک', country: 'تایلند', image: 'https://images.unsplash.com/photo-1681129813299-0dce89ccc6cf?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-1 lg:col-span-2 lg:row-start-2 lg:row-span-3' },
-                    { city: 'حمامات', country: 'تونس', image: 'https://images.unsplash.com/photo-1633936478473-e75c1252cccf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGFtbWFtZXR8ZW58MHwwfDB8fHww', size: 'lg:col-start-3 lg:col-span-2 lg:row-start-4' },
+                    {
+                        title: 'تجربه خرید لوکس در دبی',
+                        description: 'از دبی مال تا امارات مال، با برترین مراکز خرید دبی آشنا شوید و برای یک خرید به‌یادماندنی برنامه‌ریزی کنید.',
+                        image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800&auto=format&fit=crop',
+                        size: 'lg:col-start-1 lg:row-start-1'
+                    },
+                    {
+                        title: 'چرا آنتالیا انتخاب اول خانواده‌هاست؟',
+                        description: 'سواحل زیبا، هتل‌های UALL، و تفریحات آبی بی‌پایان. دلایلی که آنتالیا را به مقصدی ایده‌آل برای خانواده‌ها تبدیل می‌کند.',
+                        image: 'https://images.unsplash.com/photo-1591038014425-ca3e438fda07?q=80&w=800&auto=format&fit=crop',
+                        size: 'lg:col-start-2 lg:row-start-1'
+                    },
+                    {
+                        title: 'راهنمای کامل سفر به استانبول',
+                        description: 'در این مقاله جامع، همه چیز از بهترین زمان سفر و جاذبه‌های دیدنی گرفته تا هزینه‌ها و نکات کاربردی را بررسی کرده‌ایم.',
+                        image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aXN0YW5idWx8ZW58MHx8MHx8fDA%3D',
+                        size: 'lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-3'
+                    },
+                    {
+                        title: '۱۰ غذای خیابانی که باید در بانکوک بچشید',
+                        description: 'سفر به تایلند بدون چشیدن طعم‌های بی‌نظیر غذاهای خیابانی آن کامل نمی‌شود. لیست بهترین‌ها اینجاست.',
+                        image: 'https://images.unsplash.com/photo-1681129813299-0dce89ccc6cf?w=800&auto=format&fit=crop&q=60',
+                        size: 'lg:col-start-1 lg:col-span-2 lg:row-start-2 lg:row-span-3'
+                    },
+                    {
+                        title: 'سفری آرامش‌بخش به سواحل تونس',
+                        description: 'تونس، مقصدی کمتر شناخته شده با سواحل مدیترانه‌ای بکر و تاریخی غنی که شما را شگفت‌زده خواهد کرد.',
+                        image: 'https://images.unsplash.com/photo-1633936478473-e75c1252cccf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGFtbWFtZXR8ZW58MHwwfDB8fHww',
+                        size: 'lg:col-start-3 lg:col-span-2 lg:row-start-4'
+                    },
                 ],
                 [
                     { city: 'سن پترزبورگ', country: 'روسیه', image: 'https://images.unsplash.com/photo-1554202218-20ee1af0fb17?w=800&auto=format&fit=crop&q=60', size: 'lg:col-start-1 lg:col-span-2 lg:row-start-1 lg:row-span-3' },
@@ -3660,7 +3883,14 @@
                 const card = document.createElement('a');
                 card.href = '#';
                 card.className = `dest-card ${item.size || ''}`;
-                card.innerHTML = `<img src="${item.image}" alt="نمایی از شهر ${item.city}" loading="lazy"><div class="card-content"><h3 class="card-title">${item.city}</h3><p class="card-subtitle">${item.country}</p></div>`;
+                card.innerHTML = `
+        <img src="${item.image}" alt="مقاله وبلاگ درباره ${item.title}" loading="lazy">
+        <div class="card-content">
+            <div class="card-text-wrapper">
+                <h3 class="card-title">${item.title}</h3>
+                <p class="card-subtitle">${item.description}</p>
+            </div>
+        </div>`;
                 return card;
             };
 
@@ -3882,12 +4112,13 @@
                 }
 
                 function updateProgressLine() {
-                    const activeItem = navItems[currentSlide];
-                    const navRect = sliderNav.getBoundingClientRect();
-                    const itemRect = activeItem.getBoundingClientRect();
-                    const progressWidth = (itemRect.left - navRect.left) + (itemRect.width / 2);
-                    progressLine.style.width = `${progressWidth}px`;
-                }
+    const activeItem = navItems[currentSlide];
+    const navRect = sliderNav.getBoundingClientRect();
+    const itemRect = activeItem.getBoundingClientRect();
+    const progressWidth = navRect.right - (itemRect.left + itemRect.width / 2);
+
+    progressLine.style.width = `${progressWidth}px`;
+}
 
                 function nextSlide() { goToSlide(currentSlide + 1); }
                 function startInterval() { slideInterval = setInterval(nextSlide, 5000); }
