@@ -697,140 +697,163 @@
 
 
         /* ===== Slider Banner (Updated Version) ===== */
-.mini-slider {
-    --radius: 20px; /* شعاع گوشه‌ها کمی بزرگتر شد */
-    position: relative; /* برای موقعیت‌دهی فلش‌ها ضروری است */
-    padding: 0 4rem; /* ایجاد فضا در طرفین برای فلش‌ها در دسکتاپ */
-}
+        .mini-slider {
+            --radius: 20px;
+            /* شعاع گوشه‌ها کمی بزرگتر شد */
+            position: relative;
+            /* برای موقعیت‌دهی فلش‌ها ضروری است */
+            padding: 0 4rem;
+            /* ایجاد فضا در طرفین برای فلش‌ها در دسکتاپ */
+        }
 
-.mini-slider__viewport {
-    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.15);
-    border-radius: var(--radius);
-    overflow: hidden;
-}
+        .mini-slider__viewport {
+            box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.15);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
 
-.mini-slider__track {
-    position: relative;
-    height: 550px; /* ✨ ارتفاع اسلایدر به طور قابل توجهی افزایش یافت */
-    isolation: isolate;
-}
-/* ارتفاع کمتر برای موبایل */
-@media (max-width: 1023px) {
-    .mini-slider {
-        padding: 0; /* در موبایل فضای اضافی کنار اسلایدر حذف می‌شود */
-    }
-    .mini-slider__track {
-        height: 450px;
-    }
-}
+        .mini-slider__track {
+            position: relative;
+            height: 550px;
+            /* ✨ ارتفاع اسلایدر به طور قابل توجهی افزایش یافت */
+            isolation: isolate;
+        }
 
-.mini-slider__slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transform: translateX(30px) scale(0.98);
-    transition: opacity .45s ease, transform .45s ease;
-    border-radius: var(--radius);
-    overflow: hidden;
-}
+        /* ارتفاع کمتر برای موبایل */
+        @media (max-width: 1023px) {
+            .mini-slider {
+                padding: 0;
+                /* در موبایل فضای اضافی کنار اسلایدر حذف می‌شود */
+            }
 
-.mini-slider__slide.is-active {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-    z-index: 2;
-}
+            .mini-slider__track {
+                height: 450px;
+            }
+        }
 
-.mini-slider__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+        .mini-slider__slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: translateX(30px) scale(0.98);
+            transition: opacity .45s ease, transform .45s ease;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
 
-/* --- Arrows Styling (Updated) --- */
-.mini-slider__arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 52px;
-    height: 52px;
-    display: grid;
-    place-items: center;
-    border-radius: 9999px;
-    border: none;
-    background: #ffffff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform .2s ease, background .2s ease;
-    z-index: 5;
-}
+        .mini-slider__slide.is-active {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            z-index: 2;
+        }
 
-.mini-slider__arrow:hover {
-    background: var(--color-primary);
-    transform: translateY(-50%) scale(1.08);
-}
-.mini-slider__arrow:hover iconify-icon {
-    color: #fff;
-}
+        .mini-slider__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-.mini-slider__arrow iconify-icon {
-    font-size: 24px;
-    color: var(--color-primary);
-    transition: color .2s ease;
-}
+        /* --- Arrows Styling (Updated) --- */
+        .mini-slider__arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 9999px;
+            border: none;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease;
+            z-index: 5;
+        }
 
-/* ✨ تغییر اصلی: موقعیت فلش‌ها در فضای padding والد تنظیم شد */
-.mini-slider__arrow--prev { right: 1rem; } /* فاصله ۱۶ پیکسلی از لبه راست */
-.mini-slider__arrow--next { left: 1rem; }  /* فاصله ۱۶ پیکسلی از لبه چپ */
+        .mini-slider__arrow:hover {
+            background: var(--color-primary);
+            transform: translateY(-50%) scale(1.08);
+        }
 
-/* موقعیت فلش‌ها داخل کادر در موبایل (بدون تغییر) */
-@media (max-width: 1023px) {
-    .mini-slider__arrow--prev { right: 16px; }
-    .mini-slider__arrow--next { left: 16px; }
-    .mini-slider__arrow {
-        width: 44px;
-        height: 44px;
-        background: rgba(255,255,255,0.7);
-        backdrop-filter: blur(4px);
-    }
-}
+        .mini-slider__arrow:hover iconify-icon {
+            color: #fff;
+        }
+
+        .mini-slider__arrow iconify-icon {
+            font-size: 24px;
+            color: var(--color-primary);
+            transition: color .2s ease;
+        }
+
+        /* ✨ تغییر اصلی: موقعیت فلش‌ها در فضای padding والد تنظیم شد */
+        .mini-slider__arrow--prev {
+            right: 1rem;
+        }
+
+        /* فاصله ۱۶ پیکسلی از لبه راست */
+        .mini-slider__arrow--next {
+            left: 1rem;
+        }
+
+        /* فاصله ۱۶ پیکسلی از لبه چپ */
+
+        /* موقعیت فلش‌ها داخل کادر در موبایل (بدون تغییر) */
+        @media (max-width: 1023px) {
+            .mini-slider__arrow--prev {
+                right: 16px;
+            }
+
+            .mini-slider__arrow--next {
+                left: 16px;
+            }
+
+            .mini-slider__arrow {
+                width: 44px;
+                height: 44px;
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(4px);
+            }
+        }
 
 
-/* --- Simple Dots Pagination (Updated) --- */
-.mini-slider__dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px; 
-    align-items: center; 
-    z-index: 6;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+        /* --- Simple Dots Pagination (Updated) --- */
+        .mini-slider__dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            z-index: 6;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
-.mini-slider__dots li {
-    width: 10px;
-    height: 10px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
+        .mini-slider__dots li {
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
 
-.mini-slider__dots li:hover {
-    background-color: var(--color-primary); /* هاور نارنجی برای جذابیت بیشتر */
-}
+        .mini-slider__dots li:hover {
+            background-color: var(--color-primary);
+            /* هاور نارنجی برای جذابیت بیشتر */
+        }
 
-/* ✨ تغییر: نقطه فعال، پهن و بیضی‌شکل می‌شود */
-.mini-slider__dots li[aria-selected="true"] {
-    background-color: #ffffff; 
-    width: 32px; 
-    border-radius: 9999px;
-    transform: none;
-}
+        /* ✨ تغییر: نقطه فعال، پهن و بیضی‌شکل می‌شود */
+        .mini-slider__dots li[aria-selected="true"] {
+            background-color: #ffffff;
+            width: 32px;
+            border-radius: 9999px;
+            transform: none;
+        }
 
 
 
@@ -2263,39 +2286,39 @@
 
         <!--banner slider--->
         <!-- === اسلایدر ساده: قبل از "تورهای پرطرفدار" بگذارید === -->
-<section class="mini-slider container mx-auto px-4 my-10" dir="rtl">
-  <div class="mini-slider__viewport relative mx-auto max-w-5xl rounded-xl overflow-hidden bg-white/50">
-    <div class="mini-slider__track">
-      <figure class="mini-slider__slide">
-        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1600&auto-format&fit=crop"
-             alt="ساحل آفتابی" class="mini-slider__img">
-      </figure>
+        <section class="mini-slider container mx-auto px-4 my-10" dir="rtl">
+            <div class="mini-slider__viewport relative mx-auto max-w-5xl rounded-xl overflow-hidden bg-white/50">
+                <div class="mini-slider__track">
+                    <figure class="mini-slider__slide">
+                        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1600&auto-format&fit=crop"
+                            alt="ساحل آفتابی" class="mini-slider__img">
+                    </figure>
 
-      <figure class="mini-slider__slide">
-        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1600&auto-format&fit=crop"
-             alt="شهر تاریخی" class="mini-slider__img">
-      </figure>
+                    <figure class="mini-slider__slide">
+                        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1600&auto-format&fit=crop"
+                            alt="شهر تاریخی" class="mini-slider__img">
+                    </figure>
 
-      <figure class="mini-slider__slide">
-        <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1600&auto-format&fit=crop"
-             alt="کوهستان" class="mini-slider__img">
-      </figure>
-    </div>
+                    <figure class="mini-slider__slide">
+                        <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1600&auto-format&fit=crop"
+                            alt="کوهستان" class="mini-slider__img">
+                    </figure>
+                </div>
 
-    <ol class="mini-slider__dots" role="tablist" aria-label="اسلایدها">
-      <li role="tab" aria-selected="true"></li>
-      <li role="tab" aria-selected="false"></li>
-      <li role="tab" aria-selected="false"></li>
-    </ol>
-  </div>
+                <ol class="mini-slider__dots" role="tablist" aria-label="اسلایدها">
+                    <li role="tab" aria-selected="true"></li>
+                    <li role="tab" aria-selected="false"></li>
+                    <li role="tab" aria-selected="false"></li>
+                </ol>
+            </div>
 
-  <button class="mini-slider__arrow mini-slider__arrow--prev" aria-label="قبلی">
-    <iconify-icon icon="solar:alt-arrow-right-broken"></iconify-icon>
-  </button>
-  <button class="mini-slider__arrow mini-slider__arrow--next" aria-label="بعدی">
-    <iconify-icon icon="solar:alt-arrow-left-broken"></iconify-icon>
-  </button>
-</section>
+            <button class="mini-slider__arrow mini-slider__arrow--prev" aria-label="قبلی">
+                <iconify-icon icon="solar:alt-arrow-right-broken"></iconify-icon>
+            </button>
+            <button class="mini-slider__arrow mini-slider__arrow--next" aria-label="بعدی">
+                <iconify-icon icon="solar:alt-arrow-left-broken"></iconify-icon>
+            </button>
+        </section>
 
 
 
@@ -2316,14 +2339,11 @@
                     </a>
                 </div>
                 <div class="horizontal-scroller flex gap-8 overflow-x-auto pb-6 -mb-6">
-                    <!-- Tour Card 1: Istanbul -->
                     <div class="tour-card h-[450px]">
                         <img src="https://plus.unsplash.com/premium_photo-1691338312403-e9f7f7984eeb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXN0YW5idWx8ZW58MHwxfDB8fHww"
                             alt="استانبول" class="tour-card-image">
                         <div class="tour-card-overlay"></div>
-                        <div class="tour-card-content">
-                            <img src="https://lachinseir.com/ref014200100001653656220001" alt="Turkish Airlines"
-                                class="airline-logo">
+                        <div class="tour-card-content !justify-end">
                             <div class="space-y-6">
                                 <div class="tour-card-location">
                                     <h3>استانبول</h3>
@@ -2334,37 +2354,22 @@
                                         <span class="tour-card-tag"><span class="tag-hash">#</span>فرهنگی</span>
                                     </div>
                                 </div>
-                                <div class="tour-card-details space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
-                                            <span>مرداد و شهریور ۱۴۰۴</span>
-                                        </div>
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
-                                            <span>۴ شب و ۵ روز</span>
-                                        </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                        <p class="tour-card-price">۱۵,۹۰۰,۰۰۰ <span>تومان</span></p>
                                     </div>
-                                    <div class="flex items-end justify-between">
-                                        <div>
-                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
-                                            <p class="tour-card-price">۱۵,۹۰۰,۰۰۰ <span>تومان</span></p>
-                                        </div>
-                                        <a href="#" class="btn-view-tour">مشاهده</a>
-                                    </div>
+                                    <a href="#" class="btn-view-tour">مشاهده</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tour Card 2: Dubai -->
                     <div class="tour-card h-[450px]">
                         <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1887&auto=format&fit=crop"
                             alt="دبی" class="tour-card-image">
                         <div class="tour-card-overlay"></div>
-                        <div class="tour-card-content">
-                            <img src="https://lachinseir.com/ref675200100001705656220001" alt="Emirates"
-                                class="airline-logo">
+                        <div class="tour-card-content !justify-end">
                             <div class="space-y-6">
                                 <div class="tour-card-location">
                                     <h3>دبی</h3>
@@ -2375,37 +2380,22 @@
                                         <span class="tour-card-tag"><span class="tag-hash">#</span>مدرن</span>
                                     </div>
                                 </div>
-                                <div class="tour-card-details space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
-                                            <span>ویژه پاییز ۱۴۰۴</span>
-                                        </div>
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
-                                            <span>۳ شب و ۴ روز</span>
-                                        </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                        <p class="tour-card-price">۲۱,۵۰۰,۰۰۰ <span>تومان</span></p>
                                     </div>
-                                    <div class="flex items-end justify-between">
-                                        <div>
-                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
-                                            <p class="tour-card-price">۲۱,۵۰۰,۰۰۰ <span>تومان</span></p>
-                                        </div>
-                                        <a href="#" class="btn-view-tour">مشاهده</a>
-                                    </div>
+                                    <a href="#" class="btn-view-tour">مشاهده</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tour Card 3: Antalya -->
                     <div class="tour-card h-[450px]">
                         <img src="https://images.unsplash.com/photo-1578852952104-54f3dac8b260?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW50YWx5YXxlbnwwfDF8MHx8fDA%3D"
                             alt="آنتالیا" class="tour-card-image">
                         <div class="tour-card-overlay"></div>
-                        <div class="tour-card-content">
-                            <img src="https://lachinseir.com/ref782702100001955656220001" alt="Pegasus Airlines"
-                                class="airline-logo">
+                        <div class="tour-card-content !justify-end">
                             <div class="space-y-6">
                                 <div class="tour-card-location">
                                     <h3>آنتالیا</h3>
@@ -2416,37 +2406,22 @@
                                         <span class="tour-card-tag"><span class="tag-hash">#</span>خانوادگی</span>
                                     </div>
                                 </div>
-                                <div class="tour-card-details space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
-                                            <span>ویژه تابستان ۱۴۰۴</span>
-                                        </div>
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
-                                            <span>۶ شب و ۷ روز</span>
-                                        </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                        <p class="tour-card-price">۲۸,۰۰۰,۰۰۰ <span>تومان</span></p>
                                     </div>
-                                    <div class="flex items-end justify-between">
-                                        <div>
-                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
-                                            <p class="tour-card-price">۲۸,۰۰۰,۰۰۰ <span>تومان</span></p>
-                                        </div>
-                                        <a href="#" class="btn-view-tour">مشاهده</a>
-                                    </div>
+                                    <a href="#" class="btn-view-tour">مشاهده</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tour Card 4: Paris -->
                     <div class="tour-card h-[450px]">
                         <img src="https://plus.unsplash.com/premium_photo-1719581957038-0121108b9455?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyaXN8ZW58MHwxfDB8fHww"
                             alt="پاریس" class="tour-card-image">
                         <div class="tour-card-overlay"></div>
-                        <div class="tour-card-content">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Qatar_Airways_logo.svg"
-                                class="airline-logo">
+                        <div class="tour-card-content !justify-end">
                             <div class="space-y-6">
                                 <div class="tour-card-location">
                                     <h3>پاریس</h3>
@@ -2457,37 +2432,22 @@
                                         <span class="tour-card-tag"><span class="tag-hash">#</span>تاریخی</span>
                                     </div>
                                 </div>
-                                <div class="tour-card-details space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
-                                            <span>ویژه کریسمس</span>
-                                        </div>
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
-                                            <span>۷ شب و ۸ روز</span>
-                                        </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-400">تماس بگیرید</p>
+                                        <p class="tour-card-price">نرخ روز</p>
                                     </div>
-                                    <div class="flex items-end justify-between">
-                                        <div>
-                                            <p class="text-sm text-gray-400">تماس بگیرید</p>
-                                            <p class="tour-card-price">نرخ روز</p>
-                                        </div>
-                                        <a href="#" class="btn-view-tour">مشاهده</a>
-                                    </div>
+                                    <a href="#" class="btn-view-tour">مشاهده</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tour Card 5: Kish -->
                     <div class="tour-card h-[450px]">
                         <img src="https://images.unsplash.com/photo-1597910038098-a1075bf45b2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a2lzaHxlbnwwfDF8MHx8fDA%3D"
                             alt="کیش" class="tour-card-image">
                         <div class="tour-card-overlay"></div>
-                        <div class="tour-card-content">
-                            <img src="https://lachinseir.com/ref962702100001515317810001" alt="Mahan Air"
-                                class="airline-logo">
+                        <div class="tour-card-content !justify-end">
                             <div class="space-y-6">
                                 <div class="tour-card-location">
                                     <h3>کیش</h3>
@@ -2498,37 +2458,22 @@
                                         <span class="tour-card-tag"><span class="tag-hash">#</span>تفریحی</span>
                                     </div>
                                 </div>
-                                <div class="tour-card-details space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
-                                            <span>تمام طول سال</span>
-                                        </div>
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
-                                            <span>۲ شب و ۳ روز</span>
-                                        </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                        <p class="tour-card-price">۶,۷۵۰,۰۰۰ <span>تومان</span></p>
                                     </div>
-                                    <div class="flex items-end justify-between">
-                                        <div>
-                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
-                                            <p class="tour-card-price">۶,۷۵۰,۰۰۰ <span>تومان</span></p>
-                                        </div>
-                                        <a href="#" class="btn-view-tour">مشاهده</a>
-                                    </div>
+                                    <a href="#" class="btn-view-tour">مشاهده</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tour Card 6: Thailand -->
                     <div class="tour-card h-[450px]">
                         <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=1770&auto=format&fit=crop"
                             alt="تایلند" class="tour-card-image">
                         <div class="tour-card-overlay"></div>
-                        <div class="tour-card-content">
-                            <img src="https://lachinseir.com/ref962702100001515317810001" alt="Mahan Air"
-                                class="airline-logo">
+                        <div class="tour-card-content !justify-end">
                             <div class="space-y-6">
                                 <div class="tour-card-location">
                                     <h3>تایلند</h3>
@@ -2539,24 +2484,12 @@
                                         <span class="tour-card-tag"><span class="tag-hash">#</span>هیجان</span>
                                     </div>
                                 </div>
-                                <div class="tour-card-details space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:calendar-date-bold"></iconify-icon>
-                                            <span>تمام طول سال</span>
-                                        </div>
-                                        <div class="tour-card-info">
-                                            <iconify-icon icon="solar:cloudy-moon-bold"></iconify-icon>
-                                            <span>۷ شب ترکیبی</span>
-                                        </div>
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <p class="text-sm text-gray-400">شروع قیمت از</p>
+                                        <p class="tour-card-price">۴۵,۰۰۰,۰۰۰ <span>تومان</span></p>
                                     </div>
-                                    <div class="flex items-end justify-between">
-                                        <div>
-                                            <p class="text-sm text-gray-400">شروع قیمت از</p>
-                                            <p class="tour-card-price">۴۵,۰۰۰,۰۰۰ <span>تومان</span></p>
-                                        </div>
-                                        <a href="#" class="btn-view-tour">مشاهده</a>
-                                    </div>
+                                    <a href="#" class="btn-view-tour">مشاهده</a>
                                 </div>
                             </div>
                         </div>
@@ -4060,69 +3993,69 @@
 
         //---- banner slider
 
-        (function(){
-    const root = document.querySelector('.mini-slider');
-    if(!root) return;
+        (function () {
+            const root = document.querySelector('.mini-slider');
+            if (!root) return;
 
-    const track   = root.querySelector('.mini-slider__track');
-    const slides  = Array.from(root.querySelectorAll('.mini-slider__slide'));
-    const prevBtn = root.querySelector('.mini-slider__arrow--prev');
-    const nextBtn = root.querySelector('.mini-slider__arrow--next');
-    const dots    = Array.from(root.querySelectorAll('.mini-slider__dots li'));
-    //const progress= root.querySelector('.mini-slider__progress'); <--حذف شد 
+            const track = root.querySelector('.mini-slider__track');
+            const slides = Array.from(root.querySelectorAll('.mini-slider__slide'));
+            const prevBtn = root.querySelector('.mini-slider__arrow--prev');
+            const nextBtn = root.querySelector('.mini-slider__arrow--next');
+            const dots = Array.from(root.querySelectorAll('.mini-slider__dots li'));
+            //const progress= root.querySelector('.mini-slider__progress'); <--حذف شد 
 
-    let index = 0;
-    let timer = null;
-    const AUTO_MS = 5500;
+            let index = 0;
+            let timer = null;
+            const AUTO_MS = 5500;
 
-    // init
-    function setActive(i){
-      index = (i + slides.length) % slides.length;
-      slides.forEach((s, n)=> s.classList.toggle('is-active', n === index));
-      dots.forEach((d, n)=> d.setAttribute('aria-selected', n === index ? 'true' : 'false'));
-      // progress width: از راست به چپ
-      const step = (index) / (slides.length - 1);
-      //progress.style.width = (step * 100) + '%';<-- حذف شد
-    }
+            // init
+            function setActive(i) {
+                index = (i + slides.length) % slides.length;
+                slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
+                dots.forEach((d, n) => d.setAttribute('aria-selected', n === index ? 'true' : 'false'));
+                // progress width: از راست به چپ
+                const step = (index) / (slides.length - 1);
+                //progress.style.width = (step * 100) + '%';<-- حذف شد
+            }
 
-    function next(){ setActive(index + 1); restart(); }
-    function prev(){ setActive(index - 1); restart(); }
+            function next() { setActive(index + 1); restart(); }
+            function prev() { setActive(index - 1); restart(); }
 
-    function goToDot(e, i){ setActive(i); restart(); }
+            function goToDot(e, i) { setActive(i); restart(); }
 
-    function restart(){
-      if(timer) clearInterval(timer);
-      timer = setInterval(()=> setActive(index + 1), AUTO_MS);
-    }
+            function restart() {
+                if (timer) clearInterval(timer);
+                timer = setInterval(() => setActive(index + 1), AUTO_MS);
+            }
 
-    // Listeners
-    nextBtn.addEventListener('click', next);
-    prevBtn.addEventListener('click', prev);
-    dots.forEach((d,i)=> d.addEventListener('click', (e)=> goToDot(e,i)));
+            // Listeners
+            nextBtn.addEventListener('click', next);
+            prevBtn.addEventListener('click', prev);
+            dots.forEach((d, i) => d.addEventListener('click', (e) => goToDot(e, i)));
 
-    // swipe (لمسی)
-    let startX = null;
-    track.addEventListener('touchstart', e=> startX = e.touches[0].clientX, {passive:true});
-    track.addEventListener('touchmove', e=>{
-      if(startX == null) return;
-      const dx = e.touches[0].clientX - startX;
-      if(Math.abs(dx) > 50){
-        dx < 0 ? next() : prev();
-        startX = null;
-      }
-    }, {passive:true});
-    track.addEventListener('touchend', ()=> startX = null);
+            // swipe (لمسی)
+            let startX = null;
+            track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+            track.addEventListener('touchmove', e => {
+                if (startX == null) return;
+                const dx = e.touches[0].clientX - startX;
+                if (Math.abs(dx) > 50) {
+                    dx < 0 ? next() : prev();
+                    startX = null;
+                }
+            }, { passive: true });
+            track.addEventListener('touchend', () => startX = null);
 
-    // keyboard
-    root.addEventListener('keydown', (e)=>{
-      if(e.key === 'ArrowLeft') next();
-      if(e.key === 'ArrowRight') prev();
-    });
+            // keyboard
+            root.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') next();
+                if (e.key === 'ArrowRight') prev();
+            });
 
-    // start
-    setActive(0);
-    restart();
-  })();
+            // start
+            setActive(0);
+            restart();
+        })();
 
     </script>
     <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
