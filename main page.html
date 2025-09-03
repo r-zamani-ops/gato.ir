@@ -939,12 +939,9 @@
         }
 
         .mini-slider__track {
-            position: relative;
-            /* ✨ تغییر: نسبت ابعاد به ۳ به ۱ تغییر کرد */
-            aspect-ratio: 3 / 1;
-            isolation: isolate;
-        }
-
+    position: relative;
+    isolation: isolate;
+}
         /* ارتفاع ثابت برای موبایل حذف شد چون دیگر لازم نیست */
         @media (max-width: 1023px) {
             .mini-slider {
@@ -2691,39 +2688,55 @@
         </section>
 
         <!--banner slider--->
-        <section class="gradient-slider-section py-10">
-            <div class="mini-slider" dir="rtl">
-                <div class="mini-slider__viewport relative mx-auto max-w-7xl rounded-xl overflow-hidden bg-white/50">
-                    <div class="mini-slider__track">
-                        <figure class="mini-slider__slide">
-                            <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1600&auto-format&fit-crop"
-                                alt="ساحل آفتابی" class="mini-slider__img">
-                        </figure>
+       <section class="gradient-slider-section pt-0 pb-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                        <figure class="mini-slider__slide">
-                            <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1600&auto-format&fit-crop"
-                                alt="شهر تاریخی" class="mini-slider__img">
-                        </figure>
+                    <div class="lg:col-span-1">
+                <div class="mini-slider" dir="rtl">
+                            <div class="mini-slider__viewport relative w-full h-full rounded-xl overflow-hidden bg-white/50">
+                                <div class="mini-slider__track aspect-video" style="aspect-ratio: 16 / 9 !important;">
+                                    <figure class="mini-slider__slide">
+                                        <img src="https://images.pexels.com/photos/1534057/pexels-photo-1534057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                            alt="ساحل آفتابی" class="mini-slider__img">
+                                    </figure>
 
-                        <figure class="mini-slider__slide">
-                            <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1600&auto-format&fit-crop"
-                                alt="کوهستان" class="mini-slider__img">
-                        </figure>
+                                    <figure class="mini-slider__slide">
+                                        <img src="https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                            alt="شهر تاریخی" class="mini-slider__img">
+                                    </figure>
+
+                                    <figure class="mini-slider__slide">
+                                        <img src="https://images.pexels.com/photos/161251/senso-ji-temple-japan-asia-religion-161251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                            alt="معبد" class="mini-slider__img">
+                                    </figure>
+                                </div>
+
+                                <ol class="mini-slider__dots" role="tablist" aria-label="اسلایدها">
+                                    <li role="tab" aria-selected="true"></li>
+                                    <li role="tab" aria-selected="false"></li>
+                                    <li role="tab" aria-selected="false"></li>
+                                </ol>
+                            </div>
+
+                            <button class="mini-slider__arrow mini-slider__arrow--prev" aria-label="قبلی">
+                                <iconify-icon icon="solar:alt-arrow-right-broken"></iconify-icon>
+                            </button>
+                            <button class="mini-slider__arrow mini-slider__arrow--next" aria-label="بعدی">
+                                <iconify-icon icon="solar:alt-arrow-left-broken"></iconify-icon>
+                            </button>
+                        </div>
                     </div>
 
-                    <ol class="mini-slider__dots" role="tablist" aria-label="اسلایدها">
-                        <li role="tab" aria-selected="true"></li>
-                        <li role="tab" aria-selected="false"></li>
-                        <li role="tab" aria-selected="false"></li>
-                    </ol>
-                </div>
+                    <div class="lg:col-span-1">
+                         <a href="#" class="block w-full rounded-xl overflow-hidden shadow-lg group aspect-video">
+                    <img src="https://images.pexels.com/photos/2161467/pexels-photo-2161467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                         alt="بنر تورهای ویژه"
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </a>
+                    </div>
 
-                <button class="mini-slider__arrow mini-slider__arrow--prev" aria-label="قبلی">
-                    <iconify-icon icon="solar:alt-arrow-right-broken"></iconify-icon>
-                </button>
-                <button class="mini-slider__arrow mini-slider__arrow--next" aria-label="بعدی">
-                    <iconify-icon icon="solar:alt-arrow-left-broken"></iconify-icon>
-                </button>
+                </div>
             </div>
         </section>
 
