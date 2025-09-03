@@ -203,6 +203,146 @@
 
         /* --- END: New Styles --- */
 
+
+        /* --- START: Vertical Mega Menu Styles --- */
+        .vertical-mega-menu {
+            max-width: 1200px;
+            /* Increased width for the new layout */
+            padding: 1rem;
+            /* Reduced padding */
+        }
+
+        .vertical-mega-menu .mega-menu-nav {
+            flex: 0 0 260px;
+            /* Fixed width for the right navigation panel */
+            border-left: 1px solid #f3f4f6;
+            /* Separator line */
+            padding-left: 1rem;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+
+        /* Custom scrollbar for vertical nav */
+        .vertical-mega-menu .mega-menu-nav::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .vertical-mega-menu .mega-menu-nav::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+
+        .vertical-mega-menu .mega-menu-nav::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 10px;
+        }
+
+
+        .vertical-mega-menu .mega-menu-panels {
+            flex: 1;
+            /* The left content panel takes the remaining space */
+            padding-right: 1rem;
+            min-height: 400px;
+            /* Ensure a minimum height */
+        }
+
+        .mega-nav-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-top-bar);
+            border-radius: 0.75rem;
+            transition: all 0.25s ease-in-out;
+            text-decoration: none;
+            margin-bottom: 0.25rem;
+        }
+
+        .mega-nav-item iconify-icon {
+            font-size: 1.5rem;
+            margin-left: 0.75rem;
+            /* Gap between icon and text */
+            color: var(--color-primary);
+            transition: color 0.25s ease-in-out;
+        }
+
+        .mega-nav-item .arrow-left {
+            margin-right: auto;
+            /* Pushes the arrow to the far left */
+            font-size: 1rem;
+            color: #9ca3af;
+            /* gray-400 */
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .mega-nav-item:hover,
+        .mega-nav-item.active {
+            background-color: #e0f2f1;
+            /* A light shade of primary color */
+            color: var(--color-primary);
+        }
+
+        .mega-nav-item:hover iconify-icon,
+        .mega-nav-item.active iconify-icon {
+            color: var(--color-accent);
+        }
+
+        .mega-nav-item:hover .arrow-left,
+        .mega-nav-item.active .arrow-left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mega-nav-item.no-panel:hover .arrow-left {
+            opacity: 0;
+            /* Arrow doesn't show for items without a panel */
+        }
+
+
+        .mega-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .mega-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mega-panel .title-link {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            display: block;
+            transition: color 0.2s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .mega-panel .title-link:hover {
+            color: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        /* --- END: Vertical Mega Menu Styles --- */
+
+
+
+
         /* --- START: Search Overlay Styles --- */
         .search-suggestion-link {
             display: flex;
@@ -361,6 +501,94 @@
             pointer-events: none;
         }
 
+
+        /* --- START: Custom Styles for Contact Modal --- */
+        .contact-form-input {
+            width: 100%;
+            background-color: #f8fafc;
+            /* bg-slate-50 */
+            border: 2px solid #e2e8f0;
+            /* border-slate-200 */
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            padding: 0.75rem 2.75rem 0.75rem 1rem;
+            /* py-3 pr-11 pl-4 */
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .contact-form-input:focus {
+            background-color: white;
+            border-color: var(--color-primary);
+        }
+
+        .contact-form-input::placeholder {
+            color: #94a3b8;
+            /* text-slate-400 */
+        }
+
+        .radio-label {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+            color: #475569;
+            /* text-slate-600 */
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .radio-label:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        /* Style for the selected radio button's label */
+        .peer:checked+.radio-label {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
+        }
+
+        .peer:checked+.radio-label {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2);
+        }
+
+        /* START: NEW - Added to fix modal overflow */
+        .modal-form-scrollable {
+            max-height: 90vh;
+            /* Set a max height relative to the viewport */
+            overflow-y: auto;
+            /* Add scrollbar only when content overflows */
+        }
+
+        .modal-form-scrollable::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-form-scrollable::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+
+        .modal-form-scrollable::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+
+        .modal-form-scrollable::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* --- END: Custom Styles for Contact Modal --- */
+
         .glass-panel {
             background-color: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
@@ -402,21 +630,21 @@
             gap: 0.5rem;
             padding: 0.5rem 1.5rem;
 
-        gap: 0.5rem;
-        /* معادل gap-2 */
-        padding: 0.375rem 1rem;
-        /* معادل py-1.5 px-4 */
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 0.5rem;
+            /* معادل gap-2 */
+            padding: 0.375rem 1rem;
+            /* معادل py-1.5 px-4 */
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         /* استایل‌های مخصوص نمایشگرهای بزرگتر */
         @media (min-width: 640px) {
-    .service-type-btn {
-        font-size: 1rem;
-        gap: 0.5rem;
-        padding: 0.5rem 1.5rem;
-    }
-}
+            .service-type-btn {
+                font-size: 1rem;
+                gap: 0.5rem;
+                padding: 0.5rem 1.5rem;
+            }
+        }
 
         /* حالت عادی دکمه‌های غیرفعال (متن و آیکون سرمه‌ای) */
         .service-type-btn:not(.btn-active) {
@@ -1441,10 +1669,11 @@
             transition: opacity 0.4s ease, max-height 0.4s ease;
 
             display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3; /* <--- این خط اضافه شود */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            /* <--- این خط اضافه شود */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .dest-card:hover .card-subtitle {
@@ -1734,160 +1963,180 @@
         </div>
 
         <header class="main-header">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <div class="container mx-auto px-2 sm:px-4 lg:px-4 flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
-                    <a href="#"><img src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو گردشگران"
+                    <a href="#"><img src="https://aryansite.ir/wp-content/uploads/2025/09/logo-gato-by-gardeshgaran-02-e1756879839230.png" alt="لوگو گردشگران"
                             class="h-10 sm:h-12"></a>
                 </div>
 
                 <nav class="hidden lg:flex items-center gap-x-6 text-gray-800 font-medium">
                     <div class="dropdown-container py-7 -my-7">
                         <a href="/tours" class="nav-link flex items-center gap-1">
-                            تورها <iconify-icon icon="solar:alt-arrow-down-linear"
+                            تورهای گردشگران <iconify-icon icon="solar:alt-arrow-down-linear"
                                 class="text-sm caret-icon"></iconify-icon>
                         </a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-grid" style="grid-template-columns: repeat(5, 1fr);">
-                                <div class="mega-menu-column">
-                                    <h3 class="column-title">
+                        <div class="mega-menu vertical-mega-menu">
+                            <div class="flex">
+                                <div class="mega-menu-nav">
+                                    <a href="#" class="mega-nav-item active" data-target="panel-foreign">
+                                        <iconify-icon icon="solar:earth-broken"></iconify-icon>
+                                        <span>تورهای خارجی</span>
+                                        <iconify-icon class="arrow-left"
+                                            icon="solar:alt-arrow-left-linear"></iconify-icon>
+                                    </a>
+                                    <a href="#" class="mega-nav-item" data-target="panel-domestic">
+                                        <iconify-icon icon="solar:home-broken"></iconify-icon>
+                                        <span>تورهای داخلی</span>
+                                        <iconify-icon class="arrow-left"
+                                            icon="solar:alt-arrow-left-linear"></iconify-icon>
+                                    </a>
+                                    <a href="#" class="mega-nav-item" data-target="panel-special">
                                         <iconify-icon icon="solar:sale-broken"></iconify-icon>
                                         <span>تورهای ویژه</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">آفری و لحظه‌آخری</a></li>
-                                        <li><a href="#" class="city-link">تورهای لوکس</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="bx:party"></iconify-icon>
-                                        <span>تورهای مناسبتی</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">نوروزی</a></li>
-                                        <li><a href="#" class="city-link">ولادت مولانا</a></li>
-                                        <li><a href="#" class="city-link">تابستانی</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="tabler:currency-iranian-rial"></iconify-icon>
-                                        <span>تورهای داخلی</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور کیش</a></li>
-                                        <li><a href="#" class="city-link">تور قشم</a></li>
-                                        <li><a href="#" class="city-link">تور مشهد</a></li>
-                                    </ul>
+                                        <iconify-icon class="arrow-left"
+                                            icon="solar:alt-arrow-left-linear"></iconify-icon>
+                                    </a>
+                                    <a href="#" class="mega-nav-item" data-target="panel-exhibition">
+                                        <iconify-icon icon="solar:document-text-broken"></iconify-icon>
+                                        <span>تورهای نمایشگاهی</span>
+                                        <iconify-icon class="arrow-left"
+                                            icon="solar:alt-arrow-left-linear"></iconify-icon>
+                                    </a>
+                                    <a href="#" class="mega-nav-item" data-target="panel-other">
+                                        <iconify-icon icon="solar:widget-5-broken"></iconify-icon>
+                                        <span>دیگر دسته بندی تورها</span>
+                                        <iconify-icon class="arrow-left"
+                                            icon="solar:alt-arrow-left-linear"></iconify-icon>
+                                    </a>
+                                </div>
 
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3 class="column-title">
-                                        <iconify-icon icon="emojione-monotone:flag-for-turkey"></iconify-icon>
-                                        <span>تور ترکیه</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور آنتالیا</a></li>
-                                        <li><a href="#" class="city-link">تور استانبول</a></li>
-                                        <li><a href="#" class="city-link">تور آلانیا</a></li>
-                                        <li><a href="#" class="city-link">تور مارماریس</a></li>
-                                        <li><a href="#" class="city-link">تور فتحیه</a></li>
-                                        <li><a href="#" class="city-link">تور بدروم</a></li>
-                                        <li><a href="#" class="city-link">تور کوش آداسی</a></li>
-                                        <li><a href="#" class="city-link">تور ازمیر</a></li>
-                                        <li><a href="#" class="city-link">تورهای ترکیبی ترکیه</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3 class="column-title">
-                                        <iconify-icon icon="mingcute:burj-al-arab-line"></iconify-icon>
-                                        <span>تور امارات</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور دبی</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="emojione-monotone:flag-for-russia"></iconify-icon>
-                                        <span>تور روسیه</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور ترکیبی روسیه</a></li>
-                                        <li><a href="#" class="city-link">تور مسکو</a></li>
-                                        <li><a href="#" class="city-link">تور سنت پترزبورگ</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="emojione-monotone:flag-for-armenia"></iconify-icon>
-                                        <span>تور ارمنستان</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور ایروان</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="solar:atom-broken"></iconify-icon>
-                                        <span>تور قزاقستان</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور آکتائو</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3 class="column-title">
-                                        <iconify-icon icon="game-icons:earth-africa-europe"></iconify-icon>
-                                        <span>تور اروپایی</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور فرانسه</a></li>
-                                        <li><a href="#" class="city-link">تور ایتالیا</a></li>
-                                        <li><a href="#" class="city-link">تور اسپانیا</a></li>
-                                        <li><a href="#" class="city-link">تور سوئیس</a></li>
-                                        <li><a href="#" class="city-link">تور پرتغال</a></li>
-                                        <li><a href="#" class="city-link">تورهای ترکیبی اروپا</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="emojione-monotone:flag-for-tunisia"></iconify-icon>
-                                        <span>تور تونس</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور ترکیبی تونس</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3 class="column-title">
-                                        <iconify-icon icon="emojione-monotone:flag-for-thailand"></iconify-icon>
-                                        <span>تور تایلند</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور بانکوک</a></li>
-                                        <li><a href="#" class="city-link">تور پاتایا</a></li>
-                                        <li><a href="#" class="city-link">تور پوکت</a></li>
-                                        <li><a href="#" class="city-link">تور ترکیبی تایلند</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="ph:tree-palm-duotone"></iconify-icon>
-                                        <span>تور سریلانکا</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور ترکیبی سریلانکا</a></li>
-                                    </ul>
-                                    <h3 class="column-title mt-6">
-                                        <iconify-icon icon="emojione-monotone:flag-for-vietnam"></iconify-icon>
-                                        <span>تور ویتنام</span>
-                                    </h3>
-                                    <ul>
-                                        <li><a href="#" class="city-link">تور ترکیبی ویتنام</a></li>
-                                    </ul>
+                                <div class="mega-menu-panels">
+                                    <div class="mega-panel" id="panel-special">
+                                        <div class="mega-menu-column">
+                                            <h3 class="column-title"><iconify-icon
+                                                    icon="solar:gift-broken"></iconify-icon><span>آفری و لحظه
+                                                    آخری</span></h3>
+                                        </div>
+                                        <div class="mega-menu-column mt-6">
+                                            <h3 class="column-title"><iconify-icon
+                                                    icon="bx:party"></iconify-icon><span>مناسبتی</span></h3>
+                                            <ul>
+                                                <li><a href="#" class="city-link">تورهای نوروزی</a></li>
+                                                <li><a href="#" class="city-link">تورهای تابستانی</a></li>
+                                                <li><a href="#" class="city-link">تورهای کریسمس</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="mega-panel active" id="panel-foreign">
+                                        <div class="mega-menu-grid" style="grid-template-columns: repeat(5, 1fr);">
+                                            <div class="mega-menu-column">
+                                                <h3 class="column-title">
+                                                    <iconify-icon
+                                                        icon="emojione-monotone:flag-for-turkey"></iconify-icon>
+                                                    <span>تور ترکیه</span>
+                                                </h3>
+                                                <ul>
+                                                    <li><a href="#" class="city-link">تور آنتالیا</a></li>
+                                                    <li><a href="#" class="city-link">تور استانبول</a></li>
+                                                    <li><a href="#" class="city-link">تور آلانیا</a></li>
+                                                    <li><a href="#" class="city-link">تور مارماریس</a></li>
+                                                    <li><a href="#" class="city-link">تور بدروم</a></li>
+                                                    <li><a href="#" class="city-link">تور کوش آداسی</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="mega-menu-column">
+                                                <h3 class="column-title">
+                                                    <iconify-icon icon="mingcute:burj-al-arab-line"></iconify-icon>
+                                                    <span>تور امارات</span>
+                                                </h3>
+                                                <ul>
+                                                    <li><a href="#" class="city-link">تور دبی</a></li>
+                                                </ul>
+                                                <h3 class="column-title mt-6">
+                                                    <iconify-icon
+                                                        icon="emojione-monotone:flag-for-russia"></iconify-icon>
+                                                    <span>تور روسیه</span>
+                                                </h3>
+                                                <ul>
+                                                    <li><a href="#" class="city-link">تور ترکیبی روسیه</a></li>
+                                                    <li><a href="#" class="city-link">تور مسکو</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="mega-menu-column">
+                                                <h3 class="column-title">
+                                                    <iconify-icon icon="game-icons:earth-africa-europe"></iconify-icon>
+                                                    <span>تور اروپایی</span>
+                                                </h3>
+                                                <ul>
+                                                    <li><a href="#" class="city-link">تور فرانسه</a></li>
+                                                    <li><a href="#" class="city-link">تور ایتالیا</a></li>
+                                                    <li><a href="#" class="city-link">تور اسپانیا</a></li>
+                                                    <li><a href="#" class="city-link">تورهای ترکیبی اروپا</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="mega-menu-column">
+                                                <h3 class="column-title">
+                                                    <iconify-icon
+                                                        icon="emojione-monotone:flag-for-thailand"></iconify-icon>
+                                                    <span>تور تایلند</span>
+                                                </h3>
+                                                <ul>
+                                                    <li><a href="#" class="city-link">تور بانکوک</a></li>
+                                                    <li><a href="#" class="city-link">تور پاتایا</a></li>
+                                                    <li><a href="#" class="city-link">تور پوکت</a></li>
+                                                    <li><a href="#" class="city-link">تور ترکیبی تایلند</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="mega-menu-column">
+                                                <h3 class="column-title">
+                                                    <iconify-icon icon="ph:tree-palm-duotone"></iconify-icon>
+                                                    <span>دیگر مقاصد</span>
+                                                </h3>
+                                                <ul>
+                                                    <li><a href="#" class="city-link">تور سریلانکا</a></li>
+                                                    <li><a href="#" class="city-link">تور ارمنستان</a></li>
+                                                    <li><a href="#" class="city-link">تور تونس</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-panel" id="panel-domestic">
+                                        <div class="mega-menu-grid" style="grid-template-columns: repeat(4, 1fr);">
+                                            <div class="mega-menu-column">
+                                                <a href="#" class="title-link">تور کیش</a>
+                                                <a href="#" class="title-link">تور قشم</a>
+                                                <a href="#" class="title-link">تور مشهد</a>
+                                                <a href="#" class="title-link">تور شیراز</a>
+                                                <a href="#" class="title-link">تور اصفهان</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-panel" id="panel-exhibition">
+                                        <div class="mega-menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+                                            <div class="mega-menu-column">
+                                                <a href="#" class="title-link">فناوری و الکترونیک</a>
+                                                <a href="#" class="title-link">پزشکی و سلامت</a>
+                                                <a href="#" class="title-link">خودرو و حمل و نقل</a>
+                                                <a href="#" class="title-link">ساختمان و معماری</a>
+                                                <a href="#" class="title-link">صنایع غذایی و کشاورزی</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-panel" id="panel-other">
+                                        <div class="mega-menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+                                            <div class="mega-menu-column">
+                                                <a href="#" class="title-link">تورهای گروهی</a>
+                                                <a href="#" class="title-link">تورهای لوکس</a>
+                                                <a href="#" class="title-link">تورهای زمینی</a>
+                                                <a href="#" class="title-link">کشتی کروز و سفر دریایی</a>
+                                                <a href="#" class="title-link">تورهای مسابقات ورزشی</a>
+                                                <a href="#" class="title-link">تورهای فرهنگی و تاریخی</a>
+                                                <a href="#" class="title-link">تورهای تفریحات ساحلی</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="dropdown-container py-7 -my-7">
-                        <a href="/magazine" class="nav-link flex items-center gap-1">
-                            تورهای نمایشگاهی<iconify-icon icon="solar:alt-arrow-down-linear"
-                                class="text-sm caret-icon"></iconify-icon>
-                        </a>
-                        <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">نمایشگاه
-                                جیتکس</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">نمایشگاه ...</a>
                         </div>
                     </div>
 
@@ -1897,41 +2146,57 @@
                                 class="text-sm caret-icon"></iconify-icon>
                         </a>
                         <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">آمریکا</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">انگلستان</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">شنگن(اروپا)</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">استرالیا</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">کانادا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ویزای آمریکا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ویزای
+                                انگلستان</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ویزای
+                                شنگن(اروپا)</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ویزای
+                                استرالیا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ویزای کانادا</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ویزای سایر
                                 کشورها</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">پیکاپ ویزا</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">وقت سفارت</a>
                         </div>
                     </div>
                     <div class="dropdown-container py-7 -my-7">
                         <a href="/magazine" class="nav-link flex items-center gap-1">
-                            مجله گردشگری <iconify-icon icon="solar:alt-arrow-down-linear"
+                            راهنماهای سفر<iconify-icon icon="solar:alt-arrow-down-linear"
                                 class="text-sm caret-icon"></iconify-icon>
                         </a>
                         <div class="dropdown-menu absolute w-56 bg-white rounded-md shadow-lg py-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">راهنماهای
-                                سفر</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">جاذبه‌ها</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">معرفی مقاصد و
+                                جاذبه‌ها</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ضروریات سفر</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">راهنمای انواع
+                                تورها و سفرها</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">راهنماهای خدمات
+                                ویزا</a>
                         </div>
                     </div>
                     <a href="/contact" class="nav-link">تماس با ما</a>
                     <a href="/about" class="nav-link">درباره ما</a>
                 </nav>
 
+
                 <div class="hidden lg:flex items-center gap-x-3">
                     <button onclick="openSearch()" aria-label="جستجو"
                         class="text-gray-600 hover:text-primary transition-colors p-3 rounded-full hover:bg-gray-100">
                         <iconify-icon icon="solar:magnifer-broken" class="text-xl"></iconify-icon>
                     </button>
-                    <a href="#" class="btn-secondary border px-5 py-2.5 text-sm font-medium rounded-lg">
+                    <a href="#"
+                        class="btn-secondary border px-5 py-2.5 text-sm font-medium rounded-lg flex items-center">
                         ورود / ثبت‌نام
                     </a>
-                    <a href="#" class="btn-primary px-5 py-2.5 text-sm font-medium rounded-lg">
-                        تماس با کارشناسان
-                    </a>
+
+                    <div class="flex items-center gap-x-5">
+                        <a href="#" id="open-contact-modal-btn"
+                            class="btn-primary px-5 py-2.5 text-sm font-bold rounded-lg flex items-center gap-2">
+                            <iconify-icon icon="solar:chat-round-call-broken" class="text-lg"></iconify-icon>
+                            <span>تماس با کارشناسان</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="lg:hidden flex items-center gap-x-1">
@@ -1950,7 +2215,7 @@
     <div id="mobile-menu"
         class="mobile-menu hidden-menu fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-xl z-[100] p-6 flex flex-col">
         <div class="flex justify-between items-center mb-8">
-            <img src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو" class="h-10">
+            <img src="https://aryansite.ir/wp-content/uploads/2025/09/logo-gato-by-gardeshgaran-02-e1756879839230.png" alt="لوگو" class="h-10">
             <button id="close-menu-button" aria-label="بستن منو" class="text-gray-600 p-2">
                 <iconify-icon icon="solar:adhesive-plaster-broken" class="text-2xl"></iconify-icon>
             </button>
@@ -2106,7 +2371,7 @@
     <div id="mobile-menu"
         class="mobile-menu hidden-menu fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-xl z-[100] p-6 flex flex-col">
         <div class="flex justify-between items-center mb-8">
-            <img src="https://cdn.basiscore.net/gato.ir/images/main-logo.png" alt="لوگو" class="h-10">
+            <img src="https://aryansite.ir/wp-content/uploads/2025/09/logo-gato-by-gardeshgaran-02-e1756879839230.png" alt="لوگو" class="h-10">
             <button id="close-menu-button" aria-label="بستن منو" class="text-gray-600 p-2">
                 <iconify-icon icon="ph:x-bold" class="text-2xl"></iconify-icon>
             </button>
@@ -2159,6 +2424,171 @@
             </div>
 
             <div id="mobile-form-container" class="flex flex-col gap-4 bg-white shadow-lg rounded-2xl p-4 mt-4">
+            </div>
+        </div>
+    </div>
+    <div id="contact-modal-overlay"
+        class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div id="contact-modal-panel"
+            class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-all duration-300">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div class="hidden lg:flex flex-col justify-between p-10 bg-gray-900 text-white relative">
+                    <div class="absolute inset-0">
+                        <img src="https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            class="w-full h-full object-cover opacity-30" alt="تیم پشتیبانی">
+                    </div>
+                    <div class="relative z-10">
+                        <a href="#"><img src="https://aryansite.ir/wp-content/uploads/2025/09/logo-gato-by-gardeshgaran-02-e1756879839230.png"
+                                alt="لوگو گردشگران" class="h-10 sm:h-12 brightness-0 invert"></a>
+                        <h2 class="text-4xl font-extrabold mt-8">تماس با کارشناسان ما</h2>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            برای دریافت مشاوره تخصصی، می‌توانید مستقیماً با ما تماس بگیرید یا فرم روبرو را تکمیل کنید تا
+                            کارشناسان ما در سریع‌ترین زمان ممکن با شما تماس بگیرند.
+                        </p>
+                    </div>
+                    <div class="relative z-10 text-sm mt-8">
+                        <a href="tel:03136166"
+                            class="flex items-center gap-3 mt-4 text-gray-300 hover:text-white transition-colors">
+                            <iconify-icon icon="solar:phone-calling-broken" class="text-xl text-primary"></iconify-icon>
+                            <span>031-36166</span>
+                        </a>
+                        <a href="mailto:info@gato.ir"
+                            class="flex items-center gap-3 mt-4 text-gray-300 hover:text-white transition-colors">
+                            <iconify-icon icon="solar:letter-linear" class="text-xl text-primary"></iconify-icon>
+                            <span>info@gato.ir</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-8 md:p-10 relative modal-form-scrollable">
+                    <button id="close-contact-modal-btn"
+                        class="absolute top-5 left-5 text-gray-400 hover:text-gray-800 transition-colors">
+                        <iconify-icon icon="solar:close-circle-broken" class="text-3xl"></iconify-icon>
+                    </button>
+
+                    <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--color-top-bar);">درخواست مشاوره
+                    </h3>
+
+                    <div class="text-center mb-6">
+                        <p class="text-sm text-gray-700 mb-3">
+                            در صورت تمایل به مشاوره تلفنی با شماره زیر تماس حاصل فرمایید:
+                        </p>
+                        <a href="tel:03136166"
+                            class="inline-flex items-center justify-center gap-2 w-full sm:w-auto text-white font-bold py-3 px-8 rounded-xl text-lg transition-all duration-300 hover:transform hover:-translate-y-1"
+                            style="background-color: var(--color-accent); box-shadow: 0 6px 20px rgba(243, 115, 33, 0.3);">
+                            <iconify-icon icon="solar:phone-calling-rounded-bold" class="text-xl"></iconify-icon>
+                            <span>۳۶۱۶۶</span>
+                        </a>
+                        <p class="text-xs text-gray-500 mt-2">
+                            در صورت تماس از شهرهای غیر از اصفهان: <strong>۰۳۱-۳۶۱۶۶</strong>
+                        </p>
+                    </div>
+
+                    <div class="relative my-6">
+                        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                            <div class="w-full border-t border-gray-200"></div>
+                        </div>
+                        <div class="relative flex justify-center">
+                            <span class="bg-white px-2 text-sm text-gray-500">یا تکمیل فرم زیر</span>
+                        </div>
+                    </div>
+                    <form action="#" method="POST">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
+                            <div>
+                                <label for="contact-name"
+                                    class="block text-sm font-medium text-gray-700 mb-1">نام</label>
+                                <div class="relative">
+                                    <iconify-icon icon="solar:user-circle-linear"
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-400"></iconify-icon>
+                                    <input type="text" id="contact-name" name="contact-name" class="contact-form-input"
+                                        placeholder="مثال: علی">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contact-lastname" class="block text-sm font-medium text-gray-700 mb-1">نام
+                                    خانوادگی</label>
+                                <div class="relative">
+                                    <iconify-icon icon="solar:user-id-linear"
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-400"></iconify-icon>
+                                    <input type="text" id="contact-lastname" name="contact-lastname"
+                                        class="contact-form-input" placeholder="مثال: محمدی">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">ایمیل
+                                    (اختیاری)</label>
+                                <div class="relative">
+                                    <iconify-icon icon="solar:letter-linear"
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-400"></iconify-icon>
+                                    <input type="email" id="contact-email" name="contact-email"
+                                        class="contact-form-input" placeholder="example@mail.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contact-phone" class="block text-sm font-medium text-gray-700 mb-1">شماره
+                                    تماس</label>
+                                <div class="relative">
+                                    <iconify-icon icon="solar:phone-calling-outline"
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-400"></iconify-icon>
+                                    <input type="tel" id="contact-phone" name="contact-phone" class="contact-form-input"
+                                        required placeholder="09*********">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">در چه موردی مشاوره نیاز
+                                    دارید؟</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                    <div class="relative">
+                                        <input type="radio" id="subject-tour" name="subject" value="tour-booking"
+                                            class="hidden peer">
+                                        <label for="subject-tour" class="radio-label">جهت رزرو تور</label>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="radio" id="subject-service" name="subject" value="service-booking"
+                                            class="hidden peer">
+                                        <label for="subject-service" class="radio-label">جهت رزرو خدمات</label>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="radio" id="subject-check" name="subject" value="check-booking"
+                                            class="hidden peer">
+                                        <label for="subject-check" class="radio-label">جهت بررسی رزرو</label>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="radio" id="subject-issue" name="subject" value="issue-report"
+                                            class="hidden peer">
+                                        <label for="subject-issue" class="radio-label">بیان مشکل</label>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="radio" id="subject-other" name="subject" value="other"
+                                            class="hidden peer">
+                                        <label for="subject-other" class="radio-label">دیگر موارد</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-1">متن
+                                    پیام</label>
+                                <textarea id="contact-message" name="contact-message" rows="4"
+                                    class="contact-form-input !rounded-xl"
+                                    placeholder="جزییات درخواست خود را اینجا بنویسید..."></textarea>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="contact-captcha" class="block text-sm font-medium text-gray-700 mb-1">کد
+                                    امنیتی</label>
+                                <div class="flex items-center gap-4">
+                                    <input type="text" id="contact-captcha" name="contact-captcha"
+                                        class="contact-form-input" placeholder="کد را وارد کنید">
+                                    <div class="captcha-code flex-shrink-0">DB2E</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <button type="submit" class="w-full btn-primary text-base font-bold py-3 px-6 rounded-lg">
+                                ارسال درخواست
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -3189,7 +3619,7 @@
 
                 <!-- بخش لوگو و توضیحات -->
                 <div class="md:col-span-2 lg:col-span-1">
-                    <img class="h-12" src="https://aryansite.ir/wp-content/uploads/2025/09/main-logo.png"
+                    <img class="h-12" src="https://aryansite.ir/wp-content/uploads/2025/09/logo-gato-by-gardeshgaran-03-e1756879678433.png"
                         alt="لوگو گردشگران">
                     <p class="mt-6 text-base text-gray-300 leading-relaxed">
                         ما با بیش از ۲۸ سال سابقه، متخصص در طراحی و اجرای تورهای داخلی و خارجی هستیم و تلاش می‌کنیم تا
@@ -3573,6 +4003,37 @@
             }
         });
 
+        // --- Vertical Mega Menu Logic ---
+        document.addEventListener('DOMContentLoaded', function () {
+            const navItems = document.querySelectorAll('.mega-nav-item');
+            const panels = document.querySelectorAll('.mega-panel');
+
+            navItems.forEach(item => {
+                item.addEventListener('mouseover', function () {
+                    // Don't do anything if it's already active
+                    if (this.classList.contains('active')) {
+                        return;
+                    }
+
+                    // Remove active class from all items and panels
+                    navItems.forEach(i => i.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    // Add active class to the hovered item
+                    this.classList.add('active');
+
+                    // Show the corresponding panel
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        const targetPanel = document.getElementById(targetId);
+                        if (targetPanel) {
+                            targetPanel.classList.add('active');
+                        }
+                    }
+                });
+            });
+        });
+
         // --- UNIFIED SCRIPT LOGIC FOR SEARCH & OTHER SECTIONS ---
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -3843,6 +4304,58 @@
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.popover') && !e.target.closest('.input-group')) {
                     document.querySelectorAll('.popover').forEach(p => p.classList.add('hidden', 'opacity-0', '-translate-y-2'));
+                }
+            });
+
+
+            // --- Contact Modal Logic ---
+            const openContactBtn = document.getElementById('open-contact-modal-btn');
+            const closeContactBtn = document.getElementById('close-contact-modal-btn');
+            const contactOverlay = document.getElementById('contact-modal-overlay');
+            const contactPanel = document.getElementById('contact-modal-panel');
+
+            function openContactModal() {
+                if (!contactOverlay) return;
+                contactOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    contactOverlay.classList.remove('opacity-0');
+                    contactPanel.classList.remove('scale-95');
+                }, 10);
+            }
+
+            function closeContactModal() {
+                if (!contactOverlay) return;
+                contactOverlay.classList.add('opacity-0');
+                contactPanel.classList.add('scale-95');
+                setTimeout(() => {
+                    contactOverlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300); // Should match the duration of the transition
+            }
+
+            if (openContactBtn) {
+                // Prevent default link behavior and open modal instead
+                openContactBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openContactModal();
+                });
+            }
+            if (closeContactBtn) {
+                closeContactBtn.addEventListener('click', closeContactModal);
+            }
+            if (contactOverlay) {
+                contactOverlay.addEventListener('click', (e) => {
+                    if (e.target === contactOverlay) {
+                        closeContactModal();
+                    }
+                });
+            }
+
+            // Close modal on 'Escape' key press
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !contactOverlay.classList.contains('hidden')) {
+                    closeContactModal();
                 }
             });
 
