@@ -2731,8 +2731,8 @@
                     <div class="lg:col-span-1">
                          <a href="#" class="block w-full rounded-xl overflow-hidden shadow-lg group aspect-video">
                     <img src="https://images.pexels.com/photos/2161467/pexels-photo-2161467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                         alt="بنر تورهای ویژه"
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+     alt="بنر تورهای ویژه"
+     class="w-full h-full object-cover">
                         </a>
                     </div>
 
@@ -3058,8 +3058,8 @@
             <div class="hidden md:block">
                 <div id="desktop-travel-style-slider"
                     class="desktop-travel-style-slider relative w-full h-screen overflow-hidden bg-gray-900">
-                    <h2 class="hidden md:block travel-style-title-box">سبک سفر خودتو پیدا کن</h2>
-                    <div id="desktop-backgrounds-container" class="absolute inset-0"></div>
+                    <h2 class="hidden md:block travel-style-title-box">تور مورد علاقه‌تو پیدا کن</h2>
+<div id="desktop-backgrounds-container" class="absolute inset-0"></div>
                     <div class="absolute inset-0 bg-black/50"></div>
                     <div
                         class="absolute right-8 top-1/2 -translate-y-1/2 z-30 flex-col items-center gap-y-8 hidden md:flex">
@@ -3129,7 +3129,7 @@
 
 
         <!-- Exhibition Tours Section -->
-        <section class="py-16 sm:py-24 pt-20 bg-gray-50">
+        <section class="pt-8 sm:pb-24 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
                     <div class="mb-4 sm:mb-0">
@@ -4319,17 +4319,82 @@
             loadBlogSection();
 
             // --- Travel Style Slider Logic ---
-            const travelData = [
-                { id: 'family', title: 'سفرهای خانوادگی', description: 'آرامش و خاطره‌سازی برای همه اعضای خانواده در بهترین مقاصد دنیا.', bgColor: '#607D8B', bgImage: 'https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?q=80&w=1887&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1591038014425-ca3e438fda07?q=80&w=1887&auto=format&fit=crop' },
-
-                { id: 'luxury', title: 'لوکس', description: 'تجربه‌ای بی‌نظیر از آسایش و خدمات اختصاصی در بهترین هتل‌ها و ریزورت‌های جهان.', bgColor: '#3E2723', bgImage: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1770&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1563911302283-d2bc129e7570?q=80&w=1935&auto=format&fit=crop' },
-
-                { id: 'adventure', title: 'ماجراجویانه', description: 'کشف ناشناخته‌ها، هیجان در طبیعت بکر و تجربه‌هایی که هرگز فراموش نخواهید کرد.', bgColor: '#004D40', bgImage: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=1770&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=1773&auto=format&fit=crop' },
-
-                { id: 'cultural', title: 'فرهنگی و تاریخی', description: 'سفری به دل تاریخ و تمدن‌های شگفت‌انگیز در موزه‌ها، بناهای باستانی و شهرهای کهن.', bgColor: '#BF360C', bgImage: 'https://images.pexels.com/photos/3629813/pexels-photo-3629813.jpeg?q=80&w=1887&auto=format&fit=crop', cardImage: 'https://images.pexels.com/photos/753339/pexels-photo-753339.jpeg?q=80&w=1770&auto=format&fit=crop' },
-
-                { id: 'exhibition', title: 'نمایشگاهی و تجاری', description: 'سفرهای تخصصی برای شرکت در رویدادها، نمایشگاه‌ها و گسترش کسب‌وکار شما.', bgColor: '#455A64', bgImage: 'https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=1887&auto=format&fit=crop', cardImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1770&auto=format&fit=crop' }
-            ];
+const travelData = [
+    {
+        id: 'beach',
+        title: 'تفریحات ساحلی',
+        description: 'آرامش در سواحل آفتابی، ورزش‌های آبی هیجان‌انگیز و لذت بردن از نسیم دریا در بهترین مقاصد ساحلی جهان.',
+        bgColor: '#0288D1', // Blue
+        bgImage: 'https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        cardImage: 'https://images.pexels.com/photos/1430677/pexels-photo-1430677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    {
+        id: 'cultural',
+        title: 'فرهنگی و تاریخی',
+        description: 'سفری به دل تاریخ و تمدن‌های شگفت‌انگیز در موزه‌ها، بناهای باستانی و شهرهای کهن.',
+        bgColor: '#BF360C', // Deep Orange
+        bgImage: 'https://images.pexels.com/photos/3629813/pexels-photo-3629813.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        cardImage: 'https://images.pexels.com/photos/753339/pexels-photo-753339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    {
+        id: 'cruise',
+        title: 'کشتی کروز و دریایی',
+        description: 'تجربه اقامتی لوکس بر روی آب‌های آزاد، بازدید از چندین مقصد در یک سفر و امکانات بی‌پایان.',
+        bgColor: '#00695C', // Teal
+        bgImage: 'https://aryansite.ir/wp-content/uploads/2025/09/Lucid_Realism_A_breathtaking_cinematic_scene_of_an_ultraluxuri_2.webp?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        cardImage: 'https://cdn.leonardo.ai/users/64b95d02-b718-46dc-a1c6-a0b5ba995d06/generations/f7eb9000-cbe2-468c-96cb-99d5ca7d5c50/segments/4:4:1/Lucid_Realism_A_breathtaking_cinematic_scene_of_an_ultraluxuri_3.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    {
+        id: 'luxury',
+        title: 'تورهای لوکس',
+        description: 'تجربه‌ای بی‌نظیر از آسایش و خدمات اختصاصی در بهترین هتل‌ها و ریزورت‌های جهان.',
+        bgColor: '#3E2723', // Brown
+        bgImage: 'https://images.pexels.com/photos/221457/pexels-photo-221457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        cardImage: 'https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    {
+        id: 'domestic',
+        title: 'تورهای داخلی',
+        description: 'کشف زیبایی‌های پنهان و جاذبه‌های بی‌شمار ایران، از کویر تا جنگل و سواحل نیلگون خلیج فارس.',
+        bgColor: '#6A1B9A', // Purple
+        bgImage: 'https://images.pexels.com/photos/159820/landscape-iron-bridge-river-water-159820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        cardImage: 'https://images.pexels.com/photos/1539581/pexels-photo-1539581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    {
+        id: 'exhibition',
+        title: 'تورهای نمایشگاهی',
+        description: 'سفرهای تخصصی برای شرکت در رویدادها، نمایشگاه‌های بین‌المللی و گسترش کسب‌وکار شما.',
+        bgColor: '#455A64', // Blue Grey
+        bgImage: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        cardImage: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    {
+        id: 'sports',
+        title: 'تورهای مسابقات ورزشی',
+        description: 'هیجان تماشای زنده مسابقات ورزشی مورد علاقه خود در بزرگترین استادیوم‌های جهان.',
+        bgColor: '#2E7D32', // Green
+        bgImage: 'https://images.pexels.com/photos/159497/school-notebook-ring-binder-pen-159497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        cardImage: 'https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    
+    {
+        id: 'oneday',
+        title: 'تورهای یک‌روزه',
+    description: 'یک روز پر از هیجان و کشف زیبایی‌های طبیعت! با اتوبوس‌های راحت به دل جنگل‌ها، کوه‌ها و جاذبه‌های نزدیک سفر کنید و خاطره‌ای فراموش‌نشدنی بسازید.',
+    bgColor: '#5D4037', // Brown Grey
+    bgImage: 'https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', // تصویر جنگل و طبیعت
+    cardImage: 'https://images.pexels.com/photos/2161449/pexels-photo-2161449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' // تصویر گروهی در حال سفر
+}
+    ,
+    {
+    id: 'irantraveling',
+    title: 'تورهای چندروزه ایرانگردی',
+    description: 'سفری خاطره‌انگیز به قلب تاریخ و طبیعت ایران! از شهرهای تاریخی تا روستاهای بکر، با اتوبوس‌های مدرن تجربه‌ای ناب از ایرانگردی داشته باشید.',
+    bgColor: '#F57C00', // Orange
+    bgImage: 'https://images.pexels.com/photos/3225533/pexels-photo-3225533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', // تصویر بیابان و جاذبه‌های تاریخی
+    cardImage: 'https://images.pexels.com/photos/3331094/pexels-photo-3331094.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' // تصویر گروهی در حال بازدید از آثار تاریخی
+}
+];
             const initDesktopSlider = () => {
                 if (window.innerWidth <= 768) return;
                 const sliderContainer = document.getElementById('desktop-travel-style-slider');
@@ -4374,28 +4439,45 @@
                 function dragEnd(e) { if (!isMouseDown) return; isMouseDown = false; cardsWrapper.classList.remove('dragging'); const movedBy = currentTranslate - prevTranslate; if (movedBy < -80) currentIndex = (currentIndex + 1) % travelData.length; else if (movedBy > 80) currentIndex = (currentIndex - 1 + travelData.length) % travelData.length; updateSlider(currentIndex); startAutoPlay(); }
                 function setSliderPosition() { cardsWrapper.style.transform = `translateX(${currentTranslate}px)`; }
                 function updateSlider(index, animate = true) {
-                    currentIndex = index;
-                    const activeItem = travelData[index];
-                    document.querySelectorAll('.desktop-travel-style-slider .bg-image').forEach(img => img.classList.toggle('active', img.dataset.id === activeItem.id));
-                    document.querySelectorAll('.desktop-travel-style-slider .content-item').forEach(content => content.classList.toggle('active', content.dataset.id === activeItem.id));
-                    const allCards = document.querySelectorAll('.desktop-travel-style-slider .card-item');
-                    const activeCard = allCards[index];
-                    // **** PEEK-A-BOO FIX ****
-                    const fixedLeftOffset = (cardsContainer.offsetWidth * 1); // این عدد جایگاه کارت از لبه چپ را کنترل می‌کند
-                    const finalTranslate = fixedLeftOffset - activeCard.offsetLeft;
-                    currentTranslate = finalTranslate;
-                    prevTranslate = currentTranslate;
-                    cardsWrapper.style.transition = animate ? 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)' : 'none';
-                    setSliderPosition();
-                    allCards.forEach((card, i) => card.classList.toggle('active', i === index));
-                    document.querySelectorAll('.desktop-travel-style-slider .nav-dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
-                    sliderContainer.style.backgroundColor = activeItem.bgColor;
-                    // **** PROGRESS BAR UPDATE ****
-                    if (progressBar) {
-                        const progressPercentage = ((index + 1) / travelData.length) * 100;
-                        progressBar.style.width = `${progressPercentage}%`;
-                    }
-                }
+    currentIndex = index;
+    const activeItem = travelData[index];
+
+    document.querySelectorAll('.desktop-travel-style-slider .bg-image').forEach(img => img.classList.toggle('active', img.dataset.id === activeItem.id));
+    document.querySelectorAll('.desktop-travel-style-slider .content-item').forEach(content => content.classList.toggle('active', content.dataset.id === activeItem.id));
+
+    const allCards = document.querySelectorAll('.desktop-travel-style-slider .card-item');
+    if (allCards.length === 0) return; // جلوگیری از خطا اگر کارتی وجود نداشت
+
+    // --- START: منطق جدید و قطعی برای وسط‌چین کردن ---
+    const cardWidth = allCards[0].offsetWidth;
+    const gap = (allCards.length > 1) ? (allCards[1].offsetLeft - (allCards[0].offsetLeft + cardWidth)) : 0;
+    const cardWidthWithGap = cardWidth + gap;
+    const containerCenter = cardsContainer.offsetWidth / 2;
+    
+    // محاسبه Translate بر اساس ایندکس کارت فعال
+// --- ✨ اهرم تنظیم دستی جایگاه کارت ---
+// این عدد را برای تنظیم دقیق تغییر دهید.
+// عدد منفی = حرکت به چپ | عدد مثبت = حرکت به راست
+const manualOffset = -1600; 
+
+const basePosition = containerCenter - (cardWidth / 2);
+const finalTranslate = basePosition - (currentIndex * cardWidthWithGap) + manualOffset;    // --- END: منطق جدید ---
+
+    currentTranslate = finalTranslate;
+    prevTranslate = finalTranslate;
+    
+    cardsWrapper.style.transition = animate ? 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)' : 'none';
+    setSliderPosition();
+
+    allCards.forEach((card, i) => card.classList.toggle('active', i === index));
+    document.querySelectorAll('.desktop-travel-style-slider .nav-dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
+    sliderContainer.style.backgroundColor = activeItem.bgColor;
+
+    if (progressBar) {
+        const progressPercentage = ((index + 1) / travelData.length) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+    }
+}
                 function nextSlide() { updateSlider((currentIndex + 1) % travelData.length); }
                 function startAutoPlay() { stopAutoPlay(); autoPlayInterval = setInterval(nextSlide, 5000); }
                 function stopAutoPlay() { clearInterval(autoPlayInterval); }
